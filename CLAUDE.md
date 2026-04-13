@@ -7,7 +7,7 @@ A redesigned version of [trpkovski.com](https://www.trpkovski.com) built with Nu
 ## Reference Materials
 
 - **Design system & page specs:** `spec-kit-context.md` (corrected, authoritative design system - use this over the Stitch DESIGN.md)
-- **Stitch exported screens:** `../stitch_neon_terminal_prd/` (HTML + PNG for each page - use as visual/structural reference only, do NOT copy directly due to inconsistencies)
+- **Stitch exported screens:** `stitch_neon_terminal_prd/` (HTML + PNG for each page - use as visual/structural reference only, do NOT copy directly due to inconsistencies)
 - **Current blog source code:** https://github.com/Suv4o/personal-blog-2023 (reference for site structure, routing patterns, and content types)
 
 ## Spec-Kit Workflow

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neon Terminal - Article Detail</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Fira+Code:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee6053", // Coral Red
+              "background-light": "#f8f6f6",
+              "background-dark": "#173353", // Dark Navy
+              "surface": "#1b3b60", // Deep Blue
+              "text-main": "#e0e6ed", // Off-White
+              "muted": "#f1918b", // Light Coral
+              "accent": "#00ff41", // Matrix Green
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"],
+              "mono": ["Fira Code", "monospace"],
+            },
+            borderRadius: {"DEFAULT": "0px", "sm": "0px", "md": "0px", "lg": "0px", "xl": "0px", "full": "0px"}, // Sharp corners per PRD
+            boxShadow: {
+              'glow': '0 0 12px rgba(238, 96, 83, 0.6)',
+            },
+            dropShadow: {
+              'glow': '0 0 10px rgba(238, 96, 83, 0.5)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Global Scanlines */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 50;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Syntax Highlighting overrides for terminal feel */
+        .token.keyword { color: #f1918b; }
+        .token.string { color: #00ff41; }
+        .token.function { color: #ee6053; }
+        .token.comment { color: #6b8aab; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #173353;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b3b60;
+            border: 1px solid #f1918b;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ee6053;
+        }
+
+        /* Subtle horizontal rule flicker */
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            5% { opacity: 0.5; }
+            10% { opacity: 0.9; }
+            15% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .hr-flicker {
+            animation: flicker 4s infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-text-main font-display min-h-screen selection:bg-primary selection:text-background-dark relative">
+<!-- Shared TopNavBar (Included as this is a Destination/Reading view, not a process flow) -->
+<div class="relative flex h-auto w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden border-b-2 border-muted" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 py-3">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 text-primary drop-shadow-glow">
+<span class="material-symbols-outlined" style="font-size: 24px;">terminal</span>
+</div>
+<h2 class="text-primary text-xl font-mono font-bold leading-tight tracking-[-0.015em] drop-shadow-glow">Neon Terminal</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-6 md:gap-9 font-mono uppercase text-sm font-semibold text-muted">
+<a class="hover:text-primary hover:drop-shadow-glow transition-all" href="#">Home</a>
+<a class="hover:text-primary hover:drop-shadow-glow transition-all" href="#">Archive</a>
+<a class="hover:text-primary hover:drop-shadow-glow transition-all" href="#">Now</a>
+</div>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="max-w-[1200px] mx-auto px-4 md:px-8 py-10 flex flex-col md:flex-row gap-8 lg:gap-16 relative">
+<!-- Left Sidebar: Table of Contents -->
+<aside class="hidden md:block w-[250px] shrink-0">
+<div class="sticky top-10 flex flex-col gap-4">
+<h3 class="text-muted font-mono text-sm uppercase tracking-wider mb-2 border-b border-surface pb-2">Table of Contents</h3>
+<nav class="flex flex-col gap-3 font-mono text-sm">
+<a class="text-primary drop-shadow-glow flex items-center gap-2" href="#intro">
+<span class="text-primary">&gt;</span> Introduction
+                    </a>
+<a class="text-muted hover:text-text-main transition-colors flex items-center gap-2 pl-4" href="#problem">
+                        The Problem
+                    </a>
+<a class="text-muted hover:text-text-main transition-colors flex items-center gap-2 pl-4" href="#implementation">
+                        Code Implementation
+                    </a>
+<a class="text-muted hover:text-text-main transition-colors flex items-center gap-2 pl-4" href="#conclusion">
+                        Conclusion
+                    </a>
+</nav>
+</div>
+</aside>
+<!-- Center Column: Reading Content -->
+<main class="w-full max-w-[720px] shrink-0 pb-32">
+<!-- Article Header -->
+<header class="mb-12">
+<div class="flex items-center gap-4 font-mono text-sm text-muted mb-4">
+<span>&gt; DATE: 1999-01-12</span>
+<span class="text-surface">|</span>
+<span class="text-accent">&gt; EXEC_TIME: 4ms</span>
+</div>
+<h1 class="font-mono text-4xl md:text-5xl font-bold text-text-main mb-6 leading-tight drop-shadow-glow selection:text-background-dark">
+                    Building a Retro-Futuristic Web App
+                </h1>
+<div class="flex gap-2">
+<span class="text-muted font-mono text-xs px-2 py-1 border border-muted bg-surface/50">[#design]</span>
+<span class="text-muted font-mono text-xs px-2 py-1 border border-muted bg-surface/50">[#css]</span>
+<span class="text-muted font-mono text-xs px-2 py-1 border border-muted bg-surface/50">[#retro]</span>
+</div>
+</header>
+<hr class="border-t-2 border-muted/30 mb-10 hr-flicker"/>
+<!-- Article Body -->
+<article class="prose prose-invert prose-lg max-w-none text-text-main leading-relaxed space-y-8">
+<section id="intro">
+<p class="text-lg">
+                        The aesthetic of the 1990s command-line interface holds a unique place in the hearts of developers. It represents an era where computing was raw, text-based, and unencumbered by the slick, rounded minimalism that dominates today's web. We're going to reconstruct that feeling, but with modern typographic sensibilities.
+                    </p>
+<p>
+                        By combining geometric sans-serifs for readability with strict monospace headers and aggressive neon accents, we can create a high-signal environment that feels nostalgic yet incredibly functional.
+                    </p>
+</section>
+<section id="problem">
+<h2 class="font-mono text-2xl font-bold text-primary mt-12 mb-6 flex items-center gap-2">
+<span class="text-muted opacity-50">#</span> The Problem
+                    </h2>
+<p>
+                        Most "retro" themes go too far. They use illegible pixel fonts for body copy, aggressive scanlines that cause eye strain, and clunky layouts. The challenge is balancing the <em class="text-muted not-italic font-mono">aesthetic</em> with actual usability. You want the user to feel like a hacker from a 90s movie, but you still need them to comfortably read a 2,000-word technical article.
+                    </p>
+</section>
+<section id="implementation">
+<h2 class="font-mono text-2xl font-bold text-primary mt-12 mb-6 flex items-center gap-2">
+<span class="text-muted opacity-50">#</span> Code Implementation
+                    </h2>
+<p>
+                        We start by defining our CSS custom properties. The key to the "glow" effect isn't just color; it's a specific combination of text-shadow and drop-shadow applied sparingly to interactive or active elements.
+                    </p>
+<!-- Code Block -->
+<div class="my-8 relative group">
+<!-- Code Block Header -->
+<div class="flex items-center justify-between bg-surface border-t-2 border-r-2 border-l-2 border-primary px-4 py-2 font-mono text-xs text-muted">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>styles.css</span>
+</div>
+<button class="hover:text-primary transition-colors focus:outline-none group-focus-within:text-accent">
+                                [COPY]
+                            </button>
+</div>
+<!-- Code Content -->
+<div class="bg-[#11253c] p-4 overflow-x-auto border-l-[4px] border-primary border-r-2 border-b-2 border-primary/20">
+<pre class="font-mono text-sm leading-relaxed m-0 text-text-main"><code><span class="token keyword">:root</span> {
+  <span class="token keyword">--color-primary</span>: <span class="token string">#ee5f53</span>;
+  <span class="token keyword">--color-background</span>: <span class="token string">#173353</span>;
+  <span class="token keyword">--color-surface</span>: <span class="token string">#1b3b60</span>;
+  <span class="token keyword">--color-text</span>: <span class="token string">#e0e6ed</span>;
+  
+  <span class="token comment">/* The signature neon glow */</span>
+  <span class="token keyword">--glow-primary</span>: <span class="token string">0 0 12px rgba(238, 95, 83, 0.6)</span>;
+}
+
+<span class="token keyword">.text-glow</span> {
+  <span class="token function">text-shadow</span>: var(--glow-primary);
+}</code></pre>
+</div>
+</div>
+<p>
+                        Notice the sharp borders. We strictly avoid `border-radius`. In this visual language, corners are meant to be sharp, mimicking the rigid grid of a character-based terminal display.
+                    </p>
+</section>
+<section id="conclusion">
+<h2 class="font-mono text-2xl font-bold text-primary mt-12 mb-6 flex items-center gap-2">
+<span class="text-muted opacity-50">#</span> Conclusion
+                    </h2>
+<p>
+                        It's entirely possible to build a themed blog that doesn't compromise on reading experience. By treating the "retro" elements as accents rather than the foundation of the readability, we arrive at a design that is both striking and comfortable.
+                    </p>
+<div class="mt-12 p-6 border-2 border-muted bg-surface/30 flex flex-col items-center justify-center text-center space-y-4">
+<span class="material-symbols-outlined text-4xl text-accent drop-shadow-[0_0_8px_rgba(0,255,65,0.5)]">check_circle</span>
+<p class="font-mono text-sm text-accent uppercase tracking-widest">
+                            &gt; PROCESS TERMINATED SUCCESSFULLY.
+                        </p>
+</div>
+</section>
+</article>
+</main>
+<!-- Right Whitespace (implied by max-width and flex layout) -->
+<div class="hidden lg:block w-[100px] shrink-0"></div>
+</div>
+</body></html>

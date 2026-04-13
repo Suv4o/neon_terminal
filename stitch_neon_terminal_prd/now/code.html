@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Now | trpkovski.com 🔥</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Ubuntu:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee5f53",
+              "background": "#173353",
+              "surface": "#1b3b60",
+              "text": "#e0e6ed",
+              "muted": "#f1918b",
+              "accent": "#00ff41",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"],
+              "mono": ["Fira Code", "monospace"],
+              "sans": ["Ubuntu", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0px", "sm": "0px", "md": "0px", "lg": "0px", "xl": "0px", "2xl": "0px", "3xl": "0px", "full": "0px"},
+            boxShadow: {
+              'glow': '0 0 12px rgba(238, 95, 83, 0.6)',
+              'glow-hover': '0 0 20px rgba(238, 95, 83, 0.8)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: var(--color-background, #173353);
+            color: var(--color-text, #e0e6ed);
+            position: relative;
+        }
+        
+        /* CRT Scanline Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 50;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 0.95; }
+            50% { opacity: 1; }
+            100% { opacity: 0.95; }
+        }
+
+        .diagnostic-panel {
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .diagnostic-panel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(238, 95, 83, 0.4);
+            border-color: #ee5f53;
+        }
+
+        .diagnostic-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+            opacity: 0.3;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .diagnostic-panel:hover::after {
+            opacity: 0.6;
+        }
+        
+        .terminal-header-btn {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #f1918b;
+            margin-right: 4px;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 8px rgba(238, 95, 83, 0.5);
+        }
+        .text-glow-accent {
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col selection:bg-primary selection:text-background">
+<!-- Top Navigation (Shared Component) -->
+<div class="relative flex h-auto w-full flex-col bg-background dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex flex-col md:flex-row items-center justify-between whitespace-nowrap border-b-2 border-solid border-muted px-4 md:px-10 py-4 gap-4 md:gap-0 bg-surface">
+<div class="flex items-center gap-4 text-text w-full md:w-auto justify-between md:justify-start">
+<div class="size-6 text-primary crt-flicker">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-text text-xl font-bold leading-tight tracking-tight font-mono text-glow">trpkovski.com 🔥</h2>
+</div>
+<nav class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
+<a class="text-text hover:text-primary transition-colors text-sm font-mono uppercase tracking-wider" href="#">Articles</a>
+<a class="text-text hover:text-primary transition-colors text-sm font-mono uppercase tracking-wider" href="#">The Keyboard Lab</a>
+<a class="text-text hover:text-primary transition-colors text-sm font-mono uppercase tracking-wider" href="#">Through The Lens</a>
+<a class="text-text hover:text-primary transition-colors text-sm font-mono uppercase tracking-wider" href="#">About Me</a>
+<a class="text-text hover:text-primary transition-colors text-sm font-mono uppercase tracking-wider" href="#">Get In Touch</a>
+</nav>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-grow flex justify-center px-4 md:px-10 lg:px-40 pb-20">
+<div class="w-full max-w-[960px] flex flex-col gap-10">
+<!-- Page Header -->
+<div class="flex flex-col gap-2 mt-8">
+<h1 class="font-mono text-primary text-3xl md:text-5xl font-bold tracking-tight text-glow">
+<span class="text-muted opacity-70 mr-2">&gt;</span>./status.sh<span class="animate-pulse ml-1">_</span>
+</h1>
+<p class="font-mono text-accent text-lg md:text-xl font-bold text-glow-accent mt-2 crt-flicker tracking-widest uppercase">
+                    [ SYSTEM_STATUS: ONLINE ]
+                </p>
+<div class="h-[2px] w-full bg-muted mt-4 opacity-50 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/4 animate-[marquee_2s_linear_infinite]"></div>
+</div>
+</div>
+<!-- Masonry Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+<!-- Col 1 -->
+<div class="flex flex-col gap-8">
+<!-- Panel: Memory Block -->
+<div class="diagnostic-panel border-2 border-muted bg-surface p-6 pt-8 mt-4 relative">
+<div class="absolute -top-[14px] left-4 bg-background px-3 border-2 border-muted text-primary font-mono text-sm uppercase tracking-widest font-bold z-10">
+                            MEM_BLOCK: FOCUS
+                        </div>
+<div class="space-y-6">
+<div>
+<h3 class="font-mono text-muted text-sm mb-2 uppercase tracking-wide">Primary Process</h3>
+<p class="text-text text-lg leading-relaxed">
+                                    Deep diving into <strong class="text-primary font-mono font-normal">Rust</strong> architecture patterns for high-performance network services. Building a terminal-based UI framework as a learning exercise.
+                                </p>
+</div>
+<div class="border-t border-muted border-dashed pt-4">
+<h3 class="font-mono text-muted text-sm mb-2 uppercase tracking-wide">Secondary Process</h3>
+<p class="text-text text-lg leading-relaxed">
+                                    Refining the design system for <strong class="text-primary font-mono font-normal">Neon Terminal</strong>. Experimenting with CSS grid hacks to create more authentic-feeling asymmetric layouts without sacrificing accessibility.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Panel: Hardware Diagnostics -->
+<div class="diagnostic-panel border-2 border-muted bg-surface p-6 pt-8 mt-4 relative">
+<div class="absolute -top-[14px] left-4 bg-background px-3 border-2 border-muted text-primary font-mono text-sm uppercase tracking-widest font-bold z-10">
+                            SYS_CONFIG: HARDWARE
+                        </div>
+<ul class="space-y-4 font-mono text-sm">
+<li class="flex justify-between items-end border-b border-muted border-dashed pb-1">
+<span class="text-muted">Daily Driver:</span>
+<span class="text-text text-right">MacBook Pro M3 Max, 64GB</span>
+</li>
+<li class="flex justify-between items-end border-b border-muted border-dashed pb-1">
+<span class="text-muted">Keyboard:</span>
+<span class="text-text text-right">HHKB Pro Hybrid Type-S</span>
+</li>
+<li class="flex justify-between items-end border-b border-muted border-dashed pb-1">
+<span class="text-muted">Editor:</span>
+<span class="text-text text-right">Neovim (Custom Lua Config)</span>
+</li>
+<li class="flex justify-between items-end pb-1">
+<span class="text-muted">Terminal:</span>
+<span class="text-text text-right">WezTerm + Tmux</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Col 2 -->
+<div class="flex flex-col gap-8 md:mt-12">
+<!-- Panel: I/O Block -->
+<div class="diagnostic-panel border-2 border-muted bg-surface p-6 pt-8 mt-4 relative">
+<div class="absolute -top-[14px] left-4 bg-background px-3 border-2 border-muted text-primary font-mono text-sm uppercase tracking-widest font-bold z-10">
+                            I/O_BLOCK: CONSUMING
+                        </div>
+<div class="space-y-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-muted text-lg">book</span>
+<h3 class="font-mono text-muted text-sm uppercase tracking-wide">Reading Buffer</h3>
+</div>
+<ul class="space-y-2">
+<li class="flex gap-3 items-start">
+<span class="text-primary font-mono mt-1">&gt;</span>
+<div>
+<p class="text-text font-bold">Snow Crash</p>
+<p class="text-muted text-sm font-mono">Neal Stephenson</p>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="text-primary font-mono mt-1">&gt;</span>
+<div>
+<p class="text-text font-bold">Designing Data-Intensive Applications</p>
+<p class="text-muted text-sm font-mono">Martin Kleppmann</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="border-t border-muted border-dashed pt-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-muted text-lg">headphones</span>
+<h3 class="font-mono text-muted text-sm uppercase tracking-wide">Audio Stream</h3>
+</div>
+<ul class="space-y-2">
+<li class="flex gap-3 items-start">
+<span class="text-primary font-mono mt-1">&gt;</span>
+<div>
+<p class="text-text font-bold">Darknet Diaries</p>
+<p class="text-muted text-sm font-mono">Jack Rhysider</p>
+</div>
+</li>
+<li class="flex gap-3 items-start">
+<span class="text-primary font-mono mt-1">&gt;</span>
+<div>
+<p class="text-text font-bold">Synthwave / Cyberpunk Mixes</p>
+<p class="text-muted text-sm font-mono">Various Artists</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Panel: Log Output -->
+<div class="diagnostic-panel border-2 border-muted bg-surface p-6 pt-8 mt-4 relative overflow-hidden">
+<div class="absolute -top-[14px] left-4 bg-background px-3 border-2 border-muted text-primary font-mono text-sm uppercase tracking-widest font-bold z-10">
+                            TAIL_LOG: RECENT
+                        </div>
+<div class="font-mono text-xs md:text-sm space-y-2 text-muted opacity-80">
+<p>[2023-10-25 09:42:11] WARN: Caffeine levels dropping.</p>
+<p>[2023-10-25 10:15:00] INFO: Executing espresso.sh</p>
+<p>[2023-10-25 10:18:22] OK: Payload delivered.</p>
+<p>[2023-10-25 11:30:05] ERR: CSS Grid refusing to cooperate.</p>
+<p>[2023-10-25 12:45:10] INFO: Forcing display: block hack.</p>
+<p class="text-primary crt-flicker">[2023-10-25 14:02:55] AWAITING_INPUT<span class="animate-pulse">_</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center font-mono text-sm text-muted opacity-60">
+<p>LAST_UPDATE: <span class="text-text">2023-10-25T14:00:00Z</span></p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-2 border-muted border-dashed bg-background py-8 mt-auto">
+<div class="max-w-[960px] mx-auto px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-mono text-muted text-sm">© 2023 TRPKOVSKI.COM // ALL SYSTEMS NOMINAL</p>
+<div class="flex gap-6">
+<a class="text-muted hover:text-primary transition-colors hover:text-glow" href="#">
+<span class="font-mono uppercase text-sm">[X]</span>
+</a>
+<a class="text-muted hover:text-primary transition-colors hover:text-glow" href="#">
+<span class="font-mono uppercase text-sm">[GH]</span>
+</a>
+<a class="text-muted hover:text-primary transition-colors hover:text-glow" href="#">
+<span class="font-mono uppercase text-sm">[IN]</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

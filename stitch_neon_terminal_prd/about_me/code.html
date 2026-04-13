@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON.SH // ABOUT ALEKS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Fira+Code:wght@300;400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+        
+        body {
+            background-color: #173353;
+            background-image: repeating-linear-gradient(
+                0deg,
+                rgba(23, 51, 83, 0.1),
+                rgba(23, 51, 83, 0.1) 1px,
+                transparent 1px,
+                transparent 4px
+            );
+            background-attachment: fixed;
+            cursor: crosshair;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(238, 96, 83, 0.1);
+            position: fixed;
+            z-index: 49;
+            pointer-events: none;
+        }
+
+        .glow-red {
+            text-shadow: 0 0 10px rgba(238, 96, 83, 0.6);
+        }
+
+        .terminal-border {
+            border: 2px solid #ee6053;
+        }
+
+        .font-mono-fira { font-family: 'Fira Code', monospace; }
+        .font-ubuntu { font-family: 'Ubuntu', sans-serif; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "outline": "#f1918b",
+              "error": "#ffb4ab",
+              "surface-variant": "#1b3b60",
+              "on-secondary-fixed": "#002104",
+              "tertiary-fixed-dim": "#e1c36b",
+              "surface-container-low": "#152e4b",
+              "outline-variant": "rgba(241, 145, 139, 0.3)",
+              "secondary-fixed": "#d0f8d1",
+              "on-tertiary-fixed-variant": "#594400",
+              "tertiary": "#ffd700",
+              "on-tertiary": "#000000",
+              "on-primary": "#ffffff",
+              "surface-container": "#1b3b60",
+              "on-secondary-fixed-variant": "#005312",
+              "error-container": "#93000a",
+              "primary-fixed": "#ffdad5",
+              "tertiary-fixed": "#ffedbe",
+              "tertiary-container": "#3075bf",
+              "secondary-fixed-dim": "#b4e0b5",
+              "surface-container-highest": "#2d578c",
+              "primary-fixed-dim": "#ffb4aa",
+              "on-primary-fixed": "#410001",
+              "on-primary-fixed-variant": "#8c1814",
+              "background": "#173353",
+              "on-secondary": "#000000",
+              "surface-bright": "#1b3b60",
+              "on-primary-container": "#f1918b",
+              "inverse-surface": "#e0e6ed",
+              "surface-container-high": "#244976",
+              "on-background": "#e0e6ed",
+              "on-surface": "#e0e6ed",
+              "inverse-on-surface": "#173353",
+              "secondary-container": "#022832",
+              "on-surface-variant": "#f1918b",
+              "surface-container-lowest": "#0d1e31",
+              "on-secondary-container": "#03e3fc",
+              "primary": "#ee6053",
+              "inverse-primary": "#ad3129",
+              "secondary": "#00ff41",
+              "primary-container": "rgba(238, 96, 83, 0.2)",
+              "surface-tint": "#ee6053",
+              "surface": "#173353",
+              "on-tertiary-container": "#ffffff",
+              "on-error": "#690005",
+              "surface-dim": "#122a45",
+              "on-tertiary-fixed": "#251a00"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="text-on-background selection:bg-primary selection:text-white">
+<div class="crt-overlay"></div>
+<div class="scanline"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full border-b-2 border-[#ee6053]/30 bg-transparent backdrop-blur-md z-40">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
+<div class="text-xl font-bold text-[#ee6053] tracking-tighter">
+                NEON.SH
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">ARTICLES</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">KEYBOARD_LAB</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">LENS</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm text-[#ee6053] border-b-2 border-[#ee6053] pb-1" href="#">ABOUT</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-sm text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">CONTACT</a>
+</div>
+<button class="bg-primary/10 border border-primary px-4 py-1 text-primary font-mono-fira text-xs hover:bg-primary hover:text-surface transition-all active:scale-95 duration-100 ease-in-out">
+                RESUME.EXE
+            </button>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Page Title -->
+<header class="mb-12">
+<h1 class="font-mono-fira text-primary text-3xl md:text-5xl glow-red">
+                &gt; cat ./about-me.md
+            </h1>
+<div class="h-1 w-24 bg-primary mt-4"></div>
+</header>
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-24">
+<!-- Left Side: Avatar -->
+<div class="md:col-span-5">
+<div class="bg-surface-container-lowest terminal-border rounded-lg overflow-hidden shadow-[0_0_20px_rgba(238,96,83,0.2)]">
+<div class="bg-surface-container-high px-4 py-2 border-b-2 border-primary/30 flex justify-between items-center">
+<span class="font-mono-fira text-xs text-outline">IMG_VIEWER.SH</span>
+<div class="flex gap-2">
+<div class="w-3 h-3 border border-outline/50"></div>
+<div class="w-3 h-3 border border-outline/50"></div>
+<div class="w-3 h-3 border border-primary flex items-center justify-center text-[8px] text-primary">×</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container">
+<img alt="Developer Avatar" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500 filter contrast-125" data-alt="Digital illustration of a modern software developer with glasses, wearing a hoodie, surrounded by glowing code symbols and neon hardware interface elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMsKTR-mfqyU5cBU55w6DkTKaSG9xNzq18h4_HO6oUDm-3We3ZXLHCvbAmBywq9aEd2lZQ9aJ5VceKuubJcdiY8nYUQYfuJif9LjhqoNp_8y2jclRboliyrotZe9IKHrrWcEZDjBKT5-Ul6UOr_8r04rSZfx_Vj99HkCKg09syA-O4wtRxorGBLG7YGOiqj-9wU0Zfn_yM1EKQ5JAKdYlUrPJNTI57bflQeW9kk3tL4bm5NyaLZNymEBjalC2lScxLAMNqT3ipaHzl"/>
+</div>
+<div class="bg-surface-container-lowest p-3 border-t border-primary/10">
+<div class="flex justify-between font-mono-fira text-[10px] text-outline/60">
+<span>SIZE: 1024KB</span>
+<span>TYPE: ALIAS.ENTITY</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Bio -->
+<div class="md:col-span-7 font-ubuntu text-on-surface leading-relaxed text-lg">
+<div class="space-y-6">
+<p>
+                        Aleks is a <span class="text-primary font-bold">Full-Stack Architect</span> based in the digital ether, specializing in the intersection of performance and playful interface design. With nearly a decade of experience breaking and rebuilding the web, they treat every line of code as a pixel in a larger tactical display.
+                    </p>
+<p>
+                        Having spent years navigating the complex ecosystems of modern JavaScript and high-availability cloud infrastructure, Aleks has developed a reputation for shipping robust systems that don't sacrifice aesthetic integrity. Their philosophy is simple: <span class="italic text-outline">Software should feel like an extension of the user's intent, not a hurdle.</span>
+</p>
+<p>
+                        When they aren't pushing commits or optimizing build pipelines, you can find Aleks exploring the mechanical keyboard rabbit hole or capturing the brutalist architecture of the urban landscape through a 35mm lens.
+                    </p>
+<div class="pt-4">
+<span class="font-mono-fira text-primary text-sm bg-primary/10 px-3 py-1 border border-primary/20">
+                            STATUS: READY_FOR_DEPLOYMENT
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="mb-24">
+<div class="bg-surface-container-lowest border-2 border-primary/20 p-8 relative overflow-hidden">
+<!-- Decorative background text -->
+<div class="absolute top-0 right-0 font-mono-fira text-8xl text-primary/5 select-none pointer-events-none -rotate-12 translate-x-10 translate-y-5">
+                    STACK
+                </div>
+<h2 class="font-mono-fira text-primary mb-8 flex items-center gap-4">
+<span class="material-symbols-outlined">terminal</span>
+                    SYSTEM_CAPABILITIES --LIST
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-mono-fira relative z-10">
+<div class="space-y-4">
+<h3 class="text-outline text-xs uppercase tracking-widest border-b border-outline/30 pb-1">Languages</h3>
+<ul class="text-on-surface space-y-2 text-sm">
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> TypeScript</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> JavaScript (ESNext)</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> Python 3.x</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> Rust (Beginner)</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h3 class="text-outline text-xs uppercase tracking-widest border-b border-outline/30 pb-1">Frameworks</h3>
+<ul class="text-on-surface space-y-2 text-sm">
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> Vue 3 / Nuxt 3</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> React / Next.js</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> Tailwind CSS</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> FastAPI / Flask</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h3 class="text-outline text-xs uppercase tracking-widest border-b border-outline/30 pb-1">Infrastructure</h3>
+<ul class="text-on-surface space-y-2 text-sm">
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> AWS (S3, Lambda, EC2)</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> Docker &amp; Kubernetes</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> PostgreSQL / Redis</li>
+<li class="flex items-center gap-2"><span class="text-primary">&gt;</span> CI/CD (GitHub Actions)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Career Timeline Section -->
+<section>
+<h2 class="font-mono-fira text-primary mb-12 flex items-center gap-4">
+<span class="material-symbols-outlined">history</span>
+                GIT_LOG --CAREER --ONELINE
+            </h2>
+<div class="relative space-y-0 font-mono-fira">
+<!-- Timeline vertical line -->
+<div class="absolute left-[7px] top-2 bottom-2 w-0.5 bg-primary/20"></div>
+<!-- Timeline Entries -->
+<div class="relative pl-10 pb-12 group">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-primary bg-surface group-hover:bg-primary transition-colors duration-200"></div>
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<span class="text-tertiary text-sm">commit 8a2f4c1</span>
+<span class="text-slate-500 text-xs">[2022-PRESENT]</span>
+</div>
+<div class="p-4 bg-surface-container border-l-4 border-primary hover:bg-surface-container-high transition-colors">
+<h4 class="text-on-surface font-bold text-lg mb-1">Senior Systems Architect @ CyberDyne Solutions</h4>
+<p class="text-outline text-sm">Leading the migration to a micro-frontend architecture using Nuxt and Module Federation. Reduced build times by 40%.</p>
+</div>
+</div>
+<div class="relative pl-10 pb-12 group">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-primary/50 bg-surface group-hover:border-primary transition-colors duration-200"></div>
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<span class="text-tertiary text-sm">commit d9e3b12</span>
+<span class="text-slate-500 text-xs">[2019-2022]</span>
+</div>
+<div class="p-4 bg-surface-container border-l-4 border-primary/40 hover:bg-surface-container-high transition-colors">
+<h4 class="text-on-surface font-bold text-lg mb-1">Full-Stack Developer @ Vector Dynamics</h4>
+<p class="text-outline text-sm">Developed real-time data visualization dashboards for satellite telemetry using Vue.js and D3.</p>
+</div>
+</div>
+<div class="relative pl-10 pb-12 group">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-primary/30 bg-surface group-hover:border-primary transition-colors duration-200"></div>
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<span class="text-tertiary text-sm">commit f5c0a98</span>
+<span class="text-slate-500 text-xs">[2017-2019]</span>
+</div>
+<div class="p-4 bg-surface-container border-l-4 border-primary/20 hover:bg-surface-container-high transition-colors">
+<h4 class="text-on-surface font-bold text-lg mb-1">Junior Frontend Engineer @ Pixel Foundry</h4>
+<p class="text-outline text-sm">Implemented responsive UI components and optimized mobile performance for e-commerce platforms.</p>
+</div>
+</div>
+<div class="relative pl-10 pb-4 group">
+<div class="absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-primary/10 bg-surface group-hover:border-primary transition-colors duration-200"></div>
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<span class="text-tertiary text-sm">commit init</span>
+<span class="text-slate-500 text-xs">[2015-2017]</span>
+</div>
+<div class="p-4 bg-surface-container-low border-l-4 border-primary/10 italic">
+<h4 class="text-on-surface font-bold text-lg mb-1">Bachelor of Computer Science @ Tech Institute</h4>
+<p class="text-outline text-sm">Foundation building. First encounter with the terminal. Zero sleep. Infinite coffee.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-2 border-[#ee6053]/10 py-12 bg-[#173353]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 w-full max-w-screen-2xl mx-auto gap-8">
+<div class="text-lg font-black text-[#ee6053]">
+                NEON.SH
+            </div>
+<div class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 text-center md:text-left">
+                ©2024 TERMINAL_OS // ALL RIGHTS RESERVED
+            </div>
+<div class="flex gap-6">
+<a class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 hover:text-[#ee6053] hover:glow-sm transition-all" href="#">X</a>
+<a class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 hover:text-[#ee6053] hover:glow-sm transition-all" href="#">BLUESKY</a>
+<a class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 hover:text-[#ee6053] hover:glow-sm transition-all" href="#">LINKEDIN</a>
+<a class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 hover:text-[#ee6053] hover:glow-sm transition-all" href="#">GITHUB</a>
+<a class="font-mono text-[0.75rem] uppercase tracking-wider text-slate-500 hover:text-[#ee6053] hover:glow-sm transition-all" href="#">INSTAGRAM</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation (Bottom Bar) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t-2 border-primary/20 px-6 py-4 flex justify-between items-center z-50">
+<a class="material-symbols-outlined text-outline" href="#">home</a>
+<a class="material-symbols-outlined text-outline" href="#">article</a>
+<a class="material-symbols-outlined text-primary" href="#" style="font-variation-settings: 'FILL' 1;">person</a>
+<a class="material-symbols-outlined text-outline" href="#">terminal</a>
+</div>
+</body></html>

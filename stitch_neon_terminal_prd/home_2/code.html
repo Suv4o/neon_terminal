@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neon Terminal - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Ubuntu:wght@400;500;700&amp;family=Fira+Code:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee6053", // Using the required #ee6053 primary
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#173353", // Updated to match PRD base
+                        "surface": "#1b3b60",
+                        "text-main": "#e0e6ed",
+                        "muted": "#f1918b",
+                        "accent": "#00ff41",
+                        // Tag Colors
+                        "tag-js": "#ffd700",
+                        "tag-ts": "#3075bf",
+                        "tag-ai": "#03e3fc",
+                        "tag-css": "#a30d8a",
+                        "tag-nuxt": "#022832"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Fira Code", "monospace"],
+                        "sans": ["Ubuntu", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem", "sm": "0.125rem"},
+                    boxShadow: {
+                        'neon': '0 0 12px rgba(238, 96, 83, 0.6)',
+                        'neon-hover': '0 0 20px rgba(238, 96, 83, 0.8)',
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'type': 'type 2s steps(40, end)',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        },
+                        type: {
+                            from: { width: '0' },
+                            to: { width: '100%' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #173353;
+            color: #e0e6ed;
+            font-family: 'Ubuntu', sans-serif;
+            position: relative;
+        }
+        /* CRT Scanline Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            z-index: 50;
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        /* Subtle Vignette */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%);
+            z-index: 49;
+            pointer-events: none;
+        }
+        
+        /* Terminal Card Hover */
+        .term-card {
+            transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
+        }
+        .term-card:hover {
+            box-shadow: 0 0 15px rgba(238, 96, 83, 0.5);
+            cursor: crosshair;
+        }
+        
+        .typing-container {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 10px solid #ee6053;
+            animation: type 2s steps(40, end), blink .75s step-end infinite;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #173353;
+            border-left: 1px solid #f1918b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ee6053;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f1918b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
+<!-- Shared TopNavBar Component -->
+<div class="relative flex h-auto w-full flex-col bg-transparent group/design-root overflow-x-hidden font-display z-10 border-b-2 border-primary/30">
+<div class="layout-container flex grow flex-col">
+<div class="px-4 md:px-10 flex flex-1 justify-center py-4">
+<div class="layout-content-container flex flex-col max-w-[1200px] w-full flex-1">
+<header class="flex items-center justify-between whitespace-nowrap py-3">
+<div class="flex items-center gap-4 text-white hover:text-primary transition-colors cursor-pointer">
+<h2 class="text-white hover:text-primary text-xl font-bold leading-tight tracking-[-0.015em] font-mono shadow-primary/20 hover:drop-shadow-[0_0_8px_rgba(238,96,83,0.8)]">
+                                trpkovski.com 🔥
+                            </h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-6 font-mono text-sm uppercase tracking-wider">
+<a class="text-text-main hover:text-primary transition-colors" href="#">Articles</a>
+<a class="text-text-main hover:text-primary transition-colors" href="#">The Keyboard Lab</a>
+<a class="text-text-main hover:text-primary transition-colors" href="#">Through The Lens</a>
+<a class="text-text-main hover:text-primary transition-colors" href="#">About Me</a>
+<a class="text-text-main hover:text-primary transition-colors" href="#">Get In Touch</a>
+</div>
+</div>
+<!-- Mobile Menu Icon (Visual Only) -->
+<div class="md:hidden flex items-center">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="menu">menu</span>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<main class="flex-1 w-full max-w-[1200px] mx-auto px-4 md:px-10 py-12 z-10 relative flex flex-col lg:flex-row gap-12 lg:gap-20">
+<!-- Left Column: Sticky Intro (40%) -->
+<div class="w-full lg:w-[40%] flex flex-col">
+<div class="sticky top-24">
+<!-- System Status / Header -->
+<div class="font-mono text-accent text-sm mb-6 flex items-center gap-2">
+<span class="block w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                    SYSTEM_STATUS: ONLINE
+                </div>
+<h1 class="text-primary text-4xl md:text-5xl font-mono font-bold mb-6 tracking-tight drop-shadow-[0_0_8px_rgba(238,96,83,0.4)]">
+<span class="text-muted mr-2">&gt;</span><span class="typing-container">whoami</span>
+</h1>
+<div class="flex flex-col sm:flex-row lg:flex-col gap-6 items-start mb-8">
+<div class="text-text-main text-lg leading-relaxed font-sans max-w-prose">
+<p class="mb-4">
+                            Software engineer obsessed with high-performance web systems, mechanical keyboards, and 90s terminal aesthetics. 
+                        </p>
+<p>
+                            Building things that live on the command line and scale in the cloud. Currently navigating the intersection of TypeScript and raw metal.
+                        </p>
+</div>
+<!-- Cartoon Avatar -->
+<div class="shrink-0 relative group">
+<div class="absolute -inset-1 bg-primary/20 blur-md rounded-sm group-hover:bg-primary/40 transition-all duration-300"></div>
+<img alt="Avatar" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-sm border-2 border-muted relative z-10 grayscale contrast-125 sepia-[.2] hue-rotate-180" data-alt="Retro 8-bit style pixel art avatar of a software developer with glasses and headphones against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXO4ap1FV2Mg484X0DD49oeTlcqoGf8-YaPHSC4lBQO6PxUYm0bYw_QBOE60_23TS-MRSlPwHkgZ3cyEIDiTDRRNlHaXcjVMCH3jJdSrvmVAcHaziT12Mk1HksmggtDaedqqaJwjhKIfJXyzl3qfuxMH0p_jci0ycqSU4aX54xdr_2E4dljdkEsxpo3QtCRvMZxUQFkCXDW01dAYtJYzGoaf5vVNXWs4sbs1qpKPKCd735oa0H9PJF8cI-M27-QKP8QyFTF4EAS0sq"/>
+<div class="absolute bottom-2 right-2 z-20 bg-surface border border-primary text-primary font-mono text-xs px-1">
+                            USER.PNG
+                        </div>
+</div>
+</div>
+<!-- Navigation / Quick Links (Terminal Style) -->
+<div class="font-mono text-sm flex flex-col gap-3 mt-8 border-t border-muted/30 pt-6">
+<div class="text-muted mb-2">AVAILABLE COMMANDS:</div>
+<a class="group flex items-center text-text-main hover:text-primary transition-colors w-fit" href="#">
+<span class="text-muted mr-2 opacity-50 group-hover:opacity-100">&gt;</span> ./view_resume.sh
+                    </a>
+<a class="group flex items-center text-text-main hover:text-primary transition-colors w-fit" href="#">
+<span class="text-muted mr-2 opacity-50 group-hover:opacity-100">&gt;</span> ssh github.com/trpkovski
+                    </a>
+<a class="group flex items-center text-text-main hover:text-primary transition-colors w-fit" href="#">
+<span class="text-muted mr-2 opacity-50 group-hover:opacity-100">&gt;</span> cat contact.txt
+                    </a>
+</div>
+</div>
+</div>
+<!-- Right Column: Articles List (60%) -->
+<div class="w-full lg:w-[60%] flex flex-col gap-10 mt-10 lg:mt-0">
+<div class="font-mono text-muted text-sm border-b border-muted/30 pb-2 mb-4 flex justify-between items-end">
+<span>~/logs/latest</span>
+<span class="text-xs opacity-50">3 ENTRIES FOUND</span>
+</div>
+<!-- Article Card 1 -->
+<article class="term-card bg-surface border-2 border-muted rounded-sm flex flex-col overflow-hidden relative group">
+<!-- Terminal Header Bar -->
+<div class="h-6 bg-background-dark border-b-2 border-muted flex items-center px-2 justify-between">
+<div class="text-xs font-mono text-muted">01_async_rust.md</div>
+<div class="flex gap-1 text-muted font-mono text-xs">
+<span>[ ]</span>
+<span>[ ]</span>
+<span>[x]</span>
+</div>
+</div>
+<!-- Cover Image -->
+<div class="w-full h-48 sm:h-64 border-b-2 border-muted/50 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-all duration-500"></div>
+<img alt="Cover Image" class="w-full h-full object-cover filter contrast-125 grayscale-[50%]" data-alt="Close up macro shot of glowing computer code on a dark screen with shallow depth of field and teal lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN5UOWCejkU1uWQgdaS8yDf7yYtQd5QOIqNpoo50efy3ZePdq2XuPrs8FTodyvcPP-Kp3ovCB30Mu3Jtwc8qJpehDpvETtYLfeH0rt23UyK21vy3d92ookkLissX2haBH7KF1N1NiO2tl1_xuzb3s0Fr42loMb8hE92SvKxQMxPUvOSA7jUw9HL12eP3kgM2qF8PiexlRtSTweBriyxe290sVLfW5lVEgOXRSF6p4nL39AdoznIy8iUV_h9Rrk1dudb2Wwhkl0N17f"/>
+</div>
+<!-- Content -->
+<div class="p-5 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 mb-1">
+<span class="bg-tag-ts text-[#fff] font-mono text-xs px-2 py-0.5 rounded-sm border border-black/20 font-bold shadow-sm">[#TypeScript]</span>
+<span class="bg-tag-js text-[#000] font-mono text-xs px-2 py-0.5 rounded-sm border border-black/20 font-bold shadow-sm">[#NodeJS]</span>
+</div>
+<h2 class="text-2xl font-mono font-bold text-primary group-hover:drop-shadow-[0_0_8px_rgba(238,96,83,0.6)] transition-all">
+                        Deconstructing the Event Loop: A Deep Dive
+                    </h2>
+<p class="text-text-main text-base font-sans line-clamp-3 opacity-90">
+                        Stop guessing why your promises resolve out of order. We are ripping open V8 to see exactly how macro-tasks and micro-tasks are prioritized in modern Node environments. Bring a hard hat.
+                    </p>
+<div class="mt-2 flex justify-between items-center border-t border-muted/20 pt-4">
+<span class="text-xs font-mono text-muted opacity-70">2023-10-24 | EXEC_TIME: 8ms</span>
+<button class="font-mono text-primary font-bold text-sm tracking-wider hover:text-white hover:bg-primary px-3 py-1 border border-primary transition-all duration-200">
+                            &gt; READ.EXE
+                        </button>
+</div>
+</div>
+</article>
+<!-- Article Card 2 (Slightly offset for asymmetry) -->
+<article class="term-card bg-surface border-2 border-muted rounded-sm flex flex-col overflow-hidden relative group lg:ml-8">
+<!-- Terminal Header Bar -->
+<div class="h-6 bg-background-dark border-b-2 border-muted flex items-center px-2 justify-between">
+<div class="text-xs font-mono text-muted">02_css_crimes.md</div>
+<div class="flex gap-1 text-muted font-mono text-xs">
+<span>[ ]</span>
+<span>[ ]</span>
+<span>[x]</span>
+</div>
+</div>
+<!-- Content -->
+<div class="p-5 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 mb-1">
+<span class="bg-tag-css text-[#fff] font-mono text-xs px-2 py-0.5 rounded-sm border border-black/20 font-bold shadow-sm">[#CSS]</span>
+<span class="bg-surface border border-muted text-muted font-mono text-xs px-2 py-0.5 rounded-sm shadow-sm">[#Design]</span>
+</div>
+<h2 class="text-2xl font-mono font-bold text-primary group-hover:drop-shadow-[0_0_8px_rgba(238,96,83,0.6)] transition-all">
+                        Building a CRT Filter in Pure CSS
+                    </h2>
+<p class="text-text-main text-base font-sans line-clamp-3 opacity-90">
+                        No canvas, no WebGL, just ungodly amounts of linear gradients, mix-blend-modes, and CSS animations. I am so sorry for what this will do to your GPU.
+                    </p>
+<div class="mt-2 flex justify-between items-center border-t border-muted/20 pt-4">
+<span class="text-xs font-mono text-muted opacity-70">2023-09-12 | EXEC_TIME: 5ms</span>
+<button class="font-mono text-primary font-bold text-sm tracking-wider hover:text-white hover:bg-primary px-3 py-1 border border-primary transition-all duration-200">
+                            &gt; READ.EXE
+                        </button>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="term-card bg-surface border-2 border-muted rounded-sm flex flex-col overflow-hidden relative group">
+<!-- Terminal Header Bar -->
+<div class="h-6 bg-background-dark border-b-2 border-muted flex items-center px-2 justify-between">
+<div class="text-xs font-mono text-muted">03_llm_agents.md</div>
+<div class="flex gap-1 text-muted font-mono text-xs">
+<span>[ ]</span>
+<span>[ ]</span>
+<span>[x]</span>
+</div>
+</div>
+<!-- Cover Image -->
+<div class="w-full h-48 border-b-2 border-muted/50 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-all duration-500"></div>
+<img alt="Cover Image" class="w-full h-full object-cover filter contrast-125 grayscale-[50%]" data-alt="Abstract rendering of neural network nodes glowing in neon blue and magenta against absolute black void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU9wErvoOyTfNTGt2t0IB9NwTs7aftJBI196k_Y2Wvk46QZpKYUv1r2drKHdx6Pm8z1OKPdNzkIFgBEAMxI4BUsvKlUrsB72-Tlv5lbvH3ikXvNopMs6fhRytRQeqLDS5rmUWQkueF0vwzr-_YZRCJSGZLiMN4tTaaFMDfuuwyrpKAeRdq9LnrMo8zLvYjObdMhtrbaK88GhJHkRea09BxjMHBSEaHDcXxqq9CKIwKH7j2vTB-y-un3NpYg8HjpYN8NbbDxBSvdJyB"/>
+</div>
+<!-- Content -->
+<div class="p-5 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 mb-1">
+<span class="bg-tag-ai text-[#000] font-mono text-xs px-2 py-0.5 rounded-sm border border-black/20 font-bold shadow-sm">[#AI]</span>
+<span class="bg-tag-nuxt text-[#fff] font-mono text-xs px-2 py-0.5 rounded-sm border border-black/20 font-bold shadow-sm">[#NuxtJS]</span>
+</div>
+<h2 class="text-2xl font-mono font-bold text-primary group-hover:drop-shadow-[0_0_8px_rgba(238,96,83,0.6)] transition-all">
+                        Wiring Local LLMs into a Nuxt Frontend
+                    </h2>
+<p class="text-text-main text-base font-sans line-clamp-3 opacity-90">
+                        Why pay API fees when you can turn your Macbook into an expensive space heater? A guide to running Llama2 locally and streaming responses to a modern web app.
+                    </p>
+<div class="mt-2 flex justify-between items-center border-t border-muted/20 pt-4">
+<span class="text-xs font-mono text-muted opacity-70">2023-08-01 | EXEC_TIME: 12ms</span>
+<button class="font-mono text-primary font-bold text-sm tracking-wider hover:text-white hover:bg-primary px-3 py-1 border border-primary transition-all duration-200">
+                            &gt; READ.EXE
+                        </button>
+</div>
+</div>
+</article>
+<div class="w-full flex justify-center mt-4">
+<a class="font-mono text-muted hover:text-primary transition-colors text-sm border-b border-dashed border-muted hover:border-primary pb-1" href="#">
+                    [ VIEW_ALL_LOGS ]
+                </a>
+</div>
+</div>
+</main>
+<!-- Newsletter Terminal Footer -->
+<div class="w-full border-t-2 border-primary/40 bg-background-dark py-12 z-10 relative mt-auto">
+<div class="max-w-[800px] mx-auto px-4 md:px-10 flex flex-col gap-4">
+<div class="font-mono text-primary text-lg md:text-xl drop-shadow-[0_0_5px_rgba(238,96,83,0.4)]">
+<span class="text-muted">&gt;</span> ./subscribe.sh
+            </div>
+<p class="text-text-main font-sans text-sm md:text-base opacity-80 pl-4 border-l-2 border-muted/30">
+                Join the network. Get infrequent transmissions about code, keyboards, and surviving the modern web. No spam.
+            </p>
+<div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center bg-surface border-2 border-muted p-4 rounded-sm shadow-[0_0_15px_rgba(27,59,96,0.5)]">
+<label class="font-mono text-primary font-bold mr-2 mb-2 sm:mb-0 shrink-0" for="email">
+<span class="text-muted">&gt;</span> email:
+                </label>
+<div class="flex-1 flex items-center w-full relative">
+<input autocomplete="off" class="w-full bg-transparent border-none text-text-main font-mono text-base focus:ring-0 p-0 placeholder-muted/30 outline-none" id="email" placeholder="user@mainframe.net" type="email"/>
+<!-- Blinking Cursor inline with input -->
+<span class="inline-block w-2.5 h-5 bg-primary animate-blink absolute right-0 sm:static sm:ml-1 shrink-0"></span>
+</div>
+<button class="hidden sm:block ml-4 font-mono text-muted hover:text-primary text-sm uppercase tracking-wider">
+                    [ENTER]
+                </button>
+</div>
+</div>
+</div>
+</body></html>

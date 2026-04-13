@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Fira+Code:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#244976",
+              "tertiary-fixed-dim": "#e1c36b",
+              "error-container": "#93000a",
+              "surface-container-highest": "#2d578c",
+              "on-tertiary-fixed": "#251a00",
+              "on-tertiary-fixed-variant": "#594400",
+              "surface-container-low": "#152e4b",
+              "secondary": "#00ff41",
+              "inverse-surface": "#e0e6ed",
+              "surface-variant": "#1b3b60",
+              "secondary-fixed-dim": "#b4e0b5",
+              "surface": "#173353",
+              "on-error": "#690005",
+              "surface-dim": "#122a45",
+              "on-secondary": "#000000",
+              "on-error-container": "#ffdad6",
+              "on-secondary-fixed": "#002104",
+              "on-secondary-container": "#03e3fc",
+              "surface-container": "#1b3b60",
+              "tertiary-container": "#3075bf",
+              "on-primary": "#ffffff",
+              "on-surface": "#e0e6ed",
+              "inverse-primary": "#ad3129",
+              "surface-container-lowest": "#0d1e31",
+              "on-primary-fixed": "#410001",
+              "outline": "#f1918b",
+              "on-secondary-fixed-variant": "#005312",
+              "on-primary-fixed-variant": "#8c1814",
+              "primary-container": "rgba(238, 96, 83, 0.2)",
+              "outline-variant": "rgba(241, 145, 139, 0.3)",
+              "secondary-container": "#022832",
+              "background": "#173353",
+              "on-tertiary": "#000000",
+              "tertiary": "#ffd700",
+              "tertiary-fixed": "#ffedbe",
+              "on-surface-variant": "#f1918b",
+              "primary": "#ee6053",
+              "surface-bright": "#1b3b60",
+              "secondary-fixed": "#d0f8d1",
+              "primary-fixed-dim": "#ffb4aa",
+              "primary-fixed": "#ffdad5",
+              "error": "#ffb4ab",
+              "surface-tint": "#ee6053",
+              "on-primary-container": "#f1918b",
+              "on-background": "#e0e6ed",
+              "on-tertiary-container": "#ffffff",
+              "inverse-on-surface": "#173353"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Fira Code"],
+              "mono": ["Fira Code"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(18, 16, 16, 0) 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        .crt-glow {
+            text-shadow: 0 0 8px rgba(238, 96, 83, 0.6);
+        }
+        .cursor-blink {
+            border-right: 8px solid #ee6053;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #ee6053 }
+        }
+        .terminal-bg {
+            background: radial-gradient(circle at center, #1b3b60 0%, #173353 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen flex flex-col cursor-crosshair">
+<!-- CRT Overlay -->
+<div class="fixed inset-0 scanlines z-50 opacity-20"></div>
+<div class="fixed inset-0 pointer-events-none bg-[radial-gradient(rgba(23,51,83,0)_0%,rgba(13,30,49,0.4)_100%)] z-40"></div>
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full border-b-2 border-[#ee6053]/30 bg-[#173353] dark:bg-[#173353] backdrop-blur-md z-30 flex justify-between items-center px-6 py-4 w-full max-w-none shadow-[0_0_15px_rgba(238,96,83,0.3)]">
+<div class="text-xl font-bold text-[#ee6053] flex items-center gap-2 font-['Space_Grotesk'] uppercase tracking-widest text-sm">
+<span class="material-symbols-outlined">terminal</span>
+            trpkovski.com 🔥
+        </div>
+<nav class="hidden md:flex gap-8 font-['Space_Grotesk'] uppercase tracking-widest text-sm">
+<a class="text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">Articles</a>
+<a class="text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">The Keyboard Lab</a>
+<a class="text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">Through The Lens</a>
+<a class="text-slate-400 hover:text-[#ee6053] transition-colors duration-200" href="#">About Me</a>
+<a class="text-[#ee6053] border-b-2 border-[#ee6053] pb-1" href="#">Get In Touch</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-[#ee6053] hover:text-[#173353] p-2 transition-all duration-150">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-20 px-6 container mx-auto max-w-4xl relative z-10">
+<!-- Page Title -->
+<div class="mb-12">
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-primary crt-glow tracking-tighter mb-4">
+                &gt; ./contact.sh
+            </h1>
+<p class="font-label text-secondary text-sm md:text-base opacity-80">
+                [STATUS: READY] // INITIALIZING_OUTBOUND_COMMUNICATION_PROTOCOL...
+            </p>
+</div>
+<!-- Terminal Form Container -->
+<div class="bg-surface-container border-2 border-primary/20 p-6 md:p-10 relative overflow-hidden">
+<!-- Hardware Header -->
+<div class="absolute top-0 left-0 w-full h-8 bg-surface-container-lowest border-b border-primary/20 flex items-center px-4 justify-between">
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/10"></div>
+</div>
+<div class="text-[10px] font-mono text-primary/40 tracking-widest">CONSOLE_V4.0.2_STABLE</div>
+</div>
+<form class="mt-8 space-y-10">
+<!-- Name Field -->
+<div class="group">
+<label class="block font-mono text-primary text-sm mb-2 opacity-70" for="name">IDENTIFY_USER</label>
+<div class="flex items-center gap-3 border-b-2 border-transparent focus-within:border-primary transition-all duration-200">
+<span class="font-mono text-primary text-xl font-bold">&gt;</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-mono text-xl text-on-surface placeholder:text-primary/20 p-0 lowercase" id="name" name="name" placeholder="ENTER_NAME_" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="group">
+<label class="block font-mono text-primary text-sm mb-2 opacity-70" for="email">RETURN_PATH</label>
+<div class="flex items-center gap-3 border-b-2 border-transparent focus-within:border-primary transition-all duration-200">
+<span class="font-mono text-primary text-xl font-bold">&gt;</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-mono text-xl text-on-surface placeholder:text-primary/20 p-0" id="email" name="email" placeholder="USER@ENDPOINT.COM" type="email"/>
+</div>
+</div>
+<!-- Message Field -->
+<div class="group">
+<label class="block font-mono text-primary text-sm mb-2 opacity-70" for="message">TRANSMISSION_DATA</label>
+<div class="flex items-start gap-3 border-b-2 border-transparent focus-within:border-primary transition-all duration-200">
+<span class="font-mono text-primary text-xl font-bold mt-1">&gt;</span>
+<textarea class="bg-transparent border-none focus:ring-0 w-full font-mono text-xl text-on-surface placeholder:text-primary/20 p-0 resize-none" id="message" name="message" placeholder="INITIATE_MESSAGE_BODY..." rows="4"></textarea>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-6">
+<button class="w-full md:w-auto px-8 py-4 bg-transparent border-2 border-primary text-primary font-mono text-lg font-bold hover:bg-primary hover:text-surface transition-all duration-150 crt-glow relative group overflow-hidden" type="submit">
+<span class="relative z-10">&gt; SEND_TRANSMISSION.EXE</span>
+<div class="absolute inset-0 bg-primary/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
+</button>
+</div>
+</form>
+</div>
+<!-- Social Connections -->
+<div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<h3 class="font-headline text-xl text-on-surface font-bold uppercase tracking-widest border-l-4 border-primary pl-4">Network Nodes</h3>
+<ul class="space-y-3 font-mono text-sm">
+<li>
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-2 group" href="#">
+<span class="text-primary">&gt;</span> ssh <span class="group-hover:underline">github.com/trpkovski</span>
+</a>
+</li>
+<li>
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-2 group" href="#">
+<span class="text-primary">&gt;</span> ping <span class="group-hover:underline">linkedin.com/in/trpkovski</span>
+</a>
+</li>
+<li>
+<a class="text-slate-400 hover:text-primary transition-colors flex items-center gap-2 group" href="#">
+<span class="text-primary">&gt;</span> finger <span class="group-hover:underline">x.com/trpkovski</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-low border border-primary/10 p-6 flex flex-col justify-center">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-3xl">key</span>
+</div>
+<div>
+<div class="font-mono text-xs text-primary/60">PGP_FINGERPRINT</div>
+<div class="font-mono text-xs text-on-surface break-all">E7A2 9F01 C933 00B4 F621</div>
+</div>
+</div>
+<div class="text-[10px] font-mono text-slate-500 uppercase tracking-tighter">
+                    Encrypted transmissions preferred for sensitive data payloads.
+                </div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto w-full border-t-2 border-[#ee6053]/20 py-8 bg-[#173353] flex flex-col md:flex-row justify-between items-center px-10 w-full z-10">
+<div class="text-[#ee6053] font-bold font-['Fira_Code'] text-[0.75rem] uppercase mb-4 md:mb-0">
+            © 2024 TRPKOVSKI.COM // TERMINAL_READY
+        </div>
+<div class="flex gap-6">
+<a class="font-['Fira_Code'] text-[0.75rem] uppercase text-slate-500 hover:text-[#ee6053] transition-colors duration-150" href="#">X</a>
+<a class="font-['Fira_Code'] text-[0.75rem] uppercase text-slate-500 hover:text-[#ee6053] transition-colors duration-150" href="#">Bluesky</a>
+<a class="font-['Fira_Code'] text-[0.75rem] uppercase text-slate-500 hover:text-[#ee6053] transition-colors duration-150" href="#">LinkedIn</a>
+<a class="font-['Fira_Code'] text-[0.75rem] uppercase text-slate-500 hover:text-[#ee6053] transition-colors duration-150" href="#">GitHub</a>
+<a class="font-['Fira_Code'] text-[0.75rem] uppercase text-slate-500 hover:text-[#ee6053] transition-colors duration-150" href="#">Instagram</a>
+</div>
+</footer>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-[#173353] border-t border-primary/30 flex justify-around py-4 z-40 backdrop-blur-lg">
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">article</span>
+<span class="text-[10px] font-mono uppercase">Log</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">keyboard</span>
+<span class="text-[10px] font-mono uppercase">Lab</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+<span class="text-[10px] font-mono uppercase">Contact</span>
+</button>
+</nav>
+</body></html>

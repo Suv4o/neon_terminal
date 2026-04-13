@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEON_TERMINAL // THROUGH_THE_LENS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Fira+Code:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb4aa",
+              "tertiary-fixed": "#ffedbe",
+              "surface-container-lowest": "#0d1e31",
+              "on-tertiary": "#000000",
+              "surface-container": "#1b3b60",
+              "inverse-on-surface": "#173353",
+              "tertiary": "#ffd700",
+              "tertiary-fixed-dim": "#e1c36b",
+              "surface": "#173353",
+              "inverse-surface": "#e0e6ed",
+              "on-primary-fixed-variant": "#8c1814",
+              "on-tertiary-fixed-variant": "#594400",
+              "outline": "#f1918b",
+              "primary-container": "rgba(238, 96, 83, 0.2)",
+              "on-secondary-container": "#03e3fc",
+              "error": "#ffb4ab",
+              "tertiary-container": "#3075bf",
+              "surface-dim": "#122a45",
+              "outline-variant": "rgba(241, 145, 139, 0.3)",
+              "on-error": "#690005",
+              "background": "#173353",
+              "primary": "#ee6053",
+              "surface-variant": "#1b3b60",
+              "secondary-fixed-dim": "#b4e0b5",
+              "on-error-container": "#ffdad6",
+              "error-container": "#93000a",
+              "on-background": "#e0e6ed",
+              "on-tertiary-fixed": "#251a00",
+              "surface-bright": "#1b3b60",
+              "secondary": "#00ff41",
+              "on-tertiary-container": "#ffffff",
+              "on-secondary": "#000000",
+              "secondary-fixed": "#d0f8d1",
+              "on-primary-container": "#f1918b",
+              "secondary-container": "#022832",
+              "surface-container-high": "#244976",
+              "inverse-primary": "#ad3129",
+              "surface-tint": "#ee6053",
+              "primary-fixed": "#ffdad5",
+              "on-surface": "#e0e6ed",
+              "on-secondary-fixed-variant": "#005312",
+              "on-secondary-fixed": "#002104",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#152e4b",
+              "on-primary-fixed": "#410001",
+              "surface-container-highest": "#2d578c",
+              "on-surface-variant": "#f1918b"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Fira Code"],
+              "mono": ["Fira Code"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #173353;
+            color: #e0e6ed;
+            cursor: crosshair;
+        }
+        /* CRT Scanline Overlay */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                rgba(18, 16, 16, 0) 0px,
+                rgba(18, 16, 16, 0) 2px,
+                rgba(18, 16, 16, 0.05) 3px,
+                rgba(18, 16, 16, 0.05) 4px
+            );
+            pointer-events: none;
+            z-index: 100;
+        }
+        .terminal-glow {
+            text-shadow: 0 0 10px rgba(238, 96, 83, 0.6);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(238, 96, 83, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-surface overflow-x-hidden">
+<div class="crt-overlay"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3 bg-transparent backdrop-blur-md dark:bg-transparent border-b-2 border-[#ee6053]/30 shadow-[0_0_15px_rgba(238,96,83,0.3)]">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold text-[#ee6053] tracking-tighter cursor-crosshair font-headline uppercase">
+                NEON_TERMINAL <span class="text-sm align-top">🔥</span>
+</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#ee6053]/70 hover:text-[#ee6053] transition-colors duration-150 cursor-crosshair active:scale-95 transition-all" href="#">ARTICLES</a>
+<a class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#ee6053]/70 hover:text-[#ee6053] transition-colors duration-150 cursor-crosshair active:scale-95 transition-all" href="#">KEYBOARD_LAB</a>
+<a class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#ee6053] border-b-2 border-[#ee6053] pb-1 cursor-crosshair active:scale-95 transition-all" href="#">THROUGH_THE_LENS</a>
+<a class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#ee6053]/70 hover:text-[#ee6053] transition-colors duration-150 cursor-crosshair active:scale-95 transition-all" href="#">ABOUT_ME</a>
+<a class="font-['Space_Grotesk'] tracking-widest uppercase text-sm text-[#ee6053]/70 hover:text-[#ee6053] transition-colors duration-150 cursor-crosshair active:scale-95 transition-all" href="#">CONTACT</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#ee6053] cursor-crosshair" data-icon="terminal">terminal</span>
+</div>
+</header>
+<main class="pt-28 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Page Title -->
+<div class="mb-12">
+<h1 class="font-mono text-3xl md:text-4xl text-primary terminal-glow">
+                &gt; ls ./through-the-lens
+            </h1>
+<p class="font-label text-xs uppercase mt-2 tracking-widest opacity-60">Directory_Snapshot: 2024.11.04 // 6_entries_found</p>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Category Card 1 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_01_ASTRO.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Starlit Wonders" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Distant milky way galaxy over a dark mountain silhouette, deep indigo and violet space nebula with crisp white star fields." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdMLv8bv0rRIwHpeoM3SQ3WdLJnzXJO8MN8Ch0nEPRrNGlA5x5Gb3XQFLf-3HQfv64Nxwiuz7_FUkbENCO5F8YgusUykRTGtqhRm_XrSrcJeXWpLQT8J35XvEEZ-5aVX0ETjtUTHPKYNz9-EZd57UdweHJp951hwmKP5WLjRqQz-fERg_uL2VawdYo9dTFi6fcQ8SuFUBepL7pIX3rkC88Nu7WP66jBm25N_NPBvr_nv8HJ-Lvxc87nObJ1hsK4KEt-R7P7JDCLaf4"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 12 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Starlit Wonders</h3>
+</div>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_02_CYBER.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Urban Pulse" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Night city skyline with neon lights reflecting on wet pavement, cinematic bokeh from passing cars and high-rise office towers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyDQCtmg3ILlap01Lxd5VPA3wLQ5RtjPL1ebr_CcUDmnzSag5bgXSn9GrmUQfBJdCoAKrqKQb_7b4pQg1fBKl9Ysrc0L5MCUG_8VhYbpNepk-dwPfiC-528CqKsf85_C1jxVp4z9Ba__DArAKTyrjgVygRb2vO629g6dyY53kt2dAAExKc4ZL_oDf2Zb3MP-IokvfkKW2KHIpmSiTMjIenC83e444sMToHjyLP66MtPCcP7JJjlDLFMIKD7r21ubqgmU1ZUSM8v1xY"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 24 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Urban Pulse</h3>
+</div>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_03_TIDE.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Coastal Calm" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Minimalist long exposure of ocean waves hitting rocky shore at twilight, misty water textures and muted blue atmospheric tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9UY8dhWY8UUKFdkYSZ6m_U9T98dzjHJm5XNlMfGpacxV_0ugjCNQpMM7skqVjtUliHD-L6RNHF7D5R90NQ5X-qQds2H6WZjAF_a3Fg6KcGsTaqFqma1nsIgGniOAMJ8s_9CIOXz-GwRsA_tzdPN4_tx9DcQoW7u4AFujDADkTmsVjHhiaMKXRg1CKr1T6YnyqKYUSJHxg1kkaeVbdrtt3e1ietzmHmLPgYX_a216pLwY_OmnW-2_bQey8ozU0aj4CwAT19jWa2Niw"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 08 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Coastal Calm</h3>
+</div>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_04_WILD.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Wild Trails" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Rugged mountain peak piercing through low-hanging fog, pine trees in foreground, dark moody atmosphere with sharp dramatic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArWA-OLGCDJIvwvEUavTGecPpOMoTe7qcwYlmbCt5WDgXJnFhZefk5csXMIg8CYtpYUzdkNI93-8PL6Te2Bctlm1ELSw2Jp-WvE4w56jR8irHnxllaStekgWwChAejtO4VCz114HGiw_WL39CpBGBKOacUl6ZB9_8a_bmbOzSp9LkYzxRlli7nTzFyT-mh4ZCDDh1TciZkv9nxp6JW2_NEQc8NbvDT8K6YN4O-KtR9e6LzxYQKJGL0vzwGzIdf9fZMguPIagpUC539"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 15 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Wild Trails</h3>
+</div>
+</div>
+</div>
+<!-- Category Card 5 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_05_GLOW.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Golden Hour" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Warm amber sunlight hitting a grassy field through morning mist, soft flares and deep contrast between shadow and gold light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuk_hHJ8LyyaHktZ9IINmFN_Rk1HIxPNXKPbBIeyALkpdcfeTYqGXVnkrtrchOC1KYW2mprGiyZGdfT0tsDSqGNDeB0p9pCbEv1ABWrcm-ARAgcwC-Ll0X3NlBh47kB-BuXg_cfFUqM-68hv7cNrEFhn7yBBFQ5RydXBn-0VyOuaArLtbquNphzE9iJUljvnkDaee5xL4czckQDhw5mP966m7QYkncZbrJis1fkEIBVw6bxG0H-KblJTl5uDxlxaYe_9Ks8kXLtZ-x"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 19 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Golden Hour</h3>
+</div>
+</div>
+</div>
+<!-- Category Card 6 -->
+<div class="group border-2 border-outline bg-surface-container card-glow transition-all duration-200">
+<div class="bg-surface-container-lowest border-b-2 border-outline/30 px-3 py-1 flex justify-between items-center">
+<span class="font-mono text-[10px] text-outline/70">CAT_06_FORM.EXE</span>
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-outline/50 flex items-center justify-center text-[8px] text-outline/50">[ ]</div>
+<div class="w-2.5 h-2.5 border border-primary flex items-center justify-center text-[8px] text-primary">[X]</div>
+</div>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Abstract Forms" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Close up of architectural concrete curves and shadows, high contrast black and white abstract geometric shapes and textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCILeY9X_1Lx_WBQb6BU8jOLZ9jzOjBe-ABLdc4z617lwPxBnNjG3tUcv939X1Erw_wolNETy1FILXKH6yBex6ltkFc2WReFi6OYvQajD9zMmdK4THVG8GXRQ-peiF930L1sq2AcGpNAM0d6H6LKcHC1Pt1UVGOu8UjBJovERHA3I5FLfyVW-0QlkTGHeFUvqX-m8hnlC0MNeDsYjry6nauh2_XQbyMgwCPsrIHTq0qqEtWckWR_U_-BIg9tK78QdQ7afYs9OPXOtrs"/>
+<div class="absolute top-4 right-4 bg-surface/80 border border-outline px-2 py-1">
+<span class="font-mono text-[10px] text-primary">[ 11 PHOTOS ]</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-surface/90 backdrop-blur-sm border-t border-outline/30 p-4">
+<h3 class="font-headline text-xl text-primary uppercase tracking-wider">Abstract Forms</h3>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#173353] dark:bg-[#173353] border-t-2 border-[#ee6053]/20">
+<div class="flex items-center gap-2">
+<span class="text-[#ee6053] font-mono font-['Fira_Code'] text-xs uppercase">©2024_SYSTEM_OPERATOR</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Fira_Code'] text-xs uppercase text-[#ee6053]/50 hover:text-[#ee6053] hover:underline decoration-2 transition-opacity duration-200" href="#">X_CORP</a>
+<a class="font-['Fira_Code'] text-xs uppercase text-[#ee6053]/50 hover:text-[#ee6053] hover:underline decoration-2 transition-opacity duration-200" href="#">BLUESKY</a>
+<a class="font-['Fira_Code'] text-xs uppercase text-[#ee6053]/50 hover:text-[#ee6053] hover:underline decoration-2 transition-opacity duration-200" href="#">LINKEDIN</a>
+<a class="font-['Fira_Code'] text-xs uppercase text-[#ee6053]/50 hover:text-[#ee6053] hover:underline decoration-2 transition-opacity duration-200" href="#">GITHUB</a>
+<a class="font-['Fira_Code'] text-xs uppercase text-[#ee6053]/50 hover:text-[#ee6053] hover:underline decoration-2 transition-opacity duration-200" href="#">INSTAGRAM</a>
+</div>
+<div class="text-[#ee6053]/30 font-mono text-[10px] tracking-widest">
+            LATENCY: 14ms // STATUS: ONLINE
+        </div>
+</footer>
+</body></html>

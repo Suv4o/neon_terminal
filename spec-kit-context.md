@@ -13,7 +13,7 @@ We are rebuilding [trpkovski.com](https://www.trpkovski.com) with a new "Neon Te
 
 **Reference repository:** https://github.com/Suv4o/personal-blog-2023 (the current blog source code - use for understanding site structure, content types, and routing patterns)
 
-**Design reference:** The Stitch-exported screens in `../stitch_neon_terminal_prd/` (HTML + PNG for each page)
+**Design reference:** The Stitch-exported screens in `stitch_neon_terminal_prd/` (HTML + PNG for each page)
 
 ---
 
@@ -210,7 +210,7 @@ Three-part construction used for article cards, keyboard cards, etc:
 
 ## Stitch Exported Code Reference
 
-The `../stitch_neon_terminal_prd/` directory contains the exported Stitch screens. Each folder has a `code.html` (full HTML/CSS/Tailwind) and `screen.png` (visual reference). Use these as structural references but DO NOT copy them directly - they have inconsistencies that need to be unified under this design system.
+The `stitch_neon_terminal_prd/` directory contains the exported Stitch screens. Each folder has a `code.html` (full HTML/CSS/Tailwind) and `screen.png` (visual reference). Use these as structural references but DO NOT copy them directly - they have inconsistencies that need to be unified under this design system.
 
 Available screens:
 - `home_1/` and `home_2/` - Home page variants

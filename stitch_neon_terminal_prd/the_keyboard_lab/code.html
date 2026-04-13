@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Fira+Code:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#594400",
+              "secondary-container": "#022832",
+              "inverse-primary": "#ad3129",
+              "surface": "#173353",
+              "on-error": "#690005",
+              "surface-container-high": "#244976",
+              "on-surface": "#e0e6ed",
+              "error-container": "#93000a",
+              "on-tertiary": "#000000",
+              "secondary": "#00ff41",
+              "on-primary": "#ffffff",
+              "on-primary-fixed": "#410001",
+              "primary-fixed": "#ffdad5",
+              "primary-container": "rgba(238, 96, 83, 0.2)",
+              "surface-variant": "#1b3b60",
+              "error": "#ffb4ab",
+              "surface-container-lowest": "#0d1e31",
+              "on-secondary-fixed-variant": "#005312",
+              "on-secondary": "#000000",
+              "outline-variant": "rgba(241, 145, 139, 0.3)",
+              "tertiary-container": "#3075bf",
+              "surface-container-highest": "#2d578c",
+              "background": "#173353",
+              "surface-tint": "#ee6053",
+              "on-surface-variant": "#f1918b",
+              "surface-container": "#1b3b60",
+              "surface-container-low": "#152e4b",
+              "tertiary": "#ffd700",
+              "on-secondary-container": "#03e3fc",
+              "on-tertiary-fixed": "#251a00",
+              "surface-dim": "#122a45",
+              "inverse-surface": "#e0e6ed",
+              "on-primary-fixed-variant": "#8c1814",
+              "surface-bright": "#1b3b60",
+              "on-secondary-fixed": "#002104",
+              "on-tertiary-container": "#ffffff",
+              "secondary-fixed-dim": "#b4e0b5",
+              "on-primary-container": "#f1918b",
+              "tertiary-fixed": "#ffedbe",
+              "inverse-on-surface": "#173353",
+              "secondary-fixed": "#d0f8d1",
+              "on-background": "#e0e6ed",
+              "primary": "#ee6053",
+              "tertiary-fixed-dim": "#e1c36b",
+              "outline": "#f1918b",
+              "primary-fixed-dim": "#ffb4aa"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Space Grotesk"],
+              "mono": ["Fira Code", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #173353;
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            cursor: crosshair;
+        }
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(23, 51, 83, 0) 0%, rgba(13, 30, 49, 0.4) 100%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(238, 96, 83, 0.7);
+        }
+        .terminal-glow {
+            box-shadow: 0 0 15px rgba(238, 96, 83, 0.3);
+        }
+        .blink-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface selection:bg-primary selection:text-white">
+<div class="crt-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-md border-b-2 border-[#ee6053]/30 shadow-[0_0_15px_rgba(238,96,83,0.3)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="text-xl font-bold text-[#ee6053] tracking-widest font-headline">
+                trpkovski.com 🔥
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-300 font-mono hover:text-[#ee6053] hover:cursor-crosshair transition-colors duration-150 uppercase tracking-tighter" href="#">Articles</a>
+<a class="text-[#ee6053] border-b-2 border-[#ee6053] pb-1 font-['Space_Grotesk'] uppercase tracking-tighter transition-colors duration-150" href="#">The Keyboard Lab</a>
+<a class="text-slate-300 font-mono hover:text-[#ee6053] hover:cursor-crosshair transition-colors duration-150 uppercase tracking-tighter" href="#">Through The Lens</a>
+<a class="text-slate-300 font-mono hover:text-[#ee6053] hover:cursor-crosshair transition-colors duration-150 uppercase tracking-tighter" href="#">About Me</a>
+<a class="text-slate-300 font-mono hover:text-[#ee6053] hover:cursor-crosshair transition-colors duration-150 uppercase tracking-tighter" href="#">Get In Touch</a>
+</div>
+<!-- Mobile Menu Icon (Simulated) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 max-w-7xl mx-auto min-h-screen">
+<!-- Page Title -->
+<header class="mb-16">
+<div class="flex items-center gap-4 mb-2">
+<span class="text-secondary font-mono text-sm">[SYSTEM_STATUS: OK]</span>
+<span class="text-slate-500 font-mono text-sm">PATH: root/keyboard-lab/</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-mono text-primary font-bold tracking-tighter glow-text blink-cursor">
+                &gt; ls ./keyboard-lab
+            </h1>
+<p class="mt-4 text-slate-400 font-mono max-w-2xl text-sm leading-relaxed">
+                A curated database of mechanical keyboards, custom builds, and tactile hardware experiments. Selective hardware profiling in progress.
+            </p>
+</header>
+<!-- Keyboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+<!-- Card 1: Keychron Q1 Pro -->
+<article class="group flex flex-col bg-surface-container border-2 border-primary/20 hover:border-primary/60 transition-all duration-200 terminal-glow overflow-hidden">
+<!-- Hardware Header -->
+<div class="bg-surface-container-lowest px-4 py-2 border-b-2 border-primary/20 flex justify-between items-center">
+<div class="flex space-x-2">
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 bg-primary/80"></div>
+</div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">ID: 0x2A1F</span>
+</div>
+<!-- Media Bay -->
+<div class="relative h-64 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Keychron Q1 Pro" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Premium aluminum mechanical keyboard with custom keycaps and a rotary knob on a dark desk with blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB377VIz7KQwsoiXhVt-Huvy-qpH5MWCp1tyEkUgTv7MxYInryDZk-grCYXuj-okPn1fYYUkrKFFVc0bIRoIQNLrkVURxbzklrRHXnVksbnOlGm_ZzVFqGlLLJta_4y6brfmTvbb1q1w9QijPambivWI3h5GUKLV6c0Ib9APKlJmHKm8xkWSiuOqvfXiHOJR_6qwZJG6R3QyUysYiYb2BnDjar8uZVynY-0nQ1glnuzvvAhkZ0iI-1A47MkRSPXowy3cgpRzXAWideb"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<!-- Console Output -->
+<div class="p-6 flex-grow flex flex-col">
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-4">Keychron Q1 Pro</h2>
+<div class="space-y-2 mb-8 flex-grow">
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Switch: <span class="text-tertiary ml-2">[K Pro Banana]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Layout: <span class="text-secondary ml-2">[75% ANSI]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Keycaps: <span class="text-on-secondary-container ml-2">[KSA Double-shot]</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 border-2 border-primary text-primary font-mono text-sm hover:bg-primary hover:text-surface transition-all duration-150 flex items-center justify-center gap-2 group/btn">
+<span>&gt; INSPECT.EXE</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">terminal</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Mode Envoy -->
+<article class="group flex flex-col bg-surface-container border-2 border-primary/20 hover:border-primary/60 transition-all duration-200 terminal-glow overflow-hidden">
+<!-- Hardware Header -->
+<div class="bg-surface-container-lowest px-4 py-2 border-b-2 border-primary/20 flex justify-between items-center">
+<div class="flex space-x-2">
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 bg-primary/80"></div>
+</div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">ID: 0x5C8E</span>
+</div>
+<!-- Media Bay -->
+<div class="relative h-64 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="Mode Envoy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist high-end custom 65 percent mechanical keyboard with copper accents and white keycaps on a clean surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJW4vXF6cxJi5zPc3DVRyrkhc9m-3yiNyDbPN8XZWULmxVFcKuYsUxkGYOeXCTTRiSIj_w9wSS6H6pTmTm2cBY16TRNs7juOYDV1xnXeG4NVv9ORmCOIFUQSDlcJA4vWLTilUt05WxpzfrKTo0rWgmaLhIZH-U4r33CWROAyyY1cPImPME0Z4XqGc9QilH-mrsUVNw3CXvyUNIdlBAKtylJ6f6IXYCjVHJLjIfYfqWAFo3pqSs23pn8X0vfDBwakMuGhkGQgtba4eM"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<!-- Console Output -->
+<div class="p-6 flex-grow flex flex-col">
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-4">Mode Envoy</h2>
+<div class="space-y-2 mb-8 flex-grow">
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Switch: <span class="text-tertiary ml-2">[Mode Tomorrow]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Layout: <span class="text-secondary ml-2">[65% Custom]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Keycaps: <span class="text-on-secondary-container ml-2">[GMK Minimal]</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 border-2 border-primary text-primary font-mono text-sm hover:bg-primary hover:text-surface transition-all duration-150 flex items-center justify-center gap-2 group/btn">
+<span>&gt; INSPECT.EXE</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">terminal</span>
+</button>
+</div>
+</article>
+<!-- Card 3: HHKB Professional Hybrid -->
+<article class="group flex flex-col bg-surface-container border-2 border-primary/20 hover:border-primary/60 transition-all duration-200 terminal-glow overflow-hidden">
+<!-- Hardware Header -->
+<div class="bg-surface-container-lowest px-4 py-2 border-b-2 border-primary/20 flex justify-between items-center">
+<div class="flex space-x-2">
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 bg-primary/80"></div>
+</div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">ID: 0x7D3B</span>
+</div>
+<!-- Media Bay -->
+<div class="relative h-64 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="HHKB Professional Hybrid" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Close up of a HHKB professional keyboard with charcoal keycaps and Topre switches in a moody work environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKUON2mi3ZhILL5SY64LL6dFLTbfB-9Xxay0X46K4EwU_5jdkL24IsbbSHCLer0nssGtB7h97YuxcKTY0iXLuTw_mjnb2ri_6acrw-SIex6LR9cwpg88X2uhYxKDj4By2znw-taD89qHD0-X-NGInPZDdv2wAqscJTKptSbMVJS3BXB8yLMV2lAweuN26BIq0bcxEZAmO1GV_d3FLFAC5eL610-Sb_1O_kLNIjGfdEJGbz72dS0pFxoz06bcoMRTmWtZucsu2bpDZf"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<!-- Console Output -->
+<div class="p-6 flex-grow flex flex-col">
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-4">HHKB Professional Hybrid</h2>
+<div class="space-y-2 mb-8 flex-grow">
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Switch: <span class="text-tertiary ml-2">[Topre 45g Silent]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Layout: <span class="text-secondary ml-2">[HHKB / 60%]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Keycaps: <span class="text-on-secondary-container ml-2">[PBT Dye-sub]</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 border-2 border-primary text-primary font-mono text-sm hover:bg-primary hover:text-surface transition-all duration-150 flex items-center justify-center gap-2 group/btn">
+<span>&gt; INSPECT.EXE</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">terminal</span>
+</button>
+</div>
+</article>
+<!-- Card 4: RAMA Works U80-A (Example addition) -->
+<article class="group flex flex-col bg-surface-container border-2 border-primary/20 hover:border-primary/60 transition-all duration-200 terminal-glow overflow-hidden">
+<!-- Hardware Header -->
+<div class="bg-surface-container-lowest px-4 py-2 border-b-2 border-primary/20 flex justify-between items-center">
+<div class="flex space-x-2">
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 border border-primary/50"></div>
+<div class="w-3 h-3 bg-primary/80"></div>
+</div>
+<span class="text-[10px] font-mono text-primary uppercase tracking-widest">ID: 0x9B4C</span>
+</div>
+<!-- Media Bay -->
+<div class="relative h-64 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
+<img alt="RAMA Works U80-A" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Heavy brass and aluminum mechanical keyboard chassis with industrial design aesthetic and premium finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmFLAnoPe2w0tRtynbU12cavQzW6jwJ2wxDJo3cY1lXJ5-hX-POJ24F6AnkH9yngQSZ0JLKpl773FPy2xCf_JO0SFOGyqoXy_UvGQNlPLXanPdNSHpIAWxYFa7ksZ3PdaYKSxEI8u_NRVSxIwKaCWZnbQp8xeEmY4WlJsNgeBbjSOfHibydjbpyOTc6Ytcc04HNIGNq65d1eSUB3j0LVj7DIoNdnIJiktmEAEDoFMFA0LAyGijoEZKEK3gzzEuEghT7TSku6U5Vi_o"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+<!-- Console Output -->
+<div class="p-6 flex-grow flex flex-col">
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-4">RAMA Works U80-A</h2>
+<div class="space-y-2 mb-8 flex-grow">
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Switch: <span class="text-tertiary ml-2">[Gateron Ink Black]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Layout: <span class="text-secondary ml-2">[TKL]</span>
+</div>
+<div class="flex items-center font-mono text-xs text-slate-400">
+<span class="text-primary mr-2">&gt;</span> Keycaps: <span class="text-on-secondary-container ml-2">[PBT Heavy Industry]</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 border-2 border-primary text-primary font-mono text-sm hover:bg-primary hover:text-surface transition-all duration-150 flex items-center justify-center gap-2 group/btn">
+<span>&gt; INSPECT.EXE</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">terminal</span>
+</button>
+</div>
+</article>
+</div>
+<!-- System Pagination -->
+<footer class="mt-20 border-t-2 border-surface-container py-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs tracking-tighter uppercase">
+<div class="flex gap-4">
+<span class="text-slate-500">[PAGE 01 / 04]</span>
+<span class="text-primary underline cursor-pointer hover:bg-primary hover:text-surface px-1 transition-colors">NEXT_DIRECTORY &gt;&gt;</span>
+</div>
+<div class="text-slate-500">
+                    SYSTEM_RUNTIME: <span class="text-secondary">4823.11s</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- Global Footer -->
+<footer class="bg-[#173353] w-full border-t-2 border-[#1b3b60]">
+<div class="flex flex-col md:flex-row justify-between items-center p-8 w-full max-w-7xl mx-auto">
+<div class="text-lg font-black text-[#ee6053] font-headline mb-4 md:mb-0">
+                © 2024 TRPKOVSKI.COM // SYSTEM_READY
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-mono text-xs uppercase text-slate-500 hover:bg-[#ee6053] hover:text-[#173353] px-2 py-1 transition-all duration-75" href="#">X</a>
+<a class="font-mono text-xs uppercase text-slate-500 hover:bg-[#ee6053] hover:text-[#173353] px-2 py-1 transition-all duration-75" href="#">Bluesky</a>
+<a class="font-mono text-xs uppercase text-slate-500 hover:bg-[#ee6053] hover:text-[#173353] px-2 py-1 transition-all duration-75" href="#">LinkedIn</a>
+<a class="font-mono text-xs uppercase text-slate-500 hover:bg-[#ee6053] hover:text-[#173353] px-2 py-1 transition-all duration-75" href="#">GitHub</a>
+<a class="font-mono text-xs uppercase text-slate-500 hover:bg-[#ee6053] hover:text-[#173353] px-2 py-1 transition-all duration-75" href="#">Instagram</a>
+</div>
+</div>
+</footer>
+</body></html>

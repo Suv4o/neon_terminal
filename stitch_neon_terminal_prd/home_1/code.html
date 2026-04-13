@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neon Terminal</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&amp;family=Space+Grotesk:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee6053", // Coral Red
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#173353", // Dark Navy
+                        "surface": "#1b3b60", // Deep Blue
+                        "text-main": "#e0e6ed", // Off-White
+                        "muted": "#f1918b", // Light Coral
+                        "accent": "#00ff41", // Matrix Green
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Fira Code", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                    boxShadow: {
+                        'glow': '0 0 12px rgba(238, 96, 83, 0.6)',
+                        'glow-text': '0 0 10px rgba(238, 96, 83, 0.5)',
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'type': 'type 2s steps(40, end)',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0 },
+                        },
+                        type: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #173353;
+            color: #e0e6ed;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* CRT Scanline Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 50;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .terminal-card {
+            border: 2px solid #f1918b;
+            background-color: #1b3b60;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .terminal-card:hover {
+            box-shadow: 0 0 12px rgba(238, 96, 83, 0.6);
+            cursor: crosshair;
+        }
+
+        .terminal-header {
+            border-bottom: 2px solid #f1918b;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            color: #f1918b;
+        }
+
+        .typing-container {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid #ee6053;
+            animation: type 2s steps(40, end), blink .75s step-end infinite;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: #ee6053;
+            color: #173353;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #173353;
+            border-left: 1px solid #1b3b60;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f1918b;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ee6053;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-background-dark">
+<!-- TopNavBar Shared Component -->
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-[#173353] group/design-root overflow-x-hidden font-display">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-6 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b-2 border-solid border-muted px-4 md:px-10 py-4 mb-8">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-primary" data-icon="terminal" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h2 class="text-primary text-xl font-bold leading-tight font-mono tracking-wider text-shadow-glow">&gt; Neon Terminal</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9 font-mono uppercase">
+<a class="text-muted hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Archive</a>
+<a class="text-muted hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Now</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-none border-2 border-primary h-10 px-4 bg-transparent text-primary hover:bg-primary hover:text-background-dark hover:shadow-glow transition-all text-sm font-bold font-mono leading-normal tracking-widest uppercase">
+<span class="truncate">[ Subscribe ]</span>
+</button>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="flex flex-col lg:flex-row gap-12 lg:gap-20 pb-20">
+<!-- Left Column: Sticky Intro -->
+<aside class="w-full lg:w-[40%] flex-shrink-0">
+<div class="sticky top-10 flex flex-col gap-6">
+<h1 class="text-primary text-4xl md:text-5xl font-bold font-mono tracking-tight text-shadow-glow">
+<span class="text-muted opacity-70">&gt;</span> <span class="typing-container">whoami</span>
+</h1>
+<div class="text-text-main text-lg font-normal leading-relaxed space-y-4">
+<p>
+                                        Software engineer &amp; designer blending 90s command-line interfaces with modern whitespace. 
+                                    </p>
+<p class="text-muted text-base">
+                                        Currently building high-signal tools for developers who appreciate retro-computing culture but demand modern typography and UX. Deep navy backgrounds make coral red CRT glows and scanline overlays pop.
+                                    </p>
+</div>
+<div class="flex gap-4 mt-4 font-mono text-sm">
+<a class="text-muted hover:text-primary transition-colors" href="#">[ GitHub ]</a>
+<a class="text-muted hover:text-primary transition-colors" href="#">[ Twitter ]</a>
+</div>
+</div>
+</aside>
+<!-- Right Column: Articles -->
+<section class="w-full lg:w-[60%] flex flex-col gap-8 md:mt-12">
+<!-- Article Card 1 -->
+<article class="terminal-card rounded-sm group">
+<div class="terminal-header bg-[#122841] flex justify-between rounded-t-sm">
+<span>[ ] [ ] [ ]</span>
+<span class="opacity-50">post_01.md</span>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 font-mono text-xs text-muted">
+<span>[#architecture]</span>
+<span>[#design-systems]</span>
+<span class="ml-auto opacity-70">2023-10-24</span>
+</div>
+<h3 class="text-primary text-2xl md:text-3xl font-bold font-mono leading-tight group-hover:text-shadow-glow transition-all cursor-pointer">
+                                        The Asymmetric Beauty of Brutalist Web Design
+                                    </h3>
+<p class="text-text-main text-base leading-relaxed opacity-90">
+                                        Exploring why raw HTML, monospace fonts, and harsh borders are making a comeback in developer tooling. It's not just nostalgia; it's a rebellion against homogenized corporate design systems.
+                                    </p>
+<div class="mt-4">
+<a class="inline-flex items-center gap-2 font-mono text-primary font-bold hover:text-shadow-glow transition-all uppercase text-sm" href="#">
+<span>&gt; READ.EXE</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="terminal-card rounded-sm group lg:ml-8">
+<div class="terminal-header bg-[#122841] flex justify-between rounded-t-sm">
+<span>[ ] [ ] [ ]</span>
+<span class="opacity-50">post_02.md</span>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 font-mono text-xs text-muted">
+<span>[#rust]</span>
+<span>[#performance]</span>
+<span class="ml-auto opacity-70">2023-09-12</span>
+</div>
+<h3 class="text-primary text-2xl md:text-3xl font-bold font-mono leading-tight group-hover:text-shadow-glow transition-all cursor-pointer">
+                                        Memory Safe But Aesthetically Dangerous
+                                    </h3>
+<p class="text-text-main text-base leading-relaxed opacity-90">
+                                        A deep dive into rewriting a legacy C++ rendering engine in Rust. We lost the segfaults but kept the glowing neon vectors. Here's how the compiler helped shape the final visual output.
+                                    </p>
+<div class="mt-4">
+<a class="inline-flex items-center gap-2 font-mono text-primary font-bold hover:text-shadow-glow transition-all uppercase text-sm" href="#">
+<span>&gt; READ.EXE</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="terminal-card rounded-sm group">
+<div class="terminal-header bg-[#122841] flex justify-between rounded-t-sm">
+<span>[ ] [ ] [ ]</span>
+<span class="opacity-50">post_03.md</span>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-4">
+<div class="flex flex-wrap gap-2 font-mono text-xs text-muted">
+<span>[#css]</span>
+<span>[#retro]</span>
+<span class="ml-auto opacity-70">2023-08-05</span>
+</div>
+<h3 class="text-primary text-2xl md:text-3xl font-bold font-mono leading-tight group-hover:text-shadow-glow transition-all cursor-pointer">
+                                        Building the Perfect CSS CRT Scanline Overlay
+                                    </h3>
+<p class="text-text-main text-base leading-relaxed opacity-90">
+                                        Stop using massive transparent PNGs. You can achieve a highly performant, responsive CRT flicker effect using just repeating linear gradients and a touch of keyframe animation.
+                                    </p>
+<div class="mt-4">
+<a class="inline-flex items-center gap-2 font-mono text-primary font-bold hover:text-shadow-glow transition-all uppercase text-sm" href="#">
+<span>&gt; READ.EXE</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<div class="mt-4 text-center lg:text-left font-mono">
+<a class="text-muted hover:text-primary transition-colors text-sm" href="#">
+                                    [ View All Logs in Archive ]
+                                </a>
+</div>
+</section>
+</main>
+<!-- Newsletter Command Line -->
+<footer class="mt-auto border-t-2 border-muted pt-12 pb-24 flex flex-col items-center justify-center">
+<div class="w-full max-w-2xl bg-surface border-2 border-muted p-6 rounded-sm relative">
+<div class="absolute -top-3 left-4 bg-background-dark px-2 font-mono text-xs text-muted">
+                                [ NEWSLETTER_DAEMON ]
+                            </div>
+<div class="flex flex-col gap-2 font-mono">
+<p class="text-muted text-sm mb-2">Receive low-frequency, high-signal transmission logs.</p>
+<div class="flex items-center text-lg md:text-xl">
+<span class="text-primary mr-3">&gt;</span>
+<span class="text-text-main opacity-70 mr-2">./subscribe.sh --email</span>
+<input class="bg-transparent border-none focus:ring-0 text-text-main placeholder-muted/30 w-full font-mono outline-none flex-1" placeholder="user@host.com" type="email"/>
+<span class="animate-blink text-primary">█</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>
