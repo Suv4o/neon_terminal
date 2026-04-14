@@ -1,50 +1,139 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+  Sync Impact Report
+  ==================
+  Version change: 0.0.0 → 1.0.0 (MAJOR - initial ratification)
+  Modified principles: N/A (initial creation)
+  Added sections:
+    - Core Principles (5 principles)
+    - Design & Content Constraints
+    - Development Workflow
+    - Governance
+  Removed sections: None
+  Templates requiring updates:
+    - .specify/templates/plan-template.md ✅ compatible (Constitution Check section aligns)
+    - .specify/templates/spec-template.md ✅ compatible (requirements/scenarios structure fits)
+    - .specify/templates/tasks-template.md ✅ compatible (phase structure supports SSG/component tasks)
+  Follow-up TODOs: None
+-->
+
+# Neon Terminal Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Design System Fidelity
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+All UI MUST follow the Neon Terminal design system defined in
+`spec-kit-context.md`. This is the single source of truth for visual
+design decisions.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+- Colours, typography (Ubuntu body, Fira Code mono), spacing, and
+  component patterns (Terminal Cards, Action Buttons, Tag Badges)
+  MUST be consistent across every page.
+- When Stitch-exported HTML conflicts with `spec-kit-context.md`,
+  the context document wins.
+- Custom CSS is permitted ONLY for CRT scanline overlay and
+  keyframe animations. All other styling MUST use Tailwind utilities
+  mapped to the design tokens.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Static Site Generation
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+The site MUST be statically generated (SSG) using Nuxt's `generate`
+command for deployment to Vercel.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- No server-side rendering at runtime. Every route MUST resolve to
+  a pre-rendered HTML file.
+- Dynamic data fetching (APIs, databases, CMS) is NOT permitted.
+  All content MUST be hardcoded or sourced from local static files.
+- `nuxt generate` MUST complete without errors before any deploy.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Code Quality
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+TypeScript strict mode is mandatory. The codebase MUST pass Prettier
+formatting and compile without type errors.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Vue components MUST use `<script setup lang="ts">` with the
+  Composition API exclusively.
+- Shared UI patterns (TerminalCard, TagBadge, NavBar, Footer,
+  NewsletterForm) MUST be extracted into reusable components.
+- Prettier configuration: semicolons, double quotes, 4-space tabs,
+  120-character print width, Tailwind plugin.
+- No `any` types. No `@ts-ignore` without a linked issue explaining
+  why.
+
+### IV. Accessibility
+
+WCAG AA minimum contrast ratios MUST be met despite the dark theme.
+The terminal aesthetic MUST NOT compromise usability.
+
+- Semantic HTML elements MUST be used (nav, main, article, section,
+  header, footer, headings in order).
+- All interactive elements MUST be keyboard-navigable with visible
+  focus indicators.
+- Images MUST have descriptive alt text. Decorative images MUST use
+  `alt=""` or `aria-hidden="true"`.
+- The CRT scanline overlay MUST use `pointer-events: none` so it
+  never blocks interaction.
+
+### V. Performance
+
+The site MUST load fast and stay lightweight. CSS-only animations,
+lazy-loaded images, and minimal JavaScript.
+
+- No heavy JS animation libraries. All visual effects (glows,
+  scanlines, hover transitions) MUST be CSS-only.
+- Images MUST be lazy-loaded (`loading="lazy"`).
+- Google Fonts MUST use `display=swap` to prevent FOIT.
+- Bundle size MUST be kept minimal. No unnecessary dependencies.
+- Transitions MUST be under 200ms to maintain the "clicky" terminal
+  feel.
+
+## Design & Content Constraints
+
+- **Colour palette**: primary `#ee5f53`, background `#173353`,
+  surface `#1b3b60`, text `#e0e6ed`, muted `#f1918b`,
+  accent `#00ff41`. Tag colours per `spec-kit-context.md`.
+- **Typography**: Fira Code for headings, labels, buttons, and code.
+  Ubuntu for body text. No other fonts.
+- **Borders**: 2px solid, 0px border radius everywhere. No rounded
+  corners.
+- **Shadows**: No drop shadows. Neon glows only
+  (`0 0 12px rgba(238, 95, 83, 0.6)`).
+- **UX copy**: All button labels, headings, and status messages MUST
+  follow the terminal command patterns defined in
+  `spec-kit-context.md` (e.g., `> READ.EXE`, `EXEC_TIME: 4ms`).
+- **Content**: All page content is static/hardcoded for this
+  prototype. No CMS, no API, no database.
+
+## Development Workflow
+
+- **Formatting**: Run Prettier before every commit. The `.prettierrc`
+  config is authoritative.
+- **File naming**: kebab-case for files, PascalCase for Vue
+  component names.
+- **Components**: One component per file in `components/` directory.
+  `<script setup lang="ts">` only.
+- **Styling**: Tailwind utility classes as the primary styling
+  method. CSS custom properties defined in `spec-kit-context.md`
+  for design tokens. Custom CSS only for scanlines and animations.
+- **Spec-driven**: Follow the spec-kit workflow
+  (constitution → specify → plan → tasks → implement). Do not skip
+  steps.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution is the highest-authority document for the Neon
+Terminal project. All implementation decisions MUST comply with these
+principles.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+- **Amendments** require updating this file, incrementing the
+  version, and verifying that dependent templates remain aligned.
+- **Versioning** follows semantic versioning: MAJOR for principle
+  removals or incompatible redefinitions, MINOR for new principles
+  or material expansions, PATCH for clarifications and wording fixes.
+- **Compliance** is verified at plan time via the Constitution Check
+  gate in `plan-template.md`. Any violation MUST be documented in
+  the Complexity Tracking table with justification.
+- **Runtime guidance** for development is in `CLAUDE.md` at the
+  project root.
+
+**Version**: 1.0.0 | **Ratified**: 2026-04-14 | **Last Amended**: 2026-04-14
