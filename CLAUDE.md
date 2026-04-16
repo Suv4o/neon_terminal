@@ -15,6 +15,7 @@ A redesigned version of [trpkovski.com](https://www.trpkovski.com) built with Nu
 This project uses GitHub's spec-kit for spec-driven development. Run the slash commands in order:
 
 ### Step 1: `/speckit-constitution`
+
 ```
 Project: Neon Terminal - a redesigned version of trpkovski.com built with Nuxt 4, Tailwind CSS, and TypeScript.
 
@@ -32,6 +33,7 @@ Principles:
 ```
 
 ### Step 2: `/speckit-specify`
+
 ```
 Build a static personal developer blog with the "Neon Terminal" design system. The full design system, page specifications, component patterns, and UX copy are defined in spec-kit-context.md - read that file for all details.
 
@@ -45,8 +47,9 @@ Content is static/hardcoded for this prototype - no CMS or API needed. Use place
 ### Step 3: `/speckit-clarify` (optional but recommended)
 
 ### Step 4: `/speckit-plan`
+
 ```
-Tech stack: Nuxt 4 with TypeScript, Tailwind CSS v4 with @tailwindcss/vite plugin, Vue Composition API with script setup. Static site generation for Vercel deployment. Google Fonts (Ubuntu + Fira Code). No backend, no database, no CMS - all content hardcoded.
+Tech stack: Nuxt 4 with TypeScript, Tailwind CSS v4 with @tailwindcss/vite plugin, Nuxt Content module for markdown-based content, Vue Composition API with script setup. Static site generation for Vercel deployment. Google Fonts (Ubuntu + Fira Code). No backend, no database. Blog articles are markdown files - reference https://github.com/Suv4o/personal-blog-2023/tree/main/content for the existing content structure and markdown files to migrate.
 ```
 
 ### Step 5: `/speckit-tasks`
@@ -62,3 +65,12 @@ Tech stack: Nuxt 4 with TypeScript, Tailwind CSS v4 with @tailwindcss/vite plugi
 - **Styling:** Tailwind CSS utility classes, custom CSS only for CRT scanline overlay and animations
 - **File naming:** kebab-case for files, PascalCase for components
 - **Fonts:** Ubuntu (body) + Fira Code (mono) via Google Fonts
+
+## Active Technologies
+
+- TypeScript 5.x (strict mode) + Nuxt 4.4.2, Vue 3.5, Tailwind CSS 4.2, (001-neon-terminal-blog)
+- File-based — markdown in `content/`, data in `app/data/` (001-neon-terminal-blog)
+
+## Recent Changes
+
+- 001-neon-terminal-blog: Added TypeScript 5.x (strict mode) + Nuxt 4.4.2, Vue 3.5, Tailwind CSS 4.2,

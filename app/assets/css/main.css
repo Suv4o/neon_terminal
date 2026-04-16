@@ -1,1 +1,87 @@
 @import "tailwindcss";
+
+@theme {
+    /* Neon Terminal Colour Palette */
+    --color-primary: #ee5f53;
+    --color-background: #173353;
+    --color-surface: #1b3b60;
+    --color-text: #e0e6ed;
+    --color-muted: #f1918b;
+    --color-accent: #00ff41;
+
+    /* Tag Colours */
+    --color-tag-javascript: #ffd700;
+    --color-tag-typescript: #3075bf;
+    --color-tag-ai: #03e3fc;
+    --color-tag-css: #a30d8a;
+    --color-tag-nuxtjs: #022832;
+    --color-tag-firebase: #ff9900;
+    --color-tag-node: #3e863d;
+    --color-tag-python: #356b99;
+    --color-tag-reactjs: #61dafb;
+    --color-tag-vite: #bd34fe;
+
+    /* Typography */
+    --font-mono: "Fira Code", monospace;
+    --font-sans: "Ubuntu", sans-serif;
+
+    /* Neon Glow Shadow */
+    --shadow-glow: 0 0 12px rgba(238, 95, 83, 0.6);
+}
+
+/* Global Styles */
+html {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    cursor: default;
+}
+
+/* Text Selection */
+::selection {
+    background: var(--color-primary);
+    color: var(--color-background);
+}
+
+/* CRT Scanline Overlay */
+.crt-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+/* Blinking Block Cursor Animation */
+@keyframes blink-cursor {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Keyboard Focus Indicators */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-glow);
+}

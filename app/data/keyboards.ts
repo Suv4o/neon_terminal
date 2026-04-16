@@ -1,0 +1,81 @@
+export interface Keyboard {
+    name: string;
+    slug: string;
+    hexId: string;
+    cover: string;
+    switchType: string;
+    layout: string;
+    description: string;
+    specs: Record<string, string>;
+}
+
+export const keyboards: Keyboard[] = [
+    {
+        name: "HHKB Professional Hybrid",
+        slug: "hhkb-professional-hybrid",
+        hexId: "0x2A1F",
+        cover: "/images/keyboards/hhkb.svg",
+        switchType: "Topre 45g",
+        layout: "60%",
+        description: "The legendary Happy Hacking Keyboard with its distinctive Topre switches and compact layout.",
+        specs: {
+            Switch: "Topre 45g",
+            Layout: "60% (60 keys)",
+            Connection: "Bluetooth / USB-C",
+            Material: "PBT keycaps",
+            Weight: "540g",
+            "Key Profile": "Cylindrical",
+        },
+    },
+    {
+        name: "Keychron Q1 Pro",
+        slug: "keychron-q1-pro",
+        hexId: "0x3B7E",
+        cover: "/images/keyboards/keychron-q1.svg",
+        switchType: "Gateron Jupiter Banana",
+        layout: "75%",
+        description: "A premium wireless mechanical keyboard with a gasket mount design and south-facing RGB.",
+        specs: {
+            Switch: "Gateron Jupiter Banana",
+            Layout: "75% (82 keys)",
+            Connection: "Bluetooth / 2.4GHz / USB-C",
+            Material: "Aluminium CNC body",
+            Weight: "1650g",
+            "Key Profile": "Cherry",
+        },
+    },
+    {
+        name: "Tofu65 Custom Build",
+        slug: "tofu65-custom",
+        hexId: "0x8C4D",
+        cover: "/images/keyboards/tofu65.svg",
+        switchType: "Durock L7 62g",
+        layout: "65%",
+        description: "A custom-built 65% with lubed linear switches and premium GMK keycaps.",
+        specs: {
+            Switch: "Durock L7 62g (lubed)",
+            Layout: "65% (68 keys)",
+            Connection: "USB-C",
+            Material: "Aluminium case",
+            Weight: "1200g",
+            "Key Profile": "Cherry (GMK)",
+        },
+    },
+    {
+        name: "Corne Split Keyboard",
+        slug: "corne-split",
+        hexId: "0xD912",
+        cover: "/images/keyboards/corne.svg",
+        switchType: "Kailh Choc v1 Silver",
+        layout: "Split 42-key",
+        description: "An ergonomic split keyboard with a 3x6 column-staggered layout and OLED displays.",
+        specs: {
+            Switch: "Kailh Choc v1 Silver",
+            Layout: "Split 42-key",
+            Connection: "USB-C + TRRS",
+            Material: "FR4 PCB plate",
+            Weight: "280g (per half)",
+            "Key Profile": "MBK Low Profile",
+        },
+    },
+];
