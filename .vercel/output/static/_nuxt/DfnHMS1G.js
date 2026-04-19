@@ -1,1 +1,0 @@
-import{a6 as s,o,b as r,E as n}from"./CPokOJBX.js";const t={};function a(e,c){return o(),r("p",null,[n(e.$slots,"default")])}const _=Object.assign(s(t,[["render",a]]),{__name:"ProseP"});export{_ as default};

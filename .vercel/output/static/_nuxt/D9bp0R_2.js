@@ -1,1 +1,0 @@
-import{a6 as o,o as t,b as s,E as c}from"./CPokOJBX.js";const r={};function n(e,a){return t(),s("blockquote",null,[c(e.$slots,"default")])}const _=Object.assign(o(r,[["render",n]]),{__name:"ProseBlockquote"});export{_ as default};

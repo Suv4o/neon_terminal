@@ -59,18 +59,6 @@ function shareArticle() {
                 </div>
             </header>
 
-            <!-- Cover Image -->
-            <TerminalCard :filename="slugParts[slugParts.length - 1] + '.md'">
-                <template #media>
-                    <img
-                        :src="article.image"
-                        :alt="article.title"
-                        class="aspect-video w-full object-cover"
-                        loading="eager"
-                    />
-                </template>
-            </TerminalCard>
-
             <!-- Markdown Content -->
             <div class="prose-terminal mt-8">
                 <ContentRenderer :value="article" />

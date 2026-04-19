@@ -4,35 +4,38 @@
     "index.html": {
       "path": ""
     },
-    "get-in-touch/index.html": {
-      "path": "get-in-touch"
-    },
     "the-keyboard-lab/index.html": {
       "path": "the-keyboard-lab"
-    },
-    "about-me/index.html": {
-      "path": "about-me"
     },
     "through-the-lens/index.html": {
       "path": "through-the-lens"
     },
+    "get-in-touch/index.html": {
+      "path": "get-in-touch"
+    },
+    "about-me/index.html": {
+      "path": "about-me"
+    },
     "articles/index.html": {
       "path": "articles"
-    },
-    "through-the-lens/astrophotography/index.html": {
-      "path": "through-the-lens/astrophotography"
     },
     "the-keyboard-lab/tofu65-custom/index.html": {
       "path": "the-keyboard-lab/tofu65-custom"
     },
+    "the-keyboard-lab/hhkb-professional-hybrid/index.html": {
+      "path": "the-keyboard-lab/hhkb-professional-hybrid"
+    },
+    "through-the-lens/architecture/index.html": {
+      "path": "through-the-lens/architecture"
+    },
     "the-keyboard-lab/corne-split/index.html": {
       "path": "the-keyboard-lab/corne-split"
     },
+    "through-the-lens/astrophotography/index.html": {
+      "path": "through-the-lens/astrophotography"
+    },
     "the-keyboard-lab/keychron-q1-pro/index.html": {
       "path": "the-keyboard-lab/keychron-q1-pro"
-    },
-    "the-keyboard-lab/hhkb-professional-hybrid/index.html": {
-      "path": "the-keyboard-lab/hhkb-professional-hybrid"
     },
     "through-the-lens/street/index.html": {
       "path": "through-the-lens/street"
@@ -40,17 +43,17 @@
     "through-the-lens/travel/index.html": {
       "path": "through-the-lens/travel"
     },
-    "through-the-lens/architecture/index.html": {
-      "path": "through-the-lens/architecture"
-    },
     "through-the-lens/nature/index.html": {
       "path": "through-the-lens/nature"
     },
     "through-the-lens/portraits/index.html": {
       "path": "through-the-lens/portraits"
     },
-    "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide/index.html": {
-      "path": "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide"
+    "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer/index.html": {
+      "path": "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer"
+    },
+    "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base/index.html": {
+      "path": "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base"
     },
     "articles/2026/02/08/automating-my-blog-workflow-with-github-copilot-sdk/index.html": {
       "path": "articles/2026/02/08/automating-my-blog-workflow-with-github-copilot-sdk"
@@ -58,26 +61,23 @@
     "articles/2026/04/05/i-tried-redesigning-my-blog-with-google-stitch-heres-how-it-actually-went/index.html": {
       "path": "articles/2026/04/05/i-tried-redesigning-my-blog-with-google-stitch-heres-how-it-actually-went"
     },
-    "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them/index.html": {
-      "path": "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them"
-    },
-    "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base/index.html": {
-      "path": "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base"
-    },
     "articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally/index.html": {
       "path": "articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally"
     },
-    "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer/index.html": {
-      "path": "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer"
+    "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide/index.html": {
+      "path": "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide"
+    },
+    "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them/index.html": {
+      "path": "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them"
     },
     "articles/2026/03/08/mcp-is-coming-to-the-browser/index.html": {
       "path": "articles/2026/03/08/mcp-is-coming-to-the-browser"
     },
-    "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture/index.html": {
-      "path": "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture"
-    },
     "articles/2026/02/22/agentic-workflows-write-github-actions-in-markdown/index.html": {
       "path": "articles/2026/02/22/agentic-workflows-write-github-actions-in-markdown"
+    },
+    "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture/index.html": {
+      "path": "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture"
     },
     "articles/2025/12/29/building-content-adaptive-interfaces-with-googles-a2ui/index.html": {
       "path": "articles/2025/12/29/building-content-adaptive-interfaces-with-googles-a2ui"
