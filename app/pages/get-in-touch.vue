@@ -102,7 +102,7 @@ function handleSubmit() {
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-text hover:text-primary block font-mono text-sm transition-colors duration-150"
-                    style="cursor: crosshair"
+
                 >
                     &gt; ssh {{ link.url.replace("https://", "") }}
                 </a>

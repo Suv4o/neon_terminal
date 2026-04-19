@@ -69,7 +69,6 @@ function formatDate(date: string) {
         <div v-if="hasMore" class="mt-8 text-center">
             <button
                 class="border-muted text-muted hover:border-primary hover:text-primary hover:shadow-glow border-2 px-6 py-2 font-mono text-sm transition-all duration-150"
-                style="cursor: crosshair"
                 @click="loadMore"
             >
                 [ LOAD_MORE.EXE ]

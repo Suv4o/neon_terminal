@@ -13,7 +13,7 @@ import { socialLinks } from "~/data/social";
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150"
-                    style="cursor: crosshair"
+
                     :aria-label="link.name"
                 >
                     {{ link.name }}

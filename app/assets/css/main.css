@@ -85,3 +85,14 @@ html {
     outline-offset: 2px;
     box-shadow: var(--shadow-glow);
 }
+
+/* Custom Terminal Cursor for Interactive Elements */
+a,
+button,
+[role="link"],
+[role="button"],
+input[type="submit"],
+summary,
+.cursor-pointer {
+    cursor: url("/cursor-pointer.svg") 6 16, pointer;
+}

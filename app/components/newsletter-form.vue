@@ -29,7 +29,7 @@ function handleSubmit() {
                 <button
                     type="submit"
                     class="border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow border-2 px-4 py-2 font-mono text-sm font-semibold transition-all duration-150"
-                    style="cursor: crosshair"
+
                 >
                     [ENTER]
                 </button>

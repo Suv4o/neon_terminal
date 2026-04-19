@@ -14,7 +14,7 @@ const navLinks = [
     <nav class="border-muted bg-background/90 fixed top-0 z-50 w-full border-b-2 backdrop-blur-md">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
             <!-- Brand -->
-            <NuxtLink to="/" class="text-primary font-mono text-lg font-bold" style="cursor: crosshair">
+            <NuxtLink to="/" class="text-primary font-mono text-lg font-bold">
                 trpkovski.com &#x1f525;
             </NuxtLink>
 
@@ -25,8 +25,7 @@ const navLinks = [
                     :key="link.to"
                     :to="link.to"
                     class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150"
-                    style="cursor: crosshair"
-                >
+                                   >
                     {{ link.label }}
                 </NuxtLink>
             </div>
@@ -34,8 +33,7 @@ const navLinks = [
             <!-- Mobile Hamburger -->
             <button
                 class="text-text md:hidden"
-                style="cursor: crosshair"
-                aria-label="Toggle navigation menu"
+                               aria-label="Toggle navigation menu"
                 @click="isMenuOpen = !isMenuOpen"
             >
                 <svg
@@ -64,8 +62,7 @@ const navLinks = [
                 :key="link.to"
                 :to="link.to"
                 class="border-muted/30 text-text hover:bg-surface hover:text-primary block border-b px-4 py-3 font-mono text-sm uppercase transition-all duration-150"
-                style="cursor: crosshair"
-                @click="isMenuOpen = false"
+                               @click="isMenuOpen = false"
             >
                 {{ link.label }}
             </NuxtLink>
