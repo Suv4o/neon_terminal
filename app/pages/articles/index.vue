@@ -43,18 +43,23 @@ function formatDate(date: string) {
         <SearchFilter v-model="searchQuery" />
 
         <div v-if="visibleArticles.length" class="mt-8 space-y-0">
-            <NuxtLink
+            <div
                 v-for="article in visibleArticles"
                 :key="article.path"
-                :to="article.path"
-                class="border-muted/30 hover:bg-surface/50 flex flex-col gap-2 border-b border-dotted py-4 transition-colors duration-150 sm:flex-row sm:items-center sm:gap-4"
+                class="border-muted/30 hover:bg-surface/50 flex cursor-pointer flex-col gap-2 border-b border-dotted py-4 transition-colors duration-150 sm:flex-row sm:items-center sm:gap-4"
+                role="link"
+                :tabindex="0"
+                @click="navigateTo(article.path)"
+                @keydown.enter="navigateTo(article.path)"
             >
                 <span class="text-muted/60 shrink-0 font-mono text-xs">{{ formatDate(article.date) }}</span>
-                <span class="text-text flex-1 font-mono text-sm">{{ article.title }}</span>
+                <NuxtLink :to="article.path" class="text-text flex-1 font-mono text-sm no-underline">{{
+                    article.title
+                }}</NuxtLink>
                 <div class="flex flex-wrap gap-2">
                     <TagBadge v-for="tag in article.articleTags" :key="tag" :tag="tag" />
                 </div>
-            </NuxtLink>
+            </div>
         </div>
 
         <div v-else class="mt-12 text-center">
