@@ -4,14 +4,19 @@ export default defineContentConfig({
     collections: {
         articles: defineCollection({
             type: "page",
-            source: "articles/**",
+            source: "articles/**/**",
             schema: z.object({
                 title: z.string(),
                 description: z.string(),
                 date: z.string(),
-                cover: z.string(),
-                tags: z.array(z.string()),
-                readingTime: z.number(),
+                image: z.string(),
+                published: z.string().optional(),
+                readTime: z.number(),
+                author: z.string().optional(),
+                articleTags: z.array(z.string()),
+                keywords: z.array(z.string()).optional(),
+                type: z.string().optional(),
+                blog: z.string().optional(),
             }),
         }),
     },

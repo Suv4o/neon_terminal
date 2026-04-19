@@ -40,10 +40,10 @@ const { data: articles } = await useAsyncData("latest-articles", () =>
                 :title="article.title"
                 :description="article.description"
                 :date="article.date"
-                :cover="article.cover"
-                :tags="article.tags"
-                :reading-time="article.readingTime"
-                :slug="article.path.replace('/articles/', '')"
+                :image="article.image"
+                :article-tags="article.articleTags"
+                :read-time="article.readTime"
+                :path="article.path"
             />
 
             <NewsletterForm />

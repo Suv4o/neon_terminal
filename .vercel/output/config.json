@@ -4,59 +4,197 @@
     "index.html": {
       "path": ""
     },
-    "through-the-lens/index.html": {
-      "path": "through-the-lens"
-    },
-    "about-me/index.html": {
-      "path": "about-me"
-    },
-    "articles/index.html": {
-      "path": "articles"
+    "get-in-touch/index.html": {
+      "path": "get-in-touch"
     },
     "the-keyboard-lab/index.html": {
       "path": "the-keyboard-lab"
     },
-    "get-in-touch/index.html": {
-      "path": "get-in-touch"
+    "about-me/index.html": {
+      "path": "about-me"
     },
-    "through-the-lens/street/index.html": {
-      "path": "through-the-lens/street"
+    "through-the-lens/index.html": {
+      "path": "through-the-lens"
     },
-    "through-the-lens/architecture/index.html": {
-      "path": "through-the-lens/architecture"
-    },
-    "through-the-lens/portraits/index.html": {
-      "path": "through-the-lens/portraits"
-    },
-    "through-the-lens/nature/index.html": {
-      "path": "through-the-lens/nature"
-    },
-    "through-the-lens/travel/index.html": {
-      "path": "through-the-lens/travel"
+    "articles/index.html": {
+      "path": "articles"
     },
     "through-the-lens/astrophotography/index.html": {
       "path": "through-the-lens/astrophotography"
     },
-    "the-keyboard-lab/keychron-q1-pro/index.html": {
-      "path": "the-keyboard-lab/keychron-q1-pro"
+    "the-keyboard-lab/tofu65-custom/index.html": {
+      "path": "the-keyboard-lab/tofu65-custom"
     },
     "the-keyboard-lab/corne-split/index.html": {
       "path": "the-keyboard-lab/corne-split"
     },
+    "the-keyboard-lab/keychron-q1-pro/index.html": {
+      "path": "the-keyboard-lab/keychron-q1-pro"
+    },
     "the-keyboard-lab/hhkb-professional-hybrid/index.html": {
       "path": "the-keyboard-lab/hhkb-professional-hybrid"
     },
-    "the-keyboard-lab/tofu65-custom/index.html": {
-      "path": "the-keyboard-lab/tofu65-custom"
+    "through-the-lens/street/index.html": {
+      "path": "through-the-lens/street"
     },
-    "articles/typescript-strict-mode-guide/index.html": {
-      "path": "articles/typescript-strict-mode-guide"
+    "through-the-lens/travel/index.html": {
+      "path": "through-the-lens/travel"
     },
-    "articles/nuxt-static-site-generation/index.html": {
-      "path": "articles/nuxt-static-site-generation"
+    "through-the-lens/architecture/index.html": {
+      "path": "through-the-lens/architecture"
     },
-    "articles/building-terminal-ui-with-css/index.html": {
-      "path": "articles/building-terminal-ui-with-css"
+    "through-the-lens/nature/index.html": {
+      "path": "through-the-lens/nature"
+    },
+    "through-the-lens/portraits/index.html": {
+      "path": "through-the-lens/portraits"
+    },
+    "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide/index.html": {
+      "path": "articles/2026/03/15/how-to-create-a-nuxt-module-a-beginner-friendly-guide"
+    },
+    "articles/2026/02/08/automating-my-blog-workflow-with-github-copilot-sdk/index.html": {
+      "path": "articles/2026/02/08/automating-my-blog-workflow-with-github-copilot-sdk"
+    },
+    "articles/2026/04/05/i-tried-redesigning-my-blog-with-google-stitch-heres-how-it-actually-went/index.html": {
+      "path": "articles/2026/04/05/i-tried-redesigning-my-blog-with-google-stitch-heres-how-it-actually-went"
+    },
+    "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them/index.html": {
+      "path": "articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them"
+    },
+    "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base/index.html": {
+      "path": "articles/2026/01/04/blogging-in-2026-building-your-own-knowledge-base"
+    },
+    "articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally/index.html": {
+      "path": "articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally"
+    },
+    "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer/index.html": {
+      "path": "articles/2026/03/22/i-gave-my-claude-code-the-personality-of-a-sarcastic-senior-developer"
+    },
+    "articles/2026/03/08/mcp-is-coming-to-the-browser/index.html": {
+      "path": "articles/2026/03/08/mcp-is-coming-to-the-browser"
+    },
+    "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture/index.html": {
+      "path": "articles/2026/02/15/the-protocol-behind-bluesky-rethinking-social-media-architecture"
+    },
+    "articles/2026/02/22/agentic-workflows-write-github-actions-in-markdown/index.html": {
+      "path": "articles/2026/02/22/agentic-workflows-write-github-actions-in-markdown"
+    },
+    "articles/2025/12/29/building-content-adaptive-interfaces-with-googles-a2ui/index.html": {
+      "path": "articles/2025/12/29/building-content-adaptive-interfaces-with-googles-a2ui"
+    },
+    "articles/2021/05/12/the-mysterious-this-keyword-in-vueland/index.html": {
+      "path": "articles/2021/05/12/the-mysterious-this-keyword-in-vueland"
+    },
+    "articles/2025/12/20/making-a-face-follow-your-cursor-with-ai-generated-images/index.html": {
+      "path": "articles/2025/12/20/making-a-face-follow-your-cursor-with-ai-generated-images"
+    },
+    "articles/2025/11/16/make-your-audio-play-with-real-time-transcript-highlighting/index.html": {
+      "path": "articles/2025/11/16/make-your-audio-play-with-real-time-transcript-highlighting"
+    },
+    "articles/2025/11/13/turning-markdown-into-podcasts-with-openai-agents/index.html": {
+      "path": "articles/2025/11/13/turning-markdown-into-podcasts-with-openai-agents"
+    },
+    "articles/2025/11/08/migrating-your-homebrew-setup-to-a-new-mac-with-one-command/index.html": {
+      "path": "articles/2025/11/08/migrating-your-homebrew-setup-to-a-new-mac-with-one-command"
+    },
+    "articles/2025/11/04/why-you-shouldnt-use-localstorage-for-transactions-and-what-to-use-instead/index.html": {
+      "path": "articles/2025/11/04/why-you-shouldnt-use-localstorage-for-transactions-and-what-to-use-instead"
+    },
+    "articles/2025/10/12/how-to-structure-a-nestjs-project-for-microservices-monorepo-setup/index.html": {
+      "path": "articles/2025/10/12/how-to-structure-a-nestjs-project-for-microservices-monorepo-setup"
+    },
+    "articles/2025/10/11/decoupling-a-system-with-nestjs-microservices/index.html": {
+      "path": "articles/2025/10/11/decoupling-a-system-with-nestjs-microservices"
+    },
+    "articles/2025/09/21/the-right-way-to-handle-hover-in-css-across-devices/index.html": {
+      "path": "articles/2025/09/21/the-right-way-to-handle-hover-in-css-across-devices"
+    },
+    "articles/2025/07/06/how-i-built-a-budget-friendly-custom-mechanical-keyboard-part-2-building-it-together/index.html": {
+      "path": "articles/2025/07/06/how-i-built-a-budget-friendly-custom-mechanical-keyboard-part-2-building-it-together"
+    },
+    "articles/2025/04/22/how-i-built-a-budget-friendly-custom-mechanical-keyboard-part-1-the-deep-dive-before-the-build/index.html": {
+      "path": "articles/2025/04/22/how-i-built-a-budget-friendly-custom-mechanical-keyboard-part-1-the-deep-dive-before-the-build"
+    },
+    "articles/2025/04/05/building-an-ai-search-engine-with-nextjs-and-free-open-source-llms/index.html": {
+      "path": "articles/2025/04/05/building-an-ai-search-engine-with-nextjs-and-free-open-source-llms"
+    },
+    "articles/2025/03/24/create-a-recommendation-engine-with-ai-for-free/index.html": {
+      "path": "articles/2025/03/24/create-a-recommendation-engine-with-ai-for-free"
+    },
+    "articles/2025/03/02/how-to-bind-props-in-vue-correctly/index.html": {
+      "path": "articles/2025/03/02/how-to-bind-props-in-vue-correctly"
+    },
+    "articles/2025/01/15/a-beginners-guide-to-vue-for-react-developers/index.html": {
+      "path": "articles/2025/01/15/a-beginners-guide-to-vue-for-react-developers"
+    },
+    "articles/2025/01/09/the-container-presentational-pattern-with-react-and-vue/index.html": {
+      "path": "articles/2025/01/09/the-container-presentational-pattern-with-react-and-vue"
+    },
+    "articles/2025/01/04/understanding-javascript-reactivity-with-proxy-and-typescript/index.html": {
+      "path": "articles/2025/01/04/understanding-javascript-reactivity-with-proxy-and-typescript"
+    },
+    "articles/2024/03/24/is-it-possible-to-use-nuxt-link-in-content-rendered-with-v-html/index.html": {
+      "path": "articles/2024/03/24/is-it-possible-to-use-nuxt-link-in-content-rendered-with-v-html"
+    },
+    "articles/2024/02/25/create-a-web-server-using-nitro-sqlite-and-typeorm/index.html": {
+      "path": "articles/2024/02/25/create-a-web-server-using-nitro-sqlite-and-typeorm"
+    },
+    "articles/2024/01/23/how-to-define-multiple-components-in-a-single-file-in-nuxt-using-jsx/index.html": {
+      "path": "articles/2024/01/23/how-to-define-multiple-components-in-a-single-file-in-nuxt-using-jsx"
+    },
+    "articles/2023/10/23/grouping-images-by-colours-exploring-colour-based-image-clustering/index.html": {
+      "path": "articles/2023/10/23/grouping-images-by-colours-exploring-colour-based-image-clustering"
+    },
+    "articles/2023/10/18/from-pixels-to-words-exploring-the-capabilities-of-image-to-text-ai-tools/index.html": {
+      "path": "articles/2023/10/18/from-pixels-to-words-exploring-the-capabilities-of-image-to-text-ai-tools"
+    },
+    "articles/2023/04/25/signals-in-vanilla-js/index.html": {
+      "path": "articles/2023/04/25/signals-in-vanilla-js"
+    },
+    "articles/2023/04/02/single-sign-on-with-firebase-authentication-across-multiple-domains/index.html": {
+      "path": "articles/2023/04/02/single-sign-on-with-firebase-authentication-across-multiple-domains"
+    },
+    "articles/2023/03/19/setting-up-global-variables-in-the-rest-client-vs-code-extension/index.html": {
+      "path": "articles/2023/03/19/setting-up-global-variables-in-the-rest-client-vs-code-extension"
+    },
+    "articles/2022/10/22/sharing-components-between-multiple-nuxt-projects/index.html": {
+      "path": "articles/2022/10/22/sharing-components-between-multiple-nuxt-projects"
+    },
+    "articles/2022/10/14/nestjs-class-validator-high-vulnerability-fix/index.html": {
+      "path": "articles/2022/10/14/nestjs-class-validator-high-vulnerability-fix"
+    },
+    "articles/2022/10/10/nestjs-current-user-custom-decorator/index.html": {
+      "path": "articles/2022/10/10/nestjs-current-user-custom-decorator"
+    },
+    "articles/2022/10/07/nestjs-authorisation-with-firebase-auth/index.html": {
+      "path": "articles/2022/10/07/nestjs-authorisation-with-firebase-auth"
+    },
+    "articles/2022/10/03/nestjs-auth-authorisation-with-okta/index.html": {
+      "path": "articles/2022/10/03/nestjs-auth-authorisation-with-okta"
+    },
+    "articles/2022/04/18/reload-child-component-in-vue3/index.html": {
+      "path": "articles/2022/04/18/reload-child-component-in-vue3"
+    },
+    "articles/2022/04/14/gsap-animation-with-vue3-and-vite/index.html": {
+      "path": "articles/2022/04/14/gsap-animation-with-vue3-and-vite"
+    },
+    "articles/2021/09/25/suspense-feature-in-vue-3-with-sfc-script-setup/index.html": {
+      "path": "articles/2021/09/25/suspense-feature-in-vue-3-with-sfc-script-setup"
+    },
+    "articles/2021/09/17/including-local-nodejs-modules-in-firebase-cloud-functions/index.html": {
+      "path": "articles/2021/09/17/including-local-nodejs-modules-in-firebase-cloud-functions"
+    },
+    "articles/2021/09/14/style-binding-in-sfc-in-vue-3/index.html": {
+      "path": "articles/2021/09/14/style-binding-in-sfc-in-vue-3"
+    },
+    "articles/2021/09/07/watch-javascript-variables-for-change/index.html": {
+      "path": "articles/2021/09/07/watch-javascript-variables-for-change"
+    },
+    "articles/2021/07/24/create-a-custom-html-element-using-web-components-and-vuejs/index.html": {
+      "path": "articles/2021/07/24/create-a-custom-html-element-using-web-components-and-vuejs"
+    },
+    "articles/2021/07/13/firebase-authentication-token-verification-with-a-custom-backend-server/index.html": {
+      "path": "articles/2021/07/13/firebase-authentication-token-verification-with-a-custom-backend-server"
     }
   },
   "routes": [

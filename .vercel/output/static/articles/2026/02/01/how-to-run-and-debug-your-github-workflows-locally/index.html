@@ -1,0 +1,519 @@
+<!DOCTYPE html><html  lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How to Run and Debug Your GitHub Workflows Locally — Neon Terminal</title><style>.prose-terminal h1{display:none}.prose-terminal h2{color:var(--color-primary);font-size:1.5rem;margin-bottom:1rem;margin-top:2rem}.prose-terminal h2,.prose-terminal h3{font-family:var(--font-mono);font-weight:700}.prose-terminal h3{color:var(--color-text);font-size:1.25rem;margin-bottom:.75rem;margin-top:1.5rem}.prose-terminal p{line-height:1.75;margin-bottom:1rem}.prose-terminal code{background-color:var(--color-surface);font-family:var(--font-mono);font-size:.875rem;padding:.125rem .375rem}.prose-terminal pre{background-color:var(--color-surface);border-left:3px solid var(--color-primary);margin:1rem 0;overflow-x:auto;padding:1rem;position:relative}.prose-terminal pre code{background:none;padding:0}.prose-terminal ol,.prose-terminal ul{list-style:disc;margin-bottom:1rem;padding-left:1.5rem}.prose-terminal ol{list-style:decimal}.prose-terminal li{margin-bottom:.25rem}.prose-terminal a{color:var(--color-primary);text-decoration:underline}.prose-terminal img{border:2px solid var(--color-muted);height:auto;margin:1rem 0;max-width:100%}.prose-terminal blockquote{border-left:3px solid var(--color-muted);color:var(--color-text);margin:1rem 0;opacity:.8;padding-left:1rem}</style><style>pre code .line{display:block}</style><link rel="stylesheet" href="/_nuxt/entry.DInXVTcl.css" crossorigin><link rel="preload" as="fetch" crossorigin="anonymous" href="/articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally/_payload.json?91d4ba13-9b7a-4760-a496-64e2d9b58159"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CPokOJBX.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/p3rLP0R6.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/C6_8sAYQ.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/B7T_1X5b.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BYargNym.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DFtu9p4z.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BAP8_BDH.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BOBK1h20.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DfnHMS1G.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BmY2qZbV.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DDrIXj0Y.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CulzrsIk.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/B1zwKQtU.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/dX2Cfpeo.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/D9bp0R_2.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/B4kY9tij.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DsRscusI.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DAgKAfFD.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DBH_tFeX.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CVNYzW-V.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/CZ4QaqPM.js"><script type="module" src="/_nuxt/CPokOJBX.js" crossorigin></script><meta name="description" content="Aleksandar Trpkovski — Full-stack developer blog with a retro terminal aesthetic."><meta property="og:type" content="website"><meta property="og:site_name" content="trpkovski.com"><meta property="og:description" content="A developer blog with a retro-futuristic Neon Terminal design."></head><body><div id="__nuxt"><div class="bg-background text-text min-h-screen"><nav class="border-muted bg-background/90 fixed top-0 z-50 w-full border-b-2 backdrop-blur-md"><div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3"><a href="/" class="text-primary font-mono text-lg font-bold" style="cursor:crosshair;"> trpkovski.com 🔥 </a><div class="hidden gap-6 md:flex"><!--[--><a href="/articles" class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150" style="cursor:crosshair;">Articles</a><a href="/the-keyboard-lab" class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150" style="cursor:crosshair;">The Keyboard Lab</a><a href="/through-the-lens" class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150" style="cursor:crosshair;">Through The Lens</a><a href="/about-me" class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150" style="cursor:crosshair;">About Me</a><a href="/get-in-touch" class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150" style="cursor:crosshair;">Get In Touch</a><!--]--></div><button class="text-text md:hidden" style="cursor:crosshair;" aria-label="Toggle navigation menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div><!----></nav><main class="mx-auto max-w-7xl px-4 pt-20 pb-12"><!--[--><div class="flex gap-8"><nav class="sticky top-24 w-[250px] shrink-0 hidden lg:block" aria-label="Table of contents"><h2 class="text-muted mb-4 font-mono text-sm font-bold">// TABLE_OF_CONTENTS</h2><ul class="space-y-2"><!--[--><li><a href="#why-test-github-actions-locally" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Why Test GitHub Actions Locally?</a></li><li><a href="#prerequisites" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Prerequisites</a></li><li><a href="#installing-docker-desktop" class="text-text/50 hover:text-text pl-4 block font-mono text-xs transition-colors duration-150"><!---->Installing Docker Desktop</a></li><li><a href="#installing-act" class="text-text/50 hover:text-text pl-4 block font-mono text-xs transition-colors duration-150"><!---->Installing act</a></li><li><a href="#your-first-local-workflow" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Your First Local Workflow</a></li><li><a href="#a-note-for-macos-and-apple-silicon-users" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->A Note for macOS and Apple Silicon Users</a></li><li><a href="#running-scheduled-workflows-cron-jobs" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Running Scheduled Workflows (Cron Jobs)</a></li><li><a href="#running-python-in-github-actions" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Running Python in GitHub Actions</a></li><li><a href="#running-typescript-in-github-actions" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Running TypeScript in GitHub Actions</a></li><li><a href="#manual-triggers-with-input-parameters" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Manual Triggers with Input Parameters</a></li><li><a href="#multi-job-workflows-with-dependencies" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Multi-Job Workflows with Dependencies</a></li><li><a href="#matrix-builds" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Matrix Builds</a></li><li><a href="#working-with-secrets-and-environment-variables" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Working with Secrets and Environment Variables</a></li><li><a href="#caching-dependencies" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Caching Dependencies</a></li><li><a href="#the-vscode-extension" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->The VSCode Extension</a></li><li><a href="#running-a-workflow" class="text-text/50 hover:text-text pl-4 block font-mono text-xs transition-colors duration-150"><!---->Running a Workflow</a></li><li><a href="#managing-secrets-and-variables" class="text-text/50 hover:text-text pl-4 block font-mono text-xs transition-colors duration-150"><!---->Managing Secrets and Variables</a></li><li><a href="#wrapping-up" class="text-text/50 hover:text-text block font-mono text-xs transition-colors duration-150"><!---->Wrapping Up</a></li><!--]--></ul></nav><article class="max-w-[720px] min-w-0 flex-1"><header class="mb-8"><div class="text-muted mb-4 flex flex-wrap items-center gap-3 font-mono text-xs"><span>February 1, 2026</span><span>EXEC_TIME: 8ms</span></div><h1 class="text-primary mb-4 font-mono text-3xl font-bold">How to Run and Debug Your GitHub Workflows Locally</h1><div class="mb-6 flex flex-wrap gap-2"><!--[--><span class="text-background inline-block px-2 py-0.5 font-mono text-xs font-normal" style="background-color:#6b7280;"> [#DevOps] </span><span class="text-background inline-block px-2 py-0.5 font-mono text-xs font-normal" style="background-color:#00ff41;"> [#Productivity] </span><span class="text-background inline-block px-2 py-0.5 font-mono text-xs font-normal" style="background-color:#f1918b;"> [#BackEnd] </span><!--]--></div></header><div class="border-muted border-2"><div class="bg-surface text-muted flex h-6 items-center gap-2 px-3 font-mono text-xs"><span class="opacity-60">[ ]</span><span class="opacity-60">[ ]</span><span class="opacity-60">[x]</span><span class="ml-2 truncate">how-to-run-and-debug-your-github-workflows-locally.md</span></div><div class="relative overflow-hidden"><div class=""><!--[--><img src="https://res.cloudinary.com/suv4o/image/upload/q_auto,f_auto,w_1200,e_sharpen:100/v1769425117/blog/how-to-run-and-debug-your-github-workflows-locally/how-to-run-and-debug-your-github-workflows-locally_afbogh" alt="How to Run and Debug Your GitHub Workflows Locally" class="aspect-video w-full object-cover" loading="eager"><!--]--></div></div><!----></div><div class="prose-terminal mt-8"><div><h1 id="how-to-run-and-debug-your-github-workflows-locally"><!--[-->How to Run and Debug Your GitHub Workflows Locally<!--]--></h1><p><!--[--><img src="https://res.cloudinary.com/suv4o/image/upload/q_auto,f_auto,w_750,e_sharpen:100/v1769425117/blog/how-to-run-and-debug-your-github-workflows-locally/how-to-run-and-debug-your-github-workflows-locally_afbogh" alt="Landing Image"><!--]--></p><blockquote><!--[--><p><!--[--><strong><!--[--><em><!--[-->Test your workflows before you push a commit.<!--]--></em><!--]--></strong><!--]--></p><!--]--></blockquote><p><!--[-->If you&#39;ve ever worked with GitHub Actions, you&#39;ve probably experienced this loop: make a change to your workflow file, commit it, push it, wait for the runner to pick it up, watch it fail because of a typo, fix it, commit again, push again, wait again…<!--]--></p><p><!--[-->For something that&#39;s supposed to <strong><!--[-->automate<!--]--></strong> work, that feedback loop can feel painfully slow - especially when the mistake is something trivial like a missing indent or a typo in a step name.<!--]--></p><p><!--[-->What if you could run your GitHub Actions <strong><!--[-->locally<!--]--></strong>, on your own machine, and catch those problems instantly?<!--]--></p><p><!--[-->That&#39;s exactly what <a href="https://github.com/nektos/act" rel="noopener noreferrer" target="_blank"><!--[--><strong><!--[-->act<!--]--></strong><!--]--></a> does.<!--]--></p><p><!--[--><strong><!--[-->act<!--]--></strong> is a small CLI tool that executes GitHub Actions workflows locally using Docker. It reads the same <code><!--[-->.github/workflows/*.yml<!--]--></code> files you already have and runs them in containers that closely resemble GitHub&#39;s hosted runners.<!--]--></p><p><!--[-->In this article, we&#39;ll explain how <strong><!--[-->act<!--]--></strong> works, then walk through <strong><!--[-->practical, real-world examples -<!--]--></strong> from simple push triggers to cron jobs, Python and TypeScript workflows, matrix builds, secrets, caching, and multi-job pipelines.<!--]--></p><p><!--[-->Let&#39;s dive in.<!--]--></p><h2 id="why-test-github-actions-locally"><a href="#why-test-github-actions-locally"><!--[-->Why Test GitHub Actions Locally?<!--]--></a></h2><p><!--[--><img src="https://res.cloudinary.com/suv4o/image/upload/q_auto,f_auto,w_750,e_sharpen:100/v1769425116/blog/how-to-run-and-debug-your-github-workflows-locally/why-test-github-actions-locally_yjdtcz" alt="Why Test GitHub Actions Locally"><!--]--></p><p><!--[-->Before we dive into the setup, let&#39;s talk about why this matters.<!--]--></p><p><!--[-->GitHub Actions is powerful. It handles CI/CD, automation, scheduled tasks, and much more. But the feedback loop can be painfully slow. Every time you want to test a change, you need to:<!--]--></p><ol><!--[--><li><!--[-->Commit your changes<!--]--></li><li><!--[-->Push to GitHub<!--]--></li><li><!--[-->Wait for a runner to become available<!--]--></li><li><!--[-->Watch your workflow execute (or fail)<!--]--></li><li><!--[-->Read through logs to find the issue<!--]--></li><li><!--[-->Repeat<!--]--></li><!--]--></ol><p><!--[-->For complex workflows, this cycle can eat up hours of your day. And if you&#39;re on a team with limited GitHub Actions minutes (for <strong><!--[-->private repositories<!--]--></strong>, each GitHub account receives <a href="https://docs.github.com/en/billing/concepts/product-billing/github-actions" rel="noopener noreferrer" target="_blank"><!--[-->2,000 free minutes per month<!--]--></a>), those failed runs add up quickly.<!--]--></p><p><!--[--><strong><!--[-->act<!--]--></strong> solves this by bringing the execution environment to your machine. It reads your <code><!--[-->.github/workflows/<!--]--></code> directory, pulls the necessary Docker images, and runs your workflows locally - with the same environment variables and filesystem structure that GitHub provides.<!--]--></p><p><!--[-->The result? You catch issues before they ever reach your repository.<!--]--></p><h2 id="prerequisites"><a href="#prerequisites"><!--[-->Prerequisites<!--]--></a></h2><p><!--[-->Before we begin, you&#39;ll need three things installed on your machine:<!--]--></p><ol><!--[--><li><!--[--><strong><!--[-->act<!--]--></strong> - the CLI tool that lets you run GitHub Actions locally<!--]--></li><li><!--[--><strong><!--[-->Docker Desktop<!--]--></strong> - <strong><!--[-->act<!--]--></strong> uses Docker containers to simulate GitHub&#39;s runners<!--]--></li><li><!--[--><a href="https://brew.sh/" rel="noopener noreferrer" target="_blank"><!--[--><strong><!--[-->Homebrew<!--]--></strong><!--]--></a> - we&#39;ll use it to install <strong><!--[-->act<!--]--></strong> and <strong><!--[-->Docker Desktop<!--]--></strong> (on macOS or Linux)<!--]--></li><!--]--></ol><blockquote><!--[--><p><!--[-->On Windows, Homebrew isn&#39;t available - you&#39;ll need to use a different package manager.<!--]--></p><!--]--></blockquote><p><!--[-->Let&#39;s get everything set up.<!--]--></p><h3 id="installing-docker-desktop"><a href="#installing-docker-desktop"><!--[-->Installing Docker Desktop<!--]--></a></h3><p><!--[-->If you don&#39;t have Docker installed yet, the easiest way on macOS is through Homebrew:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">brew</span><span class="sZZnC"> install</span><span class="sj4cs"> --cask</span><span class="sZZnC"> docker-desktop
+</span></span></code><!--]--></pre><p><!--[-->After installation, open Docker Desktop from your Applications folder. You&#39;ll see the Docker whale icon appear in your menu bar once it&#39;s running.<!--]--></p><p><!--[-->To verify Docker is working correctly, run:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">docker</span><span class="sj4cs"> --version
+</span></span></code><!--]--></pre><p><!--[-->You should see something like:<!--]--></p><pre class="language-text"><!--[--><code>Docker version 24.0.6, build ed223bc
+</code><!--]--></pre><blockquote><!--[--><p><!--[-->Make sure Docker Desktop is actually running before you try to use <strong><!--[-->act<!--]--></strong>. The Docker daemon needs to be active for <strong><!--[-->act<!--]--></strong> to create and manage containers.<!--]--></p><!--]--></blockquote><h3 id="installing-act"><a href="#installing-act"><!--[-->Installing act<!--]--></a></h3><p><!--[-->With Homebrew ready, installing <strong><!--[-->act<!--]--></strong> is straightforward:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">brew</span><span class="sZZnC"> install</span><span class="sZZnC"> act
+</span></span></code><!--]--></pre><p><!--[-->Verify the installation:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sj4cs"> --version
+</span></span></code><!--]--></pre><p><!--[-->You should see output like:<!--]--></p><pre class="language-text"><!--[--><code>act version 0.2.84
+</code><!--]--></pre><p><!--[-->That&#39;s it for the prerequisites. You&#39;re ready to start running GitHub Actions locally.<!--]--></p><h2 id="your-first-local-workflow"><a href="#your-first-local-workflow"><!--[-->Your First Local Workflow<!--]--></a></h2><p><!--[-->Let&#39;s start with the basics. Create a simple workflow file at <code><!--[-->.github/workflows/simple-push.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">01 - Simple Push Action
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="7"><span class="sVt8B">            - </span><span class="sZZnC">develop
+</span></span><span class="line" line="8"><span class="s9eBZ">    pull_request</span><span class="sVt8B">:
+</span></span><span class="line" line="9"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="11"><span emptylineplaceholder="true">
+</span></span><span class="line" line="12"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="s9eBZ">    greeting</span><span class="sVt8B">:
+</span></span><span class="line" line="14"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="15"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="16"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="17"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="18"><span emptylineplaceholder="true">
+</span></span><span class="line" line="19"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Say Hello
+</span></span><span class="line" line="20"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">echo &quot;Hello from GitHub Actions!&quot;
+</span></span><span class="line" line="21"><span emptylineplaceholder="true">
+</span></span><span class="line" line="22"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Show current date
+</span></span><span class="line" line="23"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">date
+</span></span><span class="line" line="24"><span emptylineplaceholder="true">
+</span></span><span class="line" line="25"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">List files in repository
+</span></span><span class="line" line="26"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">ls -la
+</span></span><span class="line" line="27"><span emptylineplaceholder="true">
+</span></span><span class="line" line="28"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Show environment info
+</span></span><span class="line" line="29"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="30"><span class="sZZnC">                  echo &quot;Runner OS: $RUNNER_OS&quot;
+</span></span><span class="line" line="31"><span class="sZZnC">                  echo &quot;GitHub Actor: $GITHUB_ACTOR&quot;
+</span></span><span class="line" line="32"><span class="sZZnC">                  echo &quot;GitHub Repository: $GITHUB_REPOSITORY&quot;
+</span></span><span class="line" line="33"><span class="sZZnC">                  echo &quot;GitHub Event: $GITHUB_EVENT_NAME&quot;
+</span></span></code><!--]--></pre><p><!--[-->This workflow triggers on <code><!--[-->push<!--]--></code> and <code><!--[-->pull request<!--]--></code> events, checks out your code, and displays basic information.<!--]--></p><p><!--[-->Now for the moment of truth - run the following command in your terminal.<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push
+</span></span></code><!--]--></pre><p><!--[-->The first time you run <strong><!--[-->act<!--]--></strong>, it will ask you to choose a default Docker image size:<!--]--></p><ul><!--[--><li><!--[--><strong><!--[-->Micro<!--]--></strong> - Lightweight and fast, but with limited tools<!--]--></li><li><!--[--><strong><!--[-->Medium<!--]--></strong> - A good balance (recommended for most use cases)<!--]--></li><li><!--[--><strong><!--[-->Large<!--]--></strong> - Full GitHub runner compatibility, but very large (~20GB)<!--]--></li><!--]--></ul><p><!--[-->I recommend starting with <strong><!--[-->Medium<!--]--></strong>. You can always change this later.<!--]--></p><p><!--[-->After selecting an image, <strong><!--[-->act<!--]--></strong> will pull the necessary Docker container and execute your workflow. You should see output similar to:<!--]--></p><pre class="language-text"><!--[--><code>[01 - Simple Push Action/greeting] ⭐ Run Set up job
+[01 - Simple Push Action/greeting]   ✅  Success - Set up job
+[01 - Simple Push Action/greeting] ⭐ Run Main Checkout code
+[01 - Simple Push Action/greeting]   ✅  Success - Main Checkout code
+[01 - Simple Push Action/greeting] ⭐ Run Main Say Hello
+[01 - Simple Push Action/greeting]   | Hello from GitHub Actions!
+[01 - Simple Push Action/greeting]   ✅  Success - Main Say Hello
+...
+[01 - Simple Push Action/greeting] 🏁  Job succeeded
+</code><!--]--></pre><p><!--[-->Congratulations! You just ran your first GitHub Actions workflow locally.<!--]--></p><h2 id="a-note-for-macos-and-apple-silicon-users"><a href="#a-note-for-macos-and-apple-silicon-users"><!--[-->A Note for macOS and Apple Silicon Users<!--]--></a></h2><blockquote><!--[--><p><!--[-->If you&#39;re on a Mac with an M1, M2, or M3 chip, you might encounter some issues with Docker containers. The GitHub Actions runners are built for x86_64 architecture, and your Mac uses ARM.<!--]--></p><!--]--></blockquote><p><!--[-->To avoid problems, I recommend creating a <code><!--[-->.actrc<!--]--></code> file in your project root with these settings:<!--]--></p><pre class="language-text"><!--[--><code># Default act configuration
+
+# Use medium-sized Ubuntu image
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+-P ubuntu-22.04=catthehacker/ubuntu:act-22.04
+-P ubuntu-20.04=catthehacker/ubuntu:act-20.04
+
+# Enable artifact server for artifact workflows
+--artifact-server-path /tmp/artifacts
+
+# macOS / Apple Silicon: Required for Docker Desktop compatibility
+--container-architecture linux/amd64
+--container-daemon-socket=-
+</code><!--]--></pre><p><!--[-->With this configuration, <strong><!--[-->act<!--]--></strong> will automatically use the correct architecture and settings every time you run it.<!--]--></p><p><!--[-->Alternatively, you can pass these flags manually:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> --container-architecture</span><span class="sZZnC"> linux/amd64</span><span class="sj4cs"> --container-daemon-socket=-
+</span></span></code><!--]--></pre><h2 id="running-scheduled-workflows-cron-jobs"><a href="#running-scheduled-workflows-cron-jobs"><!--[-->Running Scheduled Workflows (Cron Jobs)<!--]--></a></h2><p><!--[-->GitHub Actions supports scheduled workflows using cron expressions. Let&#39;s create one.<!--]--></p><p><!--[-->Create <code><!--[-->.github/workflows/cron-schedule.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">02 - Cron Scheduled Action
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    schedule</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="sJ8bj">        # Runs every day at midnight UTC
+</span></span><span class="line" line="6"><span class="sVt8B">        - </span><span class="s9eBZ">cron</span><span class="sVt8B">: </span><span class="sZZnC">&quot;0 0 * * *&quot;
+</span></span><span class="line" line="7"><span class="sJ8bj">        # Runs every Monday at 9am UTC
+</span></span><span class="line" line="8"><span class="sVt8B">        - </span><span class="s9eBZ">cron</span><span class="sVt8B">: </span><span class="sZZnC">&quot;0 9 * * 1&quot;
+</span></span><span class="line" line="9"><span class="sJ8bj">    # Allow manual trigger for testing
+</span></span><span class="line" line="10"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="11"><span emptylineplaceholder="true">
+</span></span><span class="line" line="12"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="s9eBZ">    scheduled-task</span><span class="sVt8B">:
+</span></span><span class="line" line="14"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="15"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="16"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="17"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="18"><span emptylineplaceholder="true">
+</span></span><span class="line" line="19"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Display scheduled run info
+</span></span><span class="line" line="20"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="21"><span class="sZZnC">                  echo &quot;Scheduled job running!&quot;
+</span></span><span class="line" line="22"><span class="sZZnC">                  echo &quot;Current time: $(date)&quot;
+</span></span><span class="line" line="23"><span class="sZZnC">                  echo &quot;Triggered by: ${{ github.event_name }}&quot;
+</span></span><span class="line" line="24"><span emptylineplaceholder="true">
+</span></span><span class="line" line="25"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Simulate daily cleanup task
+</span></span><span class="line" line="26"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="27"><span class="sZZnC">                  echo &quot;Performing daily cleanup...&quot;
+</span></span><span class="line" line="28"><span class="sZZnC">                  echo &quot;Checking for stale files...&quot;
+</span></span><span class="line" line="29"><span class="sZZnC">                  echo &quot;Cleanup complete!&quot;
+</span></span><span class="line" line="30"><span emptylineplaceholder="true">
+</span></span><span class="line" line="31"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Generate daily report
+</span></span><span class="line" line="32"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="33"><span class="sZZnC">                  echo &quot;=== Daily Report ===&quot;
+</span></span><span class="line" line="34"><span class="sZZnC">                  echo &quot;Date: $(date +%Y-%m-%d)&quot;
+</span></span><span class="line" line="35"><span class="sZZnC">                  echo &quot;Repository: $GITHUB_REPOSITORY&quot;
+</span></span><span class="line" line="36"><span class="sZZnC">                  echo &quot;Branch: $GITHUB_REF&quot;
+</span></span><span class="line" line="37"><span class="sZZnC">                  echo &quot;====================&quot;
+</span></span></code><!--]--></pre><p><!--[-->To run this locally, use the <code><!--[-->schedule<!--]--></code> event:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> schedule</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/cron-schedule.yml
+</span></span></code><!--]--></pre><p><!--[-->The <code><!--[-->-W<!--]--></code> flag specifies which workflow file to run. This is useful when you have multiple workflows and want to test a specific one.<!--]--></p><h2 id="running-python-in-github-actions"><a href="#running-python-in-github-actions"><!--[-->Running Python in GitHub Actions<!--]--></a></h2><p><!--[-->Let&#39;s get more practical. Here&#39;s a workflow that sets up Python, runs a script, and executes inline Python code.<!--]--></p><p><!--[-->First, create a Python script at <code><!--[-->scripts/hello.py<!--]--></code>:<!--]--></p><pre class="language-python shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span>#!/usr/bin/env python3
+</span></span><span class="line" line="2"><span>&quot;&quot;&quot;
+</span></span><span class="line" line="3"><span>Simple Python script for GitHub Actions demonstration.
+</span></span><span class="line" line="4"><span>&quot;&quot;&quot;
+</span></span><span class="line" line="5"><span emptylineplaceholder="true">
+</span></span><span class="line" line="6"><span>import os
+</span></span><span class="line" line="7"><span>from datetime import datetime
+</span></span><span class="line" line="8"><span emptylineplaceholder="true">
+</span></span><span class="line" line="9"><span>def main():
+</span></span><span class="line" line="10"><span>    print(&quot;=&quot; * 50)
+</span></span><span class="line" line="11"><span>    print(&quot;Hello from Python GitHub Action!&quot;)
+</span></span><span class="line" line="12"><span>    print(&quot;=&quot; * 50)
+</span></span><span class="line" line="13"><span>    print(f&quot;Current time: {datetime.now()}&quot;)
+</span></span><span class="line" line="14"><span>    print(f&quot;Working directory: {os.getcwd()}&quot;)
+</span></span><span class="line" line="15"><span emptylineplaceholder="true">
+</span></span><span class="line" line="16"><span>    # Show some environment variables if available
+</span></span><span class="line" line="17"><span>    github_vars = [
+</span></span><span class="line" line="18"><span>        &quot;GITHUB_REPOSITORY&quot;,
+</span></span><span class="line" line="19"><span>        &quot;GITHUB_ACTOR&quot;,
+</span></span><span class="line" line="20"><span>        &quot;GITHUB_EVENT_NAME&quot;,
+</span></span><span class="line" line="21"><span>        &quot;GITHUB_REF&quot;,
+</span></span><span class="line" line="22"><span>    ]
+</span></span><span class="line" line="23"><span emptylineplaceholder="true">
+</span></span><span class="line" line="24"><span>    print(&quot;\nGitHub Environment Variables:&quot;)
+</span></span><span class="line" line="25"><span>    for var in github_vars:
+</span></span><span class="line" line="26"><span>        value = os.environ.get(var, &quot;Not set&quot;)
+</span></span><span class="line" line="27"><span>        print(f&quot;  {var}: {value}&quot;)
+</span></span><span class="line" line="28"><span emptylineplaceholder="true">
+</span></span><span class="line" line="29"><span>    print(&quot;=&quot; * 50)
+</span></span><span class="line" line="30"><span>    print(&quot;Python script executed successfully!&quot;)
+</span></span><span class="line" line="31"><span>    print(&quot;=&quot; * 50)
+</span></span><span class="line" line="32"><span emptylineplaceholder="true">
+</span></span><span class="line" line="33"><span>if __name__ == &quot;__main__&quot;:
+</span></span><span class="line" line="34"><span>    main()
+</span></span></code><!--]--></pre><p><!--[-->Now create the workflow at <code><!--[-->.github/workflows/python-action.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">03 - Python Action
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        paths</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">&quot;**.py&quot;
+</span></span><span class="line" line="7"><span class="sVt8B">            - </span><span class="sZZnC">&quot;.github/workflows/python-action.yml&quot;
+</span></span><span class="line" line="8"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="9"><span emptylineplaceholder="true">
+</span></span><span class="line" line="10"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="11"><span class="s9eBZ">    python-job</span><span class="sVt8B">:
+</span></span><span class="line" line="12"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="13"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="14"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="15"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="16"><span emptylineplaceholder="true">
+</span></span><span class="line" line="17"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Set up Python
+</span></span><span class="line" line="18"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/setup-python@v5
+</span></span><span class="line" line="19"><span class="s9eBZ">              with</span><span class="sVt8B">:
+</span></span><span class="line" line="20"><span class="s9eBZ">                  python-version</span><span class="sVt8B">: </span><span class="sZZnC">&quot;3.12&quot;
+</span></span><span class="line" line="21"><span emptylineplaceholder="true">
+</span></span><span class="line" line="22"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Display Python version
+</span></span><span class="line" line="23"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">python --version
+</span></span><span class="line" line="24"><span emptylineplaceholder="true">
+</span></span><span class="line" line="25"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Run Python script
+</span></span><span class="line" line="26"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">python scripts/hello.py
+</span></span><span class="line" line="27"><span emptylineplaceholder="true">
+</span></span><span class="line" line="28"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Run inline Python code
+</span></span><span class="line" line="29"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="30"><span class="sZZnC">                  python &lt;&lt; &#39;EOF&#39;
+</span></span><span class="line" line="31"><span class="sZZnC">                  import sys
+</span></span><span class="line" line="32"><span class="sZZnC">                  import platform
+</span></span><span class="line" line="33"><span class="sZZnC">                  import datetime
+</span></span><span class="line" line="34"><span emptylineplaceholder="true">
+</span></span><span class="line" line="35"><span class="sZZnC">                  print(&quot;=&quot; * 50)
+</span></span><span class="line" line="36"><span class="sZZnC">                  print(&quot;Python Runtime Information&quot;)
+</span></span><span class="line" line="37"><span class="sZZnC">                  print(&quot;=&quot; * 50)
+</span></span><span class="line" line="38"><span class="sZZnC">                  print(f&quot;Python Version: {sys.version}&quot;)
+</span></span><span class="line" line="39"><span class="sZZnC">                  print(f&quot;Platform: {platform.platform()}&quot;)
+</span></span><span class="line" line="40"><span class="sZZnC">                  print(f&quot;Current Time: {datetime.datetime.now()}&quot;)
+</span></span><span class="line" line="41"><span class="sZZnC">                  print(&quot;=&quot; * 50)
+</span></span><span class="line" line="42"><span emptylineplaceholder="true">
+</span></span><span class="line" line="43"><span class="sZZnC">                  # Simple calculation
+</span></span><span class="line" line="44"><span class="sZZnC">                  numbers = [1, 2, 3, 4, 5]
+</span></span><span class="line" line="45"><span class="sZZnC">                  print(f&quot;Sum of {numbers} = {sum(numbers)}&quot;)
+</span></span><span class="line" line="46"><span class="sZZnC">                  print(f&quot;Average = {sum(numbers) / len(numbers)}&quot;)
+</span></span><span class="line" line="47"><span class="sZZnC">                  print(&quot;=&quot; * 50)
+</span></span><span class="line" line="48"><span class="sZZnC">                  EOF
+</span></span></code><!--]--></pre><p><!--[-->Run it:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/python-action.yml</span><span class="sj4cs"> -j</span><span class="sZZnC"> python-job
+</span></span></code><!--]--></pre><p><!--[-->The <code><!--[-->-j<!--]--></code> flag lets you run a specific job within a workflow. This is handy when your workflow has multiple jobs and you only want to test one.<!--]--></p><h2 id="running-typescript-in-github-actions"><a href="#running-typescript-in-github-actions"><!--[-->Running TypeScript in GitHub Actions<!--]--></a></h2><p><!--[-->TypeScript workflows are similar, but we need to set up Node.js and install a TypeScript runner. I recommend using <code><!--[-->tsx<!--]--></code> as it handles ESM modules gracefully.<!--]--></p><p><!--[-->Create <code><!--[-->scripts/hello.ts<!--]--></code>:<!--]--></p><pre class="language-ts shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sJ8bj">#!/usr/bin/env ts-node
+</span></span><span class="line" line="2"><span class="sJ8bj">/**
+</span></span><span class="line" line="3"><span class="sJ8bj"> * Simple TypeScript script for GitHub Actions demonstration.
+</span></span><span class="line" line="4"><span class="sJ8bj"> */
+</span></span><span class="line" line="5"><span emptylineplaceholder="true">
+</span></span><span class="line" line="6"><span class="szBVR">interface</span><span class="sScJk"> GitHubEnvVars</span><span class="sVt8B"> {
+</span></span><span class="line" line="7"><span class="s4XuR">    repository</span><span class="szBVR">:</span><span class="sj4cs"> string</span><span class="sVt8B">;
+</span></span><span class="line" line="8"><span class="s4XuR">    actor</span><span class="szBVR">:</span><span class="sj4cs"> string</span><span class="sVt8B">;
+</span></span><span class="line" line="9"><span class="s4XuR">    eventName</span><span class="szBVR">:</span><span class="sj4cs"> string</span><span class="sVt8B">;
+</span></span><span class="line" line="10"><span class="s4XuR">    ref</span><span class="szBVR">:</span><span class="sj4cs"> string</span><span class="sVt8B">;
+</span></span><span class="line" line="11"><span class="sVt8B">}
+</span></span><span class="line" line="12"><span emptylineplaceholder="true">
+</span></span><span class="line" line="13"><span class="szBVR">function</span><span class="sScJk"> getGitHubEnvVars</span><span class="sVt8B">()</span><span class="szBVR">:</span><span class="sScJk"> GitHubEnvVars</span><span class="sVt8B"> {
+</span></span><span class="line" line="14"><span class="szBVR">    return</span><span class="sVt8B"> {
+</span></span><span class="line" line="15"><span class="sVt8B">        repository: process.env.</span><span class="sj4cs">GITHUB_REPOSITORY</span><span class="szBVR"> ||</span><span class="sZZnC"> &quot;Not set&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="16"><span class="sVt8B">        actor: process.env.</span><span class="sj4cs">GITHUB_ACTOR</span><span class="szBVR"> ||</span><span class="sZZnC"> &quot;Not set&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="17"><span class="sVt8B">        eventName: process.env.</span><span class="sj4cs">GITHUB_EVENT_NAME</span><span class="szBVR"> ||</span><span class="sZZnC"> &quot;Not set&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="18"><span class="sVt8B">        ref: process.env.</span><span class="sj4cs">GITHUB_REF</span><span class="szBVR"> ||</span><span class="sZZnC"> &quot;Not set&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="19"><span class="sVt8B">    };
+</span></span><span class="line" line="20"><span class="sVt8B">}
+</span></span><span class="line" line="21"><span emptylineplaceholder="true">
+</span></span><span class="line" line="22"><span class="szBVR">function</span><span class="sScJk"> main</span><span class="sVt8B">()</span><span class="szBVR">:</span><span class="sj4cs"> void</span><span class="sVt8B"> {
+</span></span><span class="line" line="23"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;=&quot;</span><span class="sVt8B">.</span><span class="sScJk">repeat</span><span class="sVt8B">(</span><span class="sj4cs">50</span><span class="sVt8B">));
+</span></span><span class="line" line="24"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;Hello from TypeScript GitHub Action!&quot;</span><span class="sVt8B">);
+</span></span><span class="line" line="25"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;=&quot;</span><span class="sVt8B">.</span><span class="sScJk">repeat</span><span class="sVt8B">(</span><span class="sj4cs">50</span><span class="sVt8B">));
+</span></span><span class="line" line="26"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`Current time: ${</span><span class="szBVR">new</span><span class="sScJk"> Date</span><span class="sZZnC">().</span><span class="sScJk">toISOString</span><span class="sZZnC">()</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="27"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`Working directory: ${</span><span class="sVt8B">process</span><span class="sZZnC">.</span><span class="sScJk">cwd</span><span class="sZZnC">()</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="28"><span emptylineplaceholder="true">
+</span></span><span class="line" line="29"><span class="szBVR">    const</span><span class="sj4cs"> envVars</span><span class="szBVR"> =</span><span class="sScJk"> getGitHubEnvVars</span><span class="sVt8B">();
+</span></span><span class="line" line="30"><span emptylineplaceholder="true">
+</span></span><span class="line" line="31"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;</span><span class="sj4cs">\n</span><span class="sZZnC">GitHub Environment Variables:&quot;</span><span class="sVt8B">);
+</span></span><span class="line" line="32"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`  GITHUB_REPOSITORY: ${</span><span class="sVt8B">envVars</span><span class="sZZnC">.</span><span class="sVt8B">repository</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="33"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`  GITHUB_ACTOR: ${</span><span class="sVt8B">envVars</span><span class="sZZnC">.</span><span class="sVt8B">actor</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="34"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`  GITHUB_EVENT_NAME: ${</span><span class="sVt8B">envVars</span><span class="sZZnC">.</span><span class="sVt8B">eventName</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="35"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">`  GITHUB_REF: ${</span><span class="sVt8B">envVars</span><span class="sZZnC">.</span><span class="sVt8B">ref</span><span class="sZZnC">}`</span><span class="sVt8B">);
+</span></span><span class="line" line="36"><span emptylineplaceholder="true">
+</span></span><span class="line" line="37"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;=&quot;</span><span class="sVt8B">.</span><span class="sScJk">repeat</span><span class="sVt8B">(</span><span class="sj4cs">50</span><span class="sVt8B">));
+</span></span><span class="line" line="38"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;TypeScript script executed successfully!&quot;</span><span class="sVt8B">);
+</span></span><span class="line" line="39"><span class="sVt8B">    console.</span><span class="sScJk">log</span><span class="sVt8B">(</span><span class="sZZnC">&quot;=&quot;</span><span class="sVt8B">.</span><span class="sScJk">repeat</span><span class="sVt8B">(</span><span class="sj4cs">50</span><span class="sVt8B">));
+</span></span><span class="line" line="40"><span class="sVt8B">}
+</span></span><span class="line" line="41"><span emptylineplaceholder="true">
+</span></span><span class="line" line="42"><span class="sScJk">main</span><span class="sVt8B">();
+</span></span></code><!--]--></pre><p><!--[-->And the workflow at <code><!--[-->.github/workflows/typescript-action.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">04 - TypeScript Action
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        paths</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">&quot;**.ts&quot;
+</span></span><span class="line" line="7"><span class="sVt8B">            - </span><span class="sZZnC">&quot;**.js&quot;
+</span></span><span class="line" line="8"><span class="sVt8B">            - </span><span class="sZZnC">&quot;.github/workflows/typescript-action.yml&quot;
+</span></span><span class="line" line="9"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span emptylineplaceholder="true">
+</span></span><span class="line" line="11"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="12"><span class="s9eBZ">    typescript-job</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="14"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="15"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="16"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="17"><span emptylineplaceholder="true">
+</span></span><span class="line" line="18"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Set up Node.js
+</span></span><span class="line" line="19"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/setup-node@v4
+</span></span><span class="line" line="20"><span class="s9eBZ">              with</span><span class="sVt8B">:
+</span></span><span class="line" line="21"><span class="s9eBZ">                  node-version</span><span class="sVt8B">: </span><span class="sZZnC">&quot;20&quot;
+</span></span><span class="line" line="22"><span emptylineplaceholder="true">
+</span></span><span class="line" line="23"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Display Node.js version
+</span></span><span class="line" line="24"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">node --version
+</span></span><span class="line" line="25"><span emptylineplaceholder="true">
+</span></span><span class="line" line="26"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Install TypeScript
+</span></span><span class="line" line="27"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">npm install -g typescript tsx
+</span></span><span class="line" line="28"><span emptylineplaceholder="true">
+</span></span><span class="line" line="29"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Run TypeScript script
+</span></span><span class="line" line="30"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">npx tsx scripts/hello.ts
+</span></span></code><!--]--></pre><p><!--[-->Run it:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/typescript-action.yml</span><span class="sj4cs"> -j</span><span class="sZZnC"> typescript-job
+</span></span></code><!--]--></pre><h2 id="manual-triggers-with-input-parameters"><a href="#manual-triggers-with-input-parameters"><!--[-->Manual Triggers with Input Parameters<!--]--></a></h2><p><!--[-->Sometimes you want to trigger a workflow manually with custom inputs - like deploying to a specific environment or running with debug mode enabled.<!--]--></p><p><!--[-->Create <code><!--[-->.github/workflows/workflow-dispatch.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">05 - Manual Trigger (workflow_dispatch)
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        inputs</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="s9eBZ">            environment</span><span class="sVt8B">:
+</span></span><span class="line" line="7"><span class="s9eBZ">                description</span><span class="sVt8B">: </span><span class="sZZnC">&quot;Deployment environment&quot;
+</span></span><span class="line" line="8"><span class="s9eBZ">                required</span><span class="sVt8B">: </span><span class="sj4cs">true
+</span></span><span class="line" line="9"><span class="s9eBZ">                default</span><span class="sVt8B">: </span><span class="sZZnC">&quot;staging&quot;
+</span></span><span class="line" line="10"><span class="s9eBZ">                type</span><span class="sVt8B">: </span><span class="sZZnC">choice
+</span></span><span class="line" line="11"><span class="s9eBZ">                options</span><span class="sVt8B">:
+</span></span><span class="line" line="12"><span class="sVt8B">                    - </span><span class="sZZnC">development
+</span></span><span class="line" line="13"><span class="sVt8B">                    - </span><span class="sZZnC">staging
+</span></span><span class="line" line="14"><span class="sVt8B">                    - </span><span class="sZZnC">production
+</span></span><span class="line" line="15"><span class="s9eBZ">            log_level</span><span class="sVt8B">:
+</span></span><span class="line" line="16"><span class="s9eBZ">                description</span><span class="sVt8B">: </span><span class="sZZnC">&quot;Log level&quot;
+</span></span><span class="line" line="17"><span class="s9eBZ">                required</span><span class="sVt8B">: </span><span class="sj4cs">false
+</span></span><span class="line" line="18"><span class="s9eBZ">                default</span><span class="sVt8B">: </span><span class="sZZnC">&quot;info&quot;
+</span></span><span class="line" line="19"><span class="s9eBZ">                type</span><span class="sVt8B">: </span><span class="sZZnC">choice
+</span></span><span class="line" line="20"><span class="s9eBZ">                options</span><span class="sVt8B">:
+</span></span><span class="line" line="21"><span class="sVt8B">                    - </span><span class="sZZnC">debug
+</span></span><span class="line" line="22"><span class="sVt8B">                    - </span><span class="sZZnC">info
+</span></span><span class="line" line="23"><span class="sVt8B">                    - </span><span class="sZZnC">warning
+</span></span><span class="line" line="24"><span class="sVt8B">                    - </span><span class="sZZnC">error
+</span></span><span class="line" line="25"><span class="s9eBZ">            dry_run</span><span class="sVt8B">:
+</span></span><span class="line" line="26"><span class="s9eBZ">                description</span><span class="sVt8B">: </span><span class="sZZnC">&quot;Perform a dry run without making changes&quot;
+</span></span><span class="line" line="27"><span class="s9eBZ">                required</span><span class="sVt8B">: </span><span class="sj4cs">false
+</span></span><span class="line" line="28"><span class="s9eBZ">                default</span><span class="sVt8B">: </span><span class="sj4cs">true
+</span></span><span class="line" line="29"><span class="s9eBZ">                type</span><span class="sVt8B">: </span><span class="sZZnC">boolean
+</span></span><span class="line" line="30"><span class="s9eBZ">            version</span><span class="sVt8B">:
+</span></span><span class="line" line="31"><span class="s9eBZ">                description</span><span class="sVt8B">: </span><span class="sZZnC">&quot;Version to deploy (e.g., v1.0.0)&quot;
+</span></span><span class="line" line="32"><span class="s9eBZ">                required</span><span class="sVt8B">: </span><span class="sj4cs">false
+</span></span><span class="line" line="33"><span class="s9eBZ">                type</span><span class="sVt8B">: </span><span class="sZZnC">string
+</span></span><span class="line" line="34"><span emptylineplaceholder="true">
+</span></span><span class="line" line="35"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="36"><span class="s9eBZ">    deploy</span><span class="sVt8B">:
+</span></span><span class="line" line="37"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="38"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="39"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="40"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="41"><span emptylineplaceholder="true">
+</span></span><span class="line" line="42"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Display inputs
+</span></span><span class="line" line="43"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="44"><span class="sZZnC">                  echo &quot;=== Workflow Dispatch Inputs ===&quot;
+</span></span><span class="line" line="45"><span class="sZZnC">                  echo &quot;Environment: ${{ inputs.environment }}&quot;
+</span></span><span class="line" line="46"><span class="sZZnC">                  echo &quot;Log Level: ${{ inputs.log_level }}&quot;
+</span></span><span class="line" line="47"><span class="sZZnC">                  echo &quot;Dry Run: ${{ inputs.dry_run }}&quot;
+</span></span><span class="line" line="48"><span class="sZZnC">                  echo &quot;Version: ${{ inputs.version || &#39;latest&#39; }}&quot;
+</span></span><span class="line" line="49"><span class="sZZnC">                  echo &quot;================================&quot;
+</span></span><span class="line" line="50"><span emptylineplaceholder="true">
+</span></span><span class="line" line="51"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Simulate deployment
+</span></span><span class="line" line="52"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="53"><span class="sZZnC">                  echo &quot;Starting deployment process...&quot;
+</span></span><span class="line" line="54"><span class="sZZnC">                  echo &quot;Target environment: ${{ inputs.environment }}&quot;
+</span></span><span class="line" line="55"><span emptylineplaceholder="true">
+</span></span><span class="line" line="56"><span class="sZZnC">                  if [ &quot;${{ inputs.dry_run }}&quot; = &quot;true&quot; ]; then
+</span></span><span class="line" line="57"><span class="sZZnC">                    echo &quot;[DRY RUN] Would deploy version ${{ inputs.version || &#39;latest&#39; }} to ${{ inputs.environment }}&quot;
+</span></span><span class="line" line="58"><span class="sZZnC">                  else
+</span></span><span class="line" line="59"><span class="sZZnC">                    echo &quot;Deploying version ${{ inputs.version || &#39;latest&#39; }} to ${{ inputs.environment }}&quot;
+</span></span><span class="line" line="60"><span class="sZZnC">                  fi
+</span></span><span class="line" line="61"><span emptylineplaceholder="true">
+</span></span><span class="line" line="62"><span class="sZZnC">                  echo &quot;Deployment simulation complete!&quot;
+</span></span></code><!--]--></pre><p><!--[-->To run this with custom inputs:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> workflow_dispatch</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/workflow-dispatch.yml</span><span class="sj4cs"> \
+</span></span><span class="line" line="2"><span class="sj4cs">  --input</span><span class="sZZnC"> environment=production</span><span class="sj4cs"> \
+</span></span><span class="line" line="3"><span class="sj4cs">  --input</span><span class="sZZnC"> log_level=debug</span><span class="sj4cs"> \
+</span></span><span class="line" line="4"><span class="sj4cs">  --input</span><span class="sZZnC"> dry_run=</span><span class="sj4cs">false</span><span class="sj4cs"> \
+</span></span><span class="line" line="5"><span class="sj4cs">  --input</span><span class="sZZnC"> version=v2.0.0
+</span></span></code><!--]--></pre><p><!--[-->This is incredibly useful for testing deployment scripts before actually deploying.<!--]--></p><h2 id="multi-job-workflows-with-dependencies"><a href="#multi-job-workflows-with-dependencies"><!--[-->Multi-Job Workflows with Dependencies<!--]--></a></h2><p><!--[-->Real-world CI/CD pipelines often have multiple jobs that depend on each other. Let&#39;s create a workflow that demonstrates this pattern.<!--]--></p><p><!--[-->Create <code><!--[-->.github/workflows/multi-job-dependencies.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">06 - Multi-Job with Dependencies
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="7"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="8"><span emptylineplaceholder="true">
+</span></span><span class="line" line="9"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span class="s9eBZ">    build</span><span class="sVt8B">:
+</span></span><span class="line" line="11"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="12"><span class="s9eBZ">        outputs</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="s9eBZ">            build_id</span><span class="sVt8B">: </span><span class="sZZnC">${{ steps.build_step.outputs.build_id }}
+</span></span><span class="line" line="14"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="15"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="16"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="17"><span emptylineplaceholder="true">
+</span></span><span class="line" line="18"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Build step
+</span></span><span class="line" line="19"><span class="s9eBZ">              id</span><span class="sVt8B">: </span><span class="sZZnC">build_step
+</span></span><span class="line" line="20"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="21"><span class="sZZnC">                  echo &quot;Building the project...&quot;
+</span></span><span class="line" line="22"><span class="sZZnC">                  BUILD_ID=&quot;build-$(date +%Y%m%d%H%M%S)&quot;
+</span></span><span class="line" line="23"><span class="sZZnC">                  echo &quot;build_id=$BUILD_ID&quot; &gt;&gt; $GITHUB_OUTPUT
+</span></span><span class="line" line="24"><span class="sZZnC">                  echo &quot;Build ID: $BUILD_ID&quot;
+</span></span><span class="line" line="25"><span class="sZZnC">                  echo &quot;Build completed successfully!&quot;
+</span></span><span class="line" line="26"><span emptylineplaceholder="true">
+</span></span><span class="line" line="27"><span class="s9eBZ">    test</span><span class="sVt8B">:
+</span></span><span class="line" line="28"><span class="s9eBZ">        needs</span><span class="sVt8B">: </span><span class="sZZnC">build
+</span></span><span class="line" line="29"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="30"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="31"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="32"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="33"><span emptylineplaceholder="true">
+</span></span><span class="line" line="34"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Run tests
+</span></span><span class="line" line="35"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="36"><span class="sZZnC">                  echo &quot;Running tests for build: ${{ needs.build.outputs.build_id }}&quot;
+</span></span><span class="line" line="37"><span class="sZZnC">                  echo &quot;Test 1: Unit tests... PASSED&quot;
+</span></span><span class="line" line="38"><span class="sZZnC">                  echo &quot;Test 2: Integration tests... PASSED&quot;
+</span></span><span class="line" line="39"><span class="sZZnC">                  echo &quot;Test 3: E2E tests... PASSED&quot;
+</span></span><span class="line" line="40"><span class="sZZnC">                  echo &quot;All tests passed!&quot;
+</span></span><span class="line" line="41"><span emptylineplaceholder="true">
+</span></span><span class="line" line="42"><span class="s9eBZ">    lint</span><span class="sVt8B">:
+</span></span><span class="line" line="43"><span class="s9eBZ">        needs</span><span class="sVt8B">: </span><span class="sZZnC">build
+</span></span><span class="line" line="44"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="45"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="46"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="47"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="48"><span emptylineplaceholder="true">
+</span></span><span class="line" line="49"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Run linting
+</span></span><span class="line" line="50"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="51"><span class="sZZnC">                  echo &quot;Running linting for build: ${{ needs.build.outputs.build_id }}&quot;
+</span></span><span class="line" line="52"><span class="sZZnC">                  echo &quot;Checking code style...&quot;
+</span></span><span class="line" line="53"><span class="sZZnC">                  echo &quot;Checking for common issues...&quot;
+</span></span><span class="line" line="54"><span class="sZZnC">                  echo &quot;Linting passed!&quot;
+</span></span><span class="line" line="55"><span emptylineplaceholder="true">
+</span></span><span class="line" line="56"><span class="s9eBZ">    deploy</span><span class="sVt8B">:
+</span></span><span class="line" line="57"><span class="s9eBZ">        needs</span><span class="sVt8B">: [</span><span class="sZZnC">test</span><span class="sVt8B">, </span><span class="sZZnC">lint</span><span class="sVt8B">]
+</span></span><span class="line" line="58"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="59"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="60"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="61"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="62"><span emptylineplaceholder="true">
+</span></span><span class="line" line="63"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Deploy
+</span></span><span class="line" line="64"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="65"><span class="sZZnC">                  echo &quot;All checks passed!&quot;
+</span></span><span class="line" line="66"><span class="sZZnC">                  echo &quot;Deploying build: ${{ needs.build.outputs.build_id }}&quot;
+</span></span><span class="line" line="67"><span class="sZZnC">                  echo &quot;Deployment successful!&quot;
+</span></span></code><!--]--></pre><p><!--[-->Notice how:<!--]--></p><ul><!--[--><li><!--[--><code><!--[-->test<!--]--></code> and <code><!--[-->lint<!--]--></code> both depend on <code><!--[-->build<!--]--></code> (they run in parallel after build completes)<!--]--></li><li><!--[--><code><!--[-->deploy<!--]--></code> depends on both <code><!--[-->test<!--]--></code> and <code><!--[-->lint<!--]--></code> (it only runs after both pass)<!--]--></li><li><!--[-->The <code><!--[-->build_id<!--]--></code> output is passed between jobs using <code><!--[-->$GITHUB_OUTPUT<!--]--></code><!--]--></li><!--]--></ul><p><!--[-->Run it:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/multi-job-dependencies.yml
+</span></span></code><!--]--></pre><h2 id="matrix-builds"><a href="#matrix-builds"><!--[-->Matrix Builds<!--]--></a></h2><p><!--[-->Matrix builds let you test across multiple configurations - different Node versions, operating systems, or any combination of parameters.<!--]--></p><p><!--[-->Create <code><!--[-->.github/workflows/matrix-build.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">07 - Matrix Build Strategy
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="7"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="8"><span emptylineplaceholder="true">
+</span></span><span class="line" line="9"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span class="s9eBZ">    matrix-simple</span><span class="sVt8B">:
+</span></span><span class="line" line="11"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="12"><span class="s9eBZ">        strategy</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="s9eBZ">            matrix</span><span class="sVt8B">:
+</span></span><span class="line" line="14"><span class="s9eBZ">                node</span><span class="sVt8B">: [</span><span class="sj4cs">18</span><span class="sVt8B">, </span><span class="sj4cs">20</span><span class="sVt8B">, </span><span class="sj4cs">22</span><span class="sVt8B">]
+</span></span><span class="line" line="15"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="16"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="17"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="18"><span emptylineplaceholder="true">
+</span></span><span class="line" line="19"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Setup Node.js ${{ matrix.node }}
+</span></span><span class="line" line="20"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/setup-node@v4
+</span></span><span class="line" line="21"><span class="s9eBZ">              with</span><span class="sVt8B">:
+</span></span><span class="line" line="22"><span class="s9eBZ">                  node-version</span><span class="sVt8B">: </span><span class="sZZnC">${{ matrix.node }}
+</span></span><span class="line" line="23"><span emptylineplaceholder="true">
+</span></span><span class="line" line="24"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Display versions
+</span></span><span class="line" line="25"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="26"><span class="sZZnC">                  echo &quot;Node version: $(node --version)&quot;
+</span></span><span class="line" line="27"><span class="sZZnC">                  echo &quot;npm version: $(npm --version)&quot;
+</span></span></code><!--]--></pre><p><!--[-->To run a specific matrix combination:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/matrix-build.yml</span><span class="sj4cs"> --matrix</span><span class="sZZnC"> node:20
+</span></span></code><!--]--></pre><h2 id="working-with-secrets-and-environment-variables"><a href="#working-with-secrets-and-environment-variables"><!--[-->Working with Secrets and Environment Variables<!--]--></a></h2><p><!--[-->Workflows often need access to secrets - API keys, deployment tokens, and so on. Here&#39;s how to handle them with act.<!--]--></p><p><!--[-->Create <code><!--[-->.github/workflows/secrets-and-env.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">08 - Secrets and Environment Variables
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="7"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="8"><span emptylineplaceholder="true">
+</span></span><span class="line" line="9"><span class="s9eBZ">env</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span class="sJ8bj">    # Workflow-level environment variables
+</span></span><span class="line" line="11"><span class="s9eBZ">    APP_NAME</span><span class="sVt8B">: </span><span class="sZZnC">&quot;my-awesome-app&quot;
+</span></span><span class="line" line="12"><span class="s9eBZ">    APP_VERSION</span><span class="sVt8B">: </span><span class="sZZnC">&quot;1.0.0&quot;
+</span></span><span class="line" line="13"><span emptylineplaceholder="true">
+</span></span><span class="line" line="14"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="15"><span class="s9eBZ">    secrets-demo</span><span class="sVt8B">:
+</span></span><span class="line" line="16"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="17"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="18"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="19"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="20"><span emptylineplaceholder="true">
+</span></span><span class="line" line="21"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Use secrets (masked in logs)
+</span></span><span class="line" line="22"><span class="s9eBZ">              env</span><span class="sVt8B">:
+</span></span><span class="line" line="23"><span class="s9eBZ">                  API_KEY</span><span class="sVt8B">: </span><span class="sZZnC">${{ secrets.API_KEY }}
+</span></span><span class="line" line="24"><span class="s9eBZ">                  DATABASE_PASSWORD</span><span class="sVt8B">: </span><span class="sZZnC">${{ secrets.DATABASE_PASSWORD }}
+</span></span><span class="line" line="25"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="26"><span class="sZZnC">                  echo &quot;=== Working with Secrets ===&quot;
+</span></span><span class="line" line="27"><span class="sZZnC">                  echo &quot;Secrets are automatically masked in logs&quot;
+</span></span><span class="line" line="28"><span emptylineplaceholder="true">
+</span></span><span class="line" line="29"><span class="sZZnC">                  if [ -n &quot;$API_KEY&quot; ]; then
+</span></span><span class="line" line="30"><span class="sZZnC">                    echo &quot;API_KEY is set (value hidden)&quot;
+</span></span><span class="line" line="31"><span class="sZZnC">                  else
+</span></span><span class="line" line="32"><span class="sZZnC">                    echo &quot;API_KEY is not set - provide via &#39;act -s API_KEY=value&#39;&quot;
+</span></span><span class="line" line="33"><span class="sZZnC">                  fi
+</span></span></code><!--]--></pre><p><!--[-->To pass secrets to act:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sJ8bj"># Inline secrets
+</span></span><span class="line" line="2"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -s</span><span class="sZZnC"> API_KEY=my-api-key</span><span class="sj4cs"> -s</span><span class="sZZnC"> DATABASE_PASSWORD=my-password
+</span></span><span class="line" line="3"><span emptylineplaceholder="true">
+</span></span><span class="line" line="4"><span class="sJ8bj"># From a file (create .secrets with KEY=value pairs)
+</span></span><span class="line" line="5"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> --secret-file</span><span class="sZZnC"> .secrets
+</span></span><span class="line" line="6"><span emptylineplaceholder="true">
+</span></span><span class="line" line="7"><span class="sJ8bj"># Using GitHub CLI token
+</span></span><span class="line" line="8"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -s</span><span class="sZZnC"> GITHUB_TOKEN=&quot;$(</span><span class="sScJk">gh</span><span class="sZZnC"> auth token)&quot;
+</span></span></code><!--]--></pre><blockquote><!--[--><p><!--[-->Never commit your <code><!--[-->.secrets<!--]--></code> file! Add it to <code><!--[-->.gitignore<!--]--></code>.<!--]--></p><!--]--></blockquote><h2 id="caching-dependencies"><a href="#caching-dependencies"><!--[-->Caching Dependencies<!--]--></a></h2><p><!--[-->Caching can significantly speed up your workflows. Here&#39;s how to set it up.<!--]--></p><p><!--[-->First, make sure you have <code><!--[-->package.json<!--]--></code> and <code><!--[-->requirements.txt<!--]--></code> in your project root:<!--]--></p><p><!--[--><strong><!--[-->package.json:<!--]--></strong><!--]--></p><pre class="language-json shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sVt8B">{
+</span></span><span class="line" line="2"><span class="sj4cs">    &quot;name&quot;</span><span class="sVt8B">: </span><span class="sZZnC">&quot;act-demo&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="3"><span class="sj4cs">    &quot;version&quot;</span><span class="sVt8B">: </span><span class="sZZnC">&quot;1.0.0&quot;</span><span class="sVt8B">,
+</span></span><span class="line" line="4"><span class="sj4cs">    &quot;dependencies&quot;</span><span class="sVt8B">: {
+</span></span><span class="line" line="5"><span class="sj4cs">        &quot;lodash&quot;</span><span class="sVt8B">: </span><span class="sZZnC">&quot;^4.17.21&quot;
+</span></span><span class="line" line="6"><span class="sVt8B">    }
+</span></span><span class="line" line="7"><span class="sVt8B">}
+</span></span></code><!--]--></pre><p><!--[--><strong><!--[-->requirements.txt:<!--]--></strong><!--]--></p><pre class="language-text"><!--[--><code>requests==2.31.0
+</code><!--]--></pre><p><!--[-->Generate the lock file:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">npm</span><span class="sZZnC"> install</span><span class="sj4cs"> --package-lock-only
+</span></span></code><!--]--></pre><p><!--[-->Now create <code><!--[-->.github/workflows/caching.yml<!--]--></code>:<!--]--></p><pre class="language-yaml shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">11 - Caching Dependencies
+</span></span><span class="line" line="2"><span emptylineplaceholder="true">
+</span></span><span class="line" line="3"><span class="sj4cs">on</span><span class="sVt8B">:
+</span></span><span class="line" line="4"><span class="s9eBZ">    push</span><span class="sVt8B">:
+</span></span><span class="line" line="5"><span class="s9eBZ">        branches</span><span class="sVt8B">:
+</span></span><span class="line" line="6"><span class="sVt8B">            - </span><span class="sZZnC">main
+</span></span><span class="line" line="7"><span class="s9eBZ">    workflow_dispatch</span><span class="sVt8B">:
+</span></span><span class="line" line="8"><span emptylineplaceholder="true">
+</span></span><span class="line" line="9"><span class="s9eBZ">jobs</span><span class="sVt8B">:
+</span></span><span class="line" line="10"><span class="s9eBZ">    cache-npm</span><span class="sVt8B">:
+</span></span><span class="line" line="11"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="12"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="13"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="14"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="15"><span emptylineplaceholder="true">
+</span></span><span class="line" line="16"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Setup Node.js with cache
+</span></span><span class="line" line="17"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/setup-node@v4
+</span></span><span class="line" line="18"><span class="s9eBZ">              with</span><span class="sVt8B">:
+</span></span><span class="line" line="19"><span class="s9eBZ">                  node-version</span><span class="sVt8B">: </span><span class="sZZnC">&quot;20&quot;
+</span></span><span class="line" line="20"><span class="s9eBZ">                  cache</span><span class="sVt8B">: </span><span class="sZZnC">&quot;npm&quot;
+</span></span><span class="line" line="21"><span emptylineplaceholder="true">
+</span></span><span class="line" line="22"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Install dependencies
+</span></span><span class="line" line="23"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">npm install
+</span></span><span class="line" line="24"><span emptylineplaceholder="true">
+</span></span><span class="line" line="25"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Verify installation
+</span></span><span class="line" line="26"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="27"><span class="sZZnC">                  echo &quot;Node modules installed:&quot;
+</span></span><span class="line" line="28"><span class="sZZnC">                  ls node_modules/
+</span></span><span class="line" line="29"><span emptylineplaceholder="true">
+</span></span><span class="line" line="30"><span class="s9eBZ">    cache-pip</span><span class="sVt8B">:
+</span></span><span class="line" line="31"><span class="s9eBZ">        runs-on</span><span class="sVt8B">: </span><span class="sZZnC">ubuntu-latest
+</span></span><span class="line" line="32"><span class="s9eBZ">        steps</span><span class="sVt8B">:
+</span></span><span class="line" line="33"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Checkout code
+</span></span><span class="line" line="34"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/checkout@v4
+</span></span><span class="line" line="35"><span emptylineplaceholder="true">
+</span></span><span class="line" line="36"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Setup Python with cache
+</span></span><span class="line" line="37"><span class="s9eBZ">              uses</span><span class="sVt8B">: </span><span class="sZZnC">actions/setup-python@v5
+</span></span><span class="line" line="38"><span class="s9eBZ">              with</span><span class="sVt8B">:
+</span></span><span class="line" line="39"><span class="s9eBZ">                  python-version</span><span class="sVt8B">: </span><span class="sZZnC">&quot;3.12&quot;
+</span></span><span class="line" line="40"><span class="s9eBZ">                  cache</span><span class="sVt8B">: </span><span class="sZZnC">&quot;pip&quot;
+</span></span><span class="line" line="41"><span emptylineplaceholder="true">
+</span></span><span class="line" line="42"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Install dependencies
+</span></span><span class="line" line="43"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="sZZnC">pip install -r requirements.txt
+</span></span><span class="line" line="44"><span emptylineplaceholder="true">
+</span></span><span class="line" line="45"><span class="sVt8B">            - </span><span class="s9eBZ">name</span><span class="sVt8B">: </span><span class="sZZnC">Verify installation
+</span></span><span class="line" line="46"><span class="s9eBZ">              run</span><span class="sVt8B">: </span><span class="szBVR">|
+</span></span><span class="line" line="47"><span class="sZZnC">                  python -c &quot;import requests; print(f&#39;requests version: {requests.__version__}&#39;)&quot;
+</span></span></code><!--]--></pre><p><!--[-->Run it:<!--]--></p><pre class="language-bash shiki shiki-themes github-light github-dark" style=""><!--[--><code><span class="line" line="1"><span class="sScJk">act</span><span class="sZZnC"> push</span><span class="sj4cs"> -W</span><span class="sZZnC"> .github/workflows/caching.yml
+</span></span></code><!--]--></pre><p><!--[-->The first run will install dependencies. Subsequent runs will restore them from cache - much faster!<!--]--></p><h2 id="the-vscode-extension"><a href="#the-vscode-extension"><!--[-->The VSCode Extension<!--]--></a></h2><p><!--[-->By now, we&#39;ve been running GitHub Actions locally through the command line - and for many developers, that&#39;s perfectly fine. But if you prefer a more visual approach, there&#39;s a fantastic VSCode extension called <a href="https://sanjulaganepola.github.io/github-local-actions-docs/" rel="noopener noreferrer" target="_blank"><!--[--><strong><!--[-->GitHub Local Actions<!--]--></strong><!--]--></a> that lets you run workflows with the click of a button.<!--]--></p><p><!--[-->The extension is built on top of the same <strong><!--[-->act<!--]--></strong> CLI we&#39;ve been using, so everything we&#39;ve learned still applies. It just wraps it in a friendly interface that integrates directly into your editor.<!--]--></p><h3 id="running-a-workflow"><a href="#running-a-workflow"><!--[-->Running a Workflow<!--]--></a></h3><p><!--[-->With the extension, running a workflow is as simple as:<!--]--></p><ol><!--[--><li><!--[-->Open the <strong><!--[-->Workflows<!--]--></strong> view in the sidebar<!--]--></li><li><!--[-->Find your workflow (e.g., &quot;Simple Push Action&quot;)<!--]--></li><li><!--[-->Click the <strong><!--[-->play button<!--]--></strong> next to it<!--]--></li><!--]--></ol><p><!--[-->The extension builds the appropriate <strong><!--[-->act<!--]--></strong> command behind the scenes and runs it as a VSCode task. You&#39;ll see the output in the integrated terminal, complete with the same colourful logs you&#39;d see from the CLI.<!--]--></p><p><!--[-->You can also right-click on a specific job within a workflow to run just that job - useful when you&#39;re debugging one part of a multi-job pipeline.<!--]--></p><h3 id="managing-secrets-and-variables"><a href="#managing-secrets-and-variables"><!--[-->Managing Secrets and Variables<!--]--></a></h3><p><!--[-->Remember how we passed secrets via <code><!--[-->-s API_KEY=value<!--]--></code> on the command line? The extension makes this easier:<!--]--></p><ol><!--[--><li><!--[-->Open the <strong><!--[-->Settings<!--]--></strong> view<!--]--></li><li><!--[-->Navigate to <strong><!--[-->Secrets<!--]--></strong><!--]--></li><li><!--[-->Add your secrets with their values<!--]--></li><!--]--></ol><p><!--[-->They&#39;re stored securely and automatically passed to your workflow runs. The same goes for variables, inputs, and runner configurations.<!--]--></p><h2 id="wrapping-up"><a href="#wrapping-up"><!--[-->Wrapping Up<!--]--></a></h2><p><!--[-->This is a tool I wish I&#39;d known about much earlier - it would have saved me a lot of time. It&#39;s simple but powerful, and for workflows that need testing, it can dramatically reduce iteration time.<!--]--></p><p><!--[-->I&#39;ve documented this for myself so I can come back sometime in the future when I need to test my workflows and remind myself from this article.<!--]--></p><p><!--[-->I&#39;ve shown a few examples here, but there are even more in the following repo. You can find all these examples and additional ones here:<!--]--></p><p><!--[--><strong><!--[-->Repository<!--]--></strong>: <a href="https://github.com/Suv4o/run-your-github-actions-locally-with-act" rel="noopener noreferrer" target="_blank"><!--[-->run-your-github-actions-locally-with-act<!--]--></a><!--]--></p><p><!--[-->Happy testing!<!--]--></p><style>html pre.shiki code .sScJk, html code.shiki .sScJk{--shiki-default:#6F42C1;--shiki-dark:#B392F0}html pre.shiki code .sZZnC, html code.shiki .sZZnC{--shiki-default:#032F62;--shiki-dark:#9ECBFF}html pre.shiki code .sj4cs, html code.shiki .sj4cs{--shiki-default:#005CC5;--shiki-dark:#79B8FF}html .default .shiki span {color: var(--shiki-default);background: var(--shiki-default-bg);font-style: var(--shiki-default-font-style);font-weight: var(--shiki-default-font-weight);text-decoration: var(--shiki-default-text-decoration);}html .shiki span {color: var(--shiki-default);background: var(--shiki-default-bg);font-style: var(--shiki-default-font-style);font-weight: var(--shiki-default-font-weight);text-decoration: var(--shiki-default-text-decoration);}html .dark .shiki span {color: var(--shiki-dark);background: var(--shiki-dark-bg);font-style: var(--shiki-dark-font-style);font-weight: var(--shiki-dark-font-weight);text-decoration: var(--shiki-dark-text-decoration);}html.dark .shiki span {color: var(--shiki-dark);background: var(--shiki-dark-bg);font-style: var(--shiki-dark-font-style);font-weight: var(--shiki-dark-font-weight);text-decoration: var(--shiki-dark-text-decoration);}html pre.shiki code .sJ8bj, html code.shiki .sJ8bj{--shiki-default:#6A737D;--shiki-dark:#6A737D}html pre.shiki code .szBVR, html code.shiki .szBVR{--shiki-default:#D73A49;--shiki-dark:#F97583}html pre.shiki code .sVt8B, html code.shiki .sVt8B{--shiki-default:#24292E;--shiki-dark:#E1E4E8}html pre.shiki code .s4XuR, html code.shiki .s4XuR{--shiki-default:#E36209;--shiki-dark:#FFAB70}html pre.shiki code .s9eBZ, html code.shiki .s9eBZ{--shiki-default:#22863A;--shiki-dark:#85E89D}</style></div></div><div class="border-muted mt-12 border-t-2 pt-6"><p class="text-muted/40 mb-4 text-center font-mono text-sm">EOF</p><div class="flex justify-between"><button type="button" class="border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150" style="cursor:crosshair;"> &gt; SHARE.SH</button><a href="/articles/2026/01/18/understanding-modern-rpc-frameworks-how-they-work-and-when-to-use-them" class="border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150" style="cursor:crosshair;"> &gt; NEXT_POST</a></div></div></article><div class="hidden w-16 lg:block"></div></div><!--]--></main><footer class="border-muted bg-surface border-t-2"><div class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-8"><div class="flex gap-6"><!--[--><a href="https://x.com/trpkovski" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150" style="cursor:crosshair;" aria-label="X">X</a><a href="https://bsky.app/profile/trpkovski.com" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150" style="cursor:crosshair;" aria-label="Bluesky">Bluesky</a><a href="https://linkedin.com/in/trpkovski" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150" style="cursor:crosshair;" aria-label="LinkedIn">LinkedIn</a><a href="https://github.com/Suv4o" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150" style="cursor:crosshair;" aria-label="GitHub">GitHub</a><a href="https://instagram.com/trpkovski" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-primary hover:shadow-glow font-mono text-sm transition-all duration-150" style="cursor:crosshair;" aria-label="Instagram">Instagram</a><!--]--></div><p class="text-muted/60 font-mono text-xs">SYSTEM_STATUS: ONLINE</p></div></footer><div class="crt-scanlines" aria-hidden="true"></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{mdc:{components:{prose:true,map:{},customElements:[]},headings:{anchorLinks:{h1:false,h2:true,h3:true,h4:true,h5:false,h6:false}},highlight:{noApiRoute:true,highlighter:"shiki",theme:{default:"github-light",dark:"github-dark"},shikiEngine:"oniguruma",langs:["js","jsx","json","ts","tsx","vue","css","html","bash","md","mdc","yaml"]}},content:{wsUrl:""}},app:{baseURL:"/",buildId:"91d4ba13-9b7a-4760-a496-64e2d9b58159",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script><script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/articles/2026/02/01/how-to-run-and-debug-your-github-workflows-locally/_payload.json?91d4ba13-9b7a-4760-a496-64e2d9b58159">[{"state":1,"once":3,"_errors":4,"serverRendered":6,"path":7,"prerenderedAt":8},["Reactive",2],{},["Set"],["ShallowReactive",5],{"article-2026\u002F02\u002F01\u002Fhow-to-run-and-debug-your-github-workflows-locally":-1,"articles-for-nav":-1},true,"\u002Farticles\u002F2026\u002F02\u002F01\u002Fhow-to-run-and-debug-your-github-workflows-locally",1776561551434]</script></body></html>

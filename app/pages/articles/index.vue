@@ -14,7 +14,9 @@ const filteredArticles = computed(() => {
     const query = searchQuery.value.toLowerCase();
     if (!query) return allArticles.value;
     return allArticles.value.filter(
-        (a) => a.title.toLowerCase().includes(query) || a.tags.some((t: string) => t.toLowerCase().includes(query)),
+        (a) =>
+            a.title.toLowerCase().includes(query) ||
+            (a.articleTags ?? []).some((t: string) => t.toLowerCase().includes(query)),
     );
 });
 
@@ -49,8 +51,8 @@ function formatDate(date: string) {
             >
                 <span class="text-muted/60 shrink-0 font-mono text-xs">{{ formatDate(article.date) }}</span>
                 <span class="text-text flex-1 font-mono text-sm">{{ article.title }}</span>
-                <div class="flex gap-2">
-                    <TagBadge v-for="tag in article.tags" :key="tag" :tag="tag" />
+                <div class="flex flex-wrap gap-2">
+                    <TagBadge v-for="tag in article.articleTags" :key="tag" :tag="tag" />
                 </div>
             </NuxtLink>
         </div>
