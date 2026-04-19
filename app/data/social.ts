@@ -5,9 +5,9 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-    { name: "X", url: "https://x.com/trpkovski", icon: "x" },
-    { name: "Bluesky", url: "https://bsky.app/profile/trpkovski.com", icon: "bluesky" },
-    { name: "LinkedIn", url: "https://linkedin.com/in/trpkovski", icon: "linkedin" },
+    { name: "Bluesky", url: "https://bsky.app/profile/aleks-trpkovski.bsky.social", icon: "bluesky" },
+    { name: "X", url: "https://x.com/aleks_trpkovski", icon: "x" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/aleksandar-trpkovski/", icon: "linkedin" },
     { name: "GitHub", url: "https://github.com/Suv4o", icon: "github" },
-    { name: "Instagram", url: "https://instagram.com/trpkovski", icon: "instagram" },
+    { name: "Instagram", url: "https://www.instagram.com/aleksandar_trpkovski/", icon: "instagram" },
 ];

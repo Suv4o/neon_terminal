@@ -34,7 +34,7 @@ html {
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-sans);
-    cursor: default;
+    cursor: url("/cursor-default.svg") 10 15, default;
 }
 
 /* Text Selection */

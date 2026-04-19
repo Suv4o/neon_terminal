@@ -113,20 +113,32 @@ function shareArticle() {
     font-size: 0.875rem;
     background-color: var(--color-surface);
     padding: 0.125rem 0.375rem;
+    color: var(--color-primary);
 }
 
 .prose-terminal pre {
     position: relative;
-    background-color: var(--color-surface);
+    background-color: #0d1f35;
     border-left: 3px solid var(--color-primary);
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     overflow-x: auto;
+    border-radius: 4px;
+    line-height: 1.7;
+    font-size: 0.875rem;
 }
 
 .prose-terminal pre code {
     background: none;
     padding: 0;
+    color: #e0e6ed;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+}
+
+/* Override Shiki background to match Neon Terminal */
+.prose-terminal pre .shiki {
+    background-color: #0d1f35 !important;
 }
 
 .prose-terminal ul,

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const isMenuOpen = ref(false);
+const route = useRoute();
 
 const navLinks = [
     { label: "Articles", to: "/articles" },
@@ -8,6 +9,14 @@ const navLinks = [
     { label: "About Me", to: "/about-me" },
     { label: "Get In Touch", to: "/get-in-touch" },
 ];
+
+function isActive(to: string): boolean {
+    const path = route.path;
+    if (to === "/articles") {
+        return path === "/articles" || path.startsWith("/articles/");
+    }
+    return path === to || path.startsWith(to + "/");
+}
 </script>
 
 <template>
@@ -24,8 +33,13 @@ const navLinks = [
                     v-for="link in navLinks"
                     :key="link.to"
                     :to="link.to"
-                    class="text-text hover:text-primary hover:shadow-glow font-mono text-sm uppercase transition-all duration-150"
-                                   >
+                    class="font-mono text-sm uppercase transition-all duration-150"
+                    :class="
+                        isActive(link.to)
+                            ? 'text-primary shadow-glow'
+                            : 'text-text hover:text-primary hover:shadow-glow'
+                    "
+                >
                     {{ link.label }}
                 </NuxtLink>
             </div>
@@ -61,7 +75,12 @@ const navLinks = [
                 v-for="link in navLinks"
                 :key="link.to"
                 :to="link.to"
-                class="border-muted/30 text-text hover:bg-surface hover:text-primary block border-b px-4 py-3 font-mono text-sm uppercase transition-all duration-150"
+                class="block border-b px-4 py-3 font-mono text-sm uppercase transition-all duration-150"
+                :class="
+                    isActive(link.to)
+                        ? 'border-muted/30 bg-surface text-primary'
+                        : 'border-muted/30 text-text hover:bg-surface hover:text-primary'
+                "
                                @click="isMenuOpen = false"
             >
                 {{ link.label }}
