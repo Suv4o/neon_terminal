@@ -23,8 +23,13 @@ function isActive(to: string): boolean {
     <nav class="border-muted bg-background/90 fixed top-0 z-50 w-full border-b-2 backdrop-blur-md">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
             <!-- Brand -->
-            <NuxtLink to="/" class="text-primary font-mono text-lg font-bold">
-                trpkovski.com &#x1f525;
+            <NuxtLink to="/" class="text-primary flex items-center gap-2 font-mono text-lg font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" class="shrink-0">
+                    <rect width="32" height="32" rx="4" fill="currentColor" />
+                    <path d="M5 8 L14 16 L5 24" fill="none" stroke="#173353" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" />
+                    <rect x="16" y="21" width="11" height="3.5" rx="0.5" fill="#173353" />
+                </svg>
+                trpkovski.com
             </NuxtLink>
 
             <!-- Desktop Links -->

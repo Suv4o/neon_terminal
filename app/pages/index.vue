@@ -12,9 +12,7 @@ const { data: articles } = await useAsyncData("latest-articles", () =>
         <aside class="lg:sticky lg:top-24 lg:w-2/5 lg:self-start">
             <TerminalCard filename="whoami.sh">
                 <template #media>
-                    <div class="bg-background flex justify-center p-8">
-                        <img src="/images/avatar.svg" alt="Aleksandar Trpkovski" class="h-40 w-40" loading="eager" />
-                    </div>
+                    <PortraitEyeTracker />
                 </template>
 
                 <div class="space-y-4">

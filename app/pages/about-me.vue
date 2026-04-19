@@ -18,8 +18,8 @@ function itemsByCategory(category: string) {
         <!-- Avatar -->
         <TerminalCard filename="IMG_VIEWER.SH">
             <template #media>
-                <div class="bg-background flex justify-center p-8">
-                    <img src="/images/avatar.svg" alt="Aleksandar Trpkovski" class="h-48 w-48" loading="eager" />
+                <div class="mx-auto w-[400px] max-w-full">
+                    <PortraitEyeTracker />
                 </div>
             </template>
 
