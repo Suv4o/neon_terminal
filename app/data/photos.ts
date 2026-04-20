@@ -1,80 +1,66 @@
-export interface Photo {
-    src: string;
-    alt: string;
-    caption?: string;
-}
-
 export interface PhotoCategory {
     name: string;
     slug: string;
+    emoji: string;
     cover: string;
     terminalName: string;
-    photos: Photo[];
+    description: string;
+    tags: string[];
 }
 
 export const photoCategories: PhotoCategory[] = [
     {
-        name: "Astrophotography",
-        slug: "astrophotography",
-        cover: "/images/photos/astro-cover.svg",
+        name: "Starlit Wonders",
+        slug: "starlit-wonders",
+        emoji: "🌌",
+        cover: "/images/through-the-lens/starlit-wonders/aura-australia-airey-inlet-lighthouse.jpg",
         terminalName: "CAT_01_ASTRO.EXE",
-        photos: [
-            { src: "/images/photos/astro-1.svg", alt: "Milky Way over mountain range" },
-            { src: "/images/photos/astro-2.svg", alt: "Star trails over lake" },
-            { src: "/images/photos/astro-3.svg", alt: "Orion nebula close-up" },
-        ],
+        description: "Night skies, cosmic silence, and the quiet drama above us.",
+        tags: ["cosmic-views", "night-skies", "galactic-dreams"],
     },
     {
-        name: "Street Photography",
-        slug: "street",
-        cover: "/images/photos/street-cover.svg",
-        terminalName: "CAT_02_STREET.EXE",
-        photos: [
-            { src: "/images/photos/street-1.svg", alt: "Neon signs in rain" },
-            { src: "/images/photos/street-2.svg", alt: "Urban geometry shadows" },
-        ],
+        name: "Wild Horizons",
+        slug: "wild-horizons",
+        emoji: "🌿",
+        cover: "/images/through-the-lens/wild-horizons/alfred-nicholas-gardens.jpg",
+        terminalName: "CAT_02_WILD.EXE",
+        description: "Green worlds, moody light, and earth-toned quiet.",
+        tags: ["green-escape", "earth-tones", "into-the-wild"],
     },
     {
-        name: "Architecture",
-        slug: "architecture",
-        cover: "/images/photos/arch-cover.svg",
-        terminalName: "CAT_03_ARCH.EXE",
-        photos: [
-            { src: "/images/photos/arch-1.svg", alt: "Brutalist concrete building" },
-            { src: "/images/photos/arch-2.svg", alt: "Glass facade reflections" },
-            { src: "/images/photos/arch-3.svg", alt: "Spiral staircase from above" },
-            { src: "/images/photos/arch-4.svg", alt: "Bridge at sunset" },
-        ],
+        name: "Time in Motion",
+        slug: "time-in-motion",
+        emoji: "⏳",
+        cover: "/images/through-the-lens/time-in-motion/balnarring-beach-pastel.jpg",
+        terminalName: "CAT_03_MOTION.EXE",
+        description: "Light trails, blurred beauty, and moving moments.",
+        tags: ["light-trails", "blurred-beauty", "moving-moments"],
     },
     {
-        name: "Nature",
-        slug: "nature",
-        cover: "/images/photos/nature-cover.svg",
-        terminalName: "CAT_04_NATURE.EXE",
-        photos: [
-            { src: "/images/photos/nature-1.svg", alt: "Autumn forest path" },
-            { src: "/images/photos/nature-2.svg", alt: "Mountain lake reflection" },
-        ],
+        name: "Urban Glow",
+        slug: "urban-glow",
+        emoji: "🌆",
+        cover: "/images/through-the-lens/urban-glow/bitola-forty-holy-martyrs-krkardash.jpg",
+        terminalName: "CAT_04_URBAN.EXE",
+        description: "Neon nights, city lights, and street frames.",
+        tags: ["neon-nights", "city-lights", "street-frames"],
     },
     {
-        name: "Travel",
-        slug: "travel",
-        cover: "/images/photos/travel-cover.svg",
-        terminalName: "CAT_05_TRAVEL.EXE",
-        photos: [
-            { src: "/images/photos/travel-1.svg", alt: "Mediterranean village" },
-            { src: "/images/photos/travel-2.svg", alt: "Tokyo alleyway at night" },
-            { src: "/images/photos/travel-3.svg", alt: "Desert sand dunes" },
-        ],
+        name: "Ocean Whispers",
+        slug: "ocean-whispers",
+        emoji: "🌊",
+        cover: "/images/through-the-lens/ocean-whispers/balnarring-beach-wooden-wall.jpg",
+        terminalName: "CAT_05_OCEAN.EXE",
+        description: "Ocean breeze, coastal views, and blue horizons.",
+        tags: ["ocean-breeze", "coastal-views", "blue-horizon"],
     },
     {
-        name: "Portraits",
-        slug: "portraits",
-        cover: "/images/photos/portrait-cover.svg",
-        terminalName: "CAT_06_PORTRAIT.EXE",
-        photos: [
-            { src: "/images/photos/portrait-1.svg", alt: "Environmental portrait" },
-            { src: "/images/photos/portrait-2.svg", alt: "Studio headshot with dramatic lighting" },
-        ],
+        name: "Liquid Cascades",
+        slug: "liquid-cascades",
+        emoji: "🏞️",
+        cover: "/images/through-the-lens/liquid-cascades/beauchamp-falls.jpg",
+        terminalName: "CAT_06_FALLS.EXE",
+        description: "Falling waters, mist and magic, nature flow.",
+        tags: ["falling-waters", "mist-and-magic", "nature-flow"],
     },
 ];

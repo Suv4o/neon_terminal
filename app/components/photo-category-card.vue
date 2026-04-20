@@ -30,8 +30,18 @@ defineProps<Props>();
                 <div
                     class="bg-background/60 absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm"
                 >
-                    <h3 class="text-text font-mono text-xl font-bold">{{ category.name }}</h3>
-                    <span class="text-muted mt-2 font-mono text-xs">[ {{ category.photos.length }} PHOTOS ]</span>
+                    <span class="text-3xl">{{ category.emoji }}</span>
+                    <h3 class="text-text mt-2 font-mono text-xl font-bold">{{ category.name }}</h3>
+                    <p class="text-muted/80 mt-1 px-4 text-center font-mono text-xs">{{ category.description }}</p>
+                    <div class="mt-3 flex flex-wrap justify-center gap-1">
+                        <span
+                            v-for="tag in category.tags"
+                            :key="tag"
+                            class="text-primary/80 font-mono text-xs"
+                        >
+                            #{{ tag }}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

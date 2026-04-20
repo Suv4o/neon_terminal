@@ -19,5 +19,28 @@ export default defineContentConfig({
                 blog: z.string().optional(),
             }),
         }),
+        throughTheLens: defineCollection({
+            type: "page",
+            source: "through-the-lens/**",
+            schema: z.object({
+                title: z.string(),
+                description: z.string(),
+                image: z.string(),
+                keywords: z.array(z.string()).optional(),
+                type: z.string().optional(),
+                slug: z.string().optional(),
+                location: z.string().optional(),
+                gridImages: z
+                    .array(
+                        z.object({
+                            filename: z.string(),
+                            title: z.string(),
+                            location: z.string().optional(),
+                            aspect: z.string().optional(),
+                        }),
+                    )
+                    .optional(),
+            }),
+        }),
     },
 });

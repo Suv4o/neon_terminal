@@ -108,6 +108,13 @@ function shareArticle() {
     line-height: 1.75;
 }
 
+.prose-terminal h2 code,
+.prose-terminal h3 code {
+    font-size: inherit;
+    background-color: transparent;
+    padding: 0;
+}
+
 .prose-terminal code {
     font-family: var(--font-mono);
     font-size: 0.875rem;
