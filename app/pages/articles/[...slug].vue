@@ -1,4 +1,26 @@
 <script setup lang="ts">
+import articlesEmbeddings from "~/data/articles-embeddings.json";
+
+interface ArticleEmbedding {
+    articlePath: string;
+    embeddings: number[];
+}
+
+function cosineSimilarity(a: number[], b: number[]): number {
+    let dot = 0;
+    let magA = 0;
+    let magB = 0;
+    for (let i = 0; i < a.length; i++) {
+        dot += a[i] * b[i];
+        magA += a[i] * a[i];
+        magB += b[i] * b[i];
+    }
+    magA = Math.sqrt(magA);
+    magB = Math.sqrt(magB);
+    if (magA === 0 || magB === 0) return 0;
+    return dot / (magA * magB);
+}
+
 const route = useRoute();
 const slugParts = route.params.slug as string[];
 const slug = slugParts.join("/");
@@ -13,7 +35,7 @@ if (!article.value) {
 
 useHead({ title: `${article.value.title} — Neon Terminal` });
 
-const { data: allArticles } = await useAsyncData("articles-for-nav", () =>
+const { data: allArticles } = await useAsyncData(`articles-all-${slug}`, () =>
     queryCollection("articles").order("date", "DESC").all(),
 );
 
@@ -21,6 +43,24 @@ const nextArticle = computed(() => {
     if (!allArticles.value || !article.value) return null;
     const idx = allArticles.value.findIndex((a) => a.path === article.value!.path);
     return idx >= 0 && idx < allArticles.value.length - 1 ? allArticles.value[idx + 1] : null;
+});
+
+const similarArticles = computed(() => {
+    if (!article.value || !allArticles.value) return [];
+    const data = articlesEmbeddings as ArticleEmbedding[];
+    const current = data.find((a) => article.value!.path.endsWith(a.articlePath));
+    if (!current) return [];
+    const topPaths = data
+        .filter((a) => a.articlePath !== current.articlePath)
+        .map((a) => ({
+            path: `/articles${a.articlePath}`,
+            score: cosineSimilarity(current.embeddings, a.embeddings),
+        }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3);
+    return topPaths
+        .map((sim) => allArticles.value!.find((a) => a.path === sim.path))
+        .filter(Boolean);
 });
 
 function formatDate(date: string) {
@@ -31,10 +71,27 @@ function formatDate(date: string) {
     });
 }
 
-function shareArticle() {
-    if (typeof window !== "undefined") {
-        navigator.clipboard.writeText(window.location.href);
+const shareLabel = ref("SHARE.SH");
+
+async function shareArticle() {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    const title = article.value?.title ?? "Neon Terminal";
+
+    if (navigator.share) {
+        try {
+            await navigator.share({ title, url });
+            return;
+        } catch {
+            // User cancelled or share failed — fall through to clipboard
+        }
     }
+
+    await navigator.clipboard.writeText(url);
+    shareLabel.value = "COPIED!";
+    setTimeout(() => {
+        shareLabel.value = "SHARE.SH";
+    }, 2000);
 }
 </script>
 
@@ -68,10 +125,13 @@ function shareArticle() {
             <div class="border-muted mt-12 border-t-2 pt-6">
                 <p class="text-muted/40 mb-4 text-center font-mono text-sm">EOF</p>
                 <div class="flex justify-between">
-                    <ActionButton label="SHARE.SH" type="button" @click="shareArticle" />
+                    <ActionButton :label="shareLabel" type="button" @click="shareArticle" />
                     <ActionButton v-if="nextArticle" label="NEXT_POST" :to="nextArticle.path" />
                 </div>
             </div>
+
+            <!-- Similar Articles -->
+            <SimilarArticles :articles="similarArticles" />
         </article>
 
         <!-- Whitespace Column -->

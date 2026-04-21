@@ -34,7 +34,7 @@ html {
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-sans);
-    cursor: url("/cursor-default.svg") 9 16, default;
+    cursor: url("/cursor-default.svg") 4 2, default;
 }
 
 /* Text Selection */
@@ -98,11 +98,7 @@ html {
     filter: grayscale(0);
 }
 
-/* Blinking cursor — swap to "off" variants when blink class is active */
-html.cursor-blink-off {
-    cursor: url("/cursor-default-off.svg") 9 16, default;
-}
-
+/* Blinking cursor — swap to "off" variant for pointer when blink class is active */
 html.cursor-blink-off a,
 html.cursor-blink-off button,
 html.cursor-blink-off [role="link"],
