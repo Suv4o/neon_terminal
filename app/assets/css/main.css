@@ -34,7 +34,7 @@ html {
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-sans);
-    cursor: url("/cursor-default.svg") 10 15, default;
+    cursor: url("/cursor-default.svg") 9 16, default;
 }
 
 /* Text Selection */
@@ -96,6 +96,21 @@ html {
 /* When ActionButton is hovered, remove grayscale from the media image */
 .group\/card:has(div > .action-btn:hover) .media-grayscale {
     filter: grayscale(0);
+}
+
+/* Blinking cursor — swap to "off" variants when blink class is active */
+html.cursor-blink-off {
+    cursor: url("/cursor-default-off.svg") 9 16, default;
+}
+
+html.cursor-blink-off a,
+html.cursor-blink-off button,
+html.cursor-blink-off [role="link"],
+html.cursor-blink-off [role="button"],
+html.cursor-blink-off input[type="submit"],
+html.cursor-blink-off summary,
+html.cursor-blink-off .cursor-pointer {
+    cursor: url("/cursor-pointer-off.svg") 6 16, pointer;
 }
 
 /* Custom Terminal Cursor for Interactive Elements */
