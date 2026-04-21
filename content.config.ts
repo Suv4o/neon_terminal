@@ -42,5 +42,16 @@ export default defineContentConfig({
                     .optional(),
             }),
         }),
+        theKeyboardLab: defineCollection({
+            type: "page",
+            source: "the-keyboard-lab/**",
+            schema: z.object({
+                title: z.string(),
+                description: z.string(),
+                image: z.string(),
+                keywords: z.array(z.string()).optional(),
+                type: z.string().optional(),
+            }),
+        }),
     },
 });

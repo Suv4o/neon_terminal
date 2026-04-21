@@ -70,6 +70,11 @@ export default defineNuxtConfig({
     },
     nitro: {
         preset: "vercel-static",
+        devStorage: {
+            cache: {
+                driver: "memory",
+            },
+        },
         prerender: {
             routes: [
                 "/vuejs",
@@ -104,6 +109,10 @@ export default defineNuxtConfig({
                 "/through-the-lens/urban-glow",
                 "/through-the-lens/ocean-whispers",
                 "/through-the-lens/liquid-cascades",
+                "/the-keyboard-lab",
+                "/the-keyboard-lab/pastel-paws",
+                "/the-keyboard-lab/lemon-milk",
+                "/the-keyboard-lab/retrograde",
             ],
             crawlLinks: true,
         },
