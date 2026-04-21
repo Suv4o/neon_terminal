@@ -15,14 +15,14 @@ const props = withDefaults(defineProps<Props>(), {
     <NuxtLink
         v-if="props.to"
         :to="props.to"
-        class="border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150"
+        class="action-btn border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150"
     >
         &gt; {{ props.label }}
     </NuxtLink>
     <button
         v-else
         :type="props.type"
-        class="border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150"
+        class="action-btn border-primary text-primary hover:bg-primary hover:text-background hover:shadow-glow inline-block border-2 bg-transparent px-6 py-2 font-mono text-base font-semibold uppercase transition-all duration-150"
     >
         &gt; {{ props.label }}
     </button>

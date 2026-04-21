@@ -25,7 +25,14 @@ const formattedDate = computed(() => {
 <template>
     <TerminalCard :filename="slugName + '.md'" :grayscale-hover="true">
         <template #media>
-            <img :src="props.image" :alt="props.title" class="aspect-video w-full object-cover" loading="lazy" />
+            <NuxtLink :to="props.path" class="block">
+                <img
+                    :src="props.image"
+                    :alt="props.title"
+                    class="aspect-video w-full object-cover"
+                    loading="lazy"
+                />
+            </NuxtLink>
         </template>
 
         <div class="space-y-3">

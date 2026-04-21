@@ -10,7 +10,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <div class="border-muted border-2">
+    <div class="border-muted group/card border-2">
         <!-- Hardware Header -->
         <div class="bg-surface text-muted flex h-6 items-center gap-2 px-3 font-mono text-xs">
             <span class="opacity-60">[ ]</span>
@@ -20,8 +20,14 @@ withDefaults(defineProps<Props>(), {
         </div>
 
         <!-- Media Bay -->
-        <div v-if="$slots.media" class="relative overflow-hidden">
-            <div :class="grayscaleHover ? 'grayscale transition-[filter] duration-150 hover:grayscale-0' : ''">
+        <div v-if="$slots.media" class="media-bay relative overflow-hidden">
+            <div
+                :class="
+                    grayscaleHover
+                        ? 'media-grayscale grayscale transition-[filter] duration-150 hover:grayscale-0'
+                        : ''
+                "
+            >
                 <slot name="media" />
             </div>
         </div>
