@@ -16,13 +16,16 @@ const { data: articles } = await useAsyncData("latest-articles", () =>
                 </template>
 
                 <div class="space-y-4">
-                    <h1 class="text-primary font-mono text-3xl font-bold">&gt; whoami</h1>
+                    <h1 class="text-primary glow-pulse font-mono text-3xl font-bold">&gt; whoami</h1>
                     <p class="text-muted font-mono text-sm">
-                        Hello, I'm <span class="text-primary">Aleksandar Trpkovski</span>
+                        Hello, I'm <span class="text-primary">Aleks</span>
                     </p>
                     <p class="text-text/80 text-sm leading-relaxed">
-                        Full-stack developer, mechanical keyboard enthusiast, and amateur photographer. I write about
-                        web development, TypeScript, and the tools I use every day.
+                        Welcome to my blog! I'm a Software Engineer with years of hands-on experience, passionate about
+                        all things JavaScript! This is where I share my thoughts, learnings, and experiments with new
+                        tech. If you're curious to know more about me, check out the <NuxtLink to="/about-me" class="text-primary underline">about me</NuxtLink> section. Feel free to
+                        reach out or connect with me on social media. I hope this blog becomes a helpful resource on
+                        your journey.
                     </p>
                 </div>
             </TerminalCard>

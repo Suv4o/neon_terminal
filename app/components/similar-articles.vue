@@ -24,7 +24,7 @@ function formatDate(date: string) {
 
 <template>
     <div v-if="articles.length" class="mt-12">
-        <h2 class="text-primary mb-6 font-mono text-lg font-bold">// SIMILAR_ARTICLES</h2>
+        <h2 class="text-primary glow-pulse mb-6 font-mono text-lg font-bold">// SIMILAR_ARTICLES</h2>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <NuxtLink

@@ -11,7 +11,7 @@ function handleSubmit() {
 
 <template>
     <section class="border-muted bg-surface border-2 p-6">
-        <h2 class="text-primary mb-4 font-mono text-xl font-bold">[ NEWSLETTER_DAEMON ]</h2>
+        <h2 class="text-primary glow-pulse mb-4 font-mono text-xl font-bold">[ NEWSLETTER_DAEMON ]</h2>
 
         <div v-if="!submitted">
             <p class="text-muted mb-4 font-mono text-sm">&gt; ./subscribe.sh</p>

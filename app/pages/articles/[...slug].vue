@@ -113,7 +113,7 @@ async function shareArticle() {
                     <span>EXEC_TIME: {{ article.readTime }}ms</span>
                 </div>
 
-                <h1 class="text-primary mb-4 font-mono text-3xl font-bold">{{ article.title }}</h1>
+                <h1 class="text-primary glow-pulse mb-4 font-mono text-3xl font-bold">{{ article.title }}</h1>
 
                 <div class="mb-6 flex flex-wrap gap-2">
                     <TagBadge v-for="tag in article.articleTags" :key="tag" :tag="tag" />

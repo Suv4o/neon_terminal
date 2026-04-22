@@ -156,7 +156,7 @@ function formatTime(seconds: number): string {
     <div v-if="hasAudio" class="border-surface bg-background mt-8 border-2">
         <!-- Terminal Header -->
         <div class="border-surface flex items-center gap-2 border-b-2 px-4 py-2">
-            <span class="bg-primary h-2.5 w-2.5 rounded-full"></span>
+            <span class="bg-primary h-2.5 w-2.5 rounded-full" style="animation: glow-dot 2s ease-in-out infinite"></span>
             <span class="bg-muted/40 h-2.5 w-2.5 rounded-full"></span>
             <span class="bg-muted/40 h-2.5 w-2.5 rounded-full"></span>
             <span class="text-muted ml-2 font-mono text-xs">AUDIO_SUMMARY.SH</span>

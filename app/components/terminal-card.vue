@@ -13,9 +13,9 @@ withDefaults(defineProps<Props>(), {
     <div class="border-muted group/card border-2">
         <!-- Hardware Header -->
         <div class="bg-surface text-muted flex h-6 items-center gap-2 px-3 font-mono text-xs">
-            <span class="opacity-60">[ ]</span>
-            <span class="opacity-60">[ ]</span>
-            <span class="opacity-60">[x]</span>
+            <span class="checkbox-flicker shrink-0 opacity-60">[ ]</span>
+            <span class="checkbox-flicker shrink-0 opacity-60" style="animation-delay: 2s">[ ]</span>
+            <span class="shrink-0 opacity-60">[x]</span>
             <span class="ml-2 truncate">{{ filename }}</span>
         </div>
 

@@ -19,7 +19,9 @@ import { socialLinks } from "~/data/social";
                     {{ link.name }}
                 </a>
             </div>
-            <p class="text-muted/60 font-mono text-xs">SYSTEM_STATUS: ONLINE</p>
+            <p class="text-muted/60 font-mono text-xs">
+                SYSTEM_STATUS: <span class="status-online">ONLINE</span>
+            </p>
         </div>
     </footer>
 </template>
