@@ -35,6 +35,10 @@ if (!article.value) {
 
 useHead({ title: `${article.value.title} — Neon Terminal` });
 
+const audioBasePath = computed(() => `/audio-summary/${slug}`);
+const audioSrc = computed(() => `${audioBasePath.value}/summary.mp3`);
+const transcriptSrc = computed(() => `${audioBasePath.value}/summary.json`);
+
 const { data: allArticles } = await useAsyncData(`articles-all-${slug}`, () =>
     queryCollection("articles").order("date", "DESC").all(),
 );
@@ -115,6 +119,9 @@ async function shareArticle() {
                     <TagBadge v-for="tag in article.articleTags" :key="tag" :tag="tag" />
                 </div>
             </header>
+
+            <!-- Audio Summary -->
+            <AudioPlayer :audio-src="audioSrc" :transcript-src="transcriptSrc" />
 
             <!-- Markdown Content -->
             <div class="prose-terminal mt-8">
