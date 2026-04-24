@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <nav class="sticky top-24 w-[250px] shrink-0" aria-label="Table of contents">
+    <nav class="sticky top-24 max-h-[calc(100vh-8rem)] w-[250px] shrink-0 self-start overflow-y-auto" aria-label="Table of contents">
         <h2 class="text-muted mb-4 font-mono text-sm font-bold">// TABLE_OF_CONTENTS</h2>
         <ul class="space-y-2">
             <li v-for="link in flattenLinks(links)" :key="link.id">
