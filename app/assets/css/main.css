@@ -121,6 +121,42 @@ summary,
     cursor: url("/cursor-pointer.svg") 6 16, pointer;
 }
 
+/* Blinking text cursor "|" for selectable text */
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+td,
+th,
+blockquote,
+label,
+.prose-terminal {
+    cursor: url("/cursor-text.svg") 16 16, text;
+}
+
+/* Blink-off variant for text cursor */
+html.cursor-blink-off p,
+html.cursor-blink-off span,
+html.cursor-blink-off h1,
+html.cursor-blink-off h2,
+html.cursor-blink-off h3,
+html.cursor-blink-off h4,
+html.cursor-blink-off h5,
+html.cursor-blink-off h6,
+html.cursor-blink-off li,
+html.cursor-blink-off td,
+html.cursor-blink-off th,
+html.cursor-blink-off blockquote,
+html.cursor-blink-off label,
+html.cursor-blink-off .prose-terminal {
+    cursor: url("/cursor-text-off.svg") 16 16, text;
+}
+
 /* Page Transitions */
 .page-enter-active,
 .page-leave-active {
