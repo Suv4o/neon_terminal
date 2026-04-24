@@ -53,6 +53,7 @@ export default defineNuxtConfig({
             htmlAttrs: { lang: "en" },
             link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
             meta: [
+                { name: "robots", content: "noindex, nofollow" },
                 {
                     name: "description",
                     content: "Aleksandar Trpkovski — Full-stack developer blog with a retro terminal aesthetic.",
