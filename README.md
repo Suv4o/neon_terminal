@@ -1,5 +1,11 @@
 # Neon Terminal
 
+![Landing Image](https://res.cloudinary.com/suv4o/image/upload/q_auto,f_auto,w_750,e_sharpen:100/v1777292353/blog/from-google-stitch-design-to-live-site-with-claude-code-and-spec-kit/from-google-stitch-design-to-live-site-with-claude-code-and-spec-kit_eym9q2.jpg)
+
+> This project is part of a blog article that walks through the design decisions and how it was built. You can read the full article here: [From Google Stitch Design to Live Site with Claude Code and Spec Kit](https://www.trpkovski.com/2026/05/03/from-google-stitch-design-to-live-site-with-claude-code-and-spec-kit)
+
+---
+
 A redesigned version of [trpkovski.com](https://www.trpkovski.com) built with Nuxt 4, Tailwind CSS v4, and TypeScript. The design follows a retro-futuristic "Neon Terminal" aesthetic inspired by 90s terminal interfaces, CRT screen glows, and cyberpunk hardware. The design was generated using Google Stitch's Ideate mode.
 
 ## Tech Stack
@@ -23,17 +29,17 @@ A redesigned version of [trpkovski.com](https://www.trpkovski.com) built with Nu
 
 ## Pages
 
-| Route | Description |
-| --- | --- |
-| `/` | Home page with hero sidebar and latest articles |
-| `/articles` | Searchable article list with load more pagination |
+| Route                               | Description                                                 |
+| ----------------------------------- | ----------------------------------------------------------- |
+| `/`                                 | Home page with hero sidebar and latest articles             |
+| `/articles`                         | Searchable article list with load more pagination           |
 | `/articles/:year/:month/:day/:slug` | Article detail with TOC, audio player, and similar articles |
-| `/the-keyboard-lab` | Mechanical keyboard collection |
-| `/the-keyboard-lab/:slug` | Individual keyboard build page |
-| `/through-the-lens` | Photography gallery categories |
-| `/through-the-lens/:category` | Photo category grid |
-| `/about-me` | Bio, tech stack, and career timeline |
-| `/get-in-touch` | Contact form |
+| `/the-keyboard-lab`                 | Mechanical keyboard collection                              |
+| `/the-keyboard-lab/:slug`           | Individual keyboard build page                              |
+| `/through-the-lens`                 | Photography gallery categories                              |
+| `/through-the-lens/:category`       | Photo category grid                                         |
+| `/about-me`                         | Bio, tech stack, and career timeline                        |
+| `/get-in-touch`                     | Contact form                                                |
 
 ## Setup
 
